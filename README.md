@@ -65,7 +65,7 @@ import (
 	catalogs "github.com/meplato/store2-api-go-client/catalogs"
 )
 
-&hellip;
+...
 
 // Create and initialize your service with your API token
 service, err := catalogs.New(http.DefaultClient)
@@ -97,7 +97,7 @@ library.
 
 ## Running tests
 
-To run all tests use `go test ./...`.
+To run all tests use `go test ./...`
 
 ## Documentation
 
