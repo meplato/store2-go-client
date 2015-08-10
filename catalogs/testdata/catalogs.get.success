@@ -1,0 +1,32 @@
+HTTP/1.1 200 OK
+Cache-Control: private, no-cache
+Content-Type: application/json; charset=utf-8
+Last-Modified: Tue, 31 Mar 2015 14:18:15 GMT
+P3p: CP="This is not a P3P policy!"
+Vary: Cookie
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+X-Ua-Compatible: IE=edge
+X-Xss-Protection: 1; mode=block
+Date: Tue, 31 Mar 2015 14:18:15 GMT
+
+{
+  "kind": "store#catalog",
+  "selfLink": "https://store2.meplato.com/api/v2/catalogs/5094310527",
+  "id": 14,
+  "merchantId": 8,
+  "merchantName": "ABC Elektronik",
+  "projectId": 2,
+  "projectName": "BigBuy",
+  "slug": "ersatzteile",
+  "name": "Ersatzteile",
+  "pin": "5094310527",
+  "validFrom": "2015-03-26",
+  "validUntil": "2015-12-31",
+  "currency": "EUR",
+  "language": "de",
+  "state": "idle",
+  "created": "2015-03-26T16:30:24Z",
+  "updated": "2015-03-26T16:33:06Z",
+  "numProductsWork": 2
+}

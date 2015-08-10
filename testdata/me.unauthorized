@@ -1,0 +1,13 @@
+HTTP/1.1 401 Unauthorized
+P3p: CP="This is not a P3P policy!"
+Vary: Cookie
+Www-Authenticate: Basic realm="Meplato Store"
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+X-Ua-Compatible: IE=edge
+X-Xss-Protection: 1; mode=block
+Date: Tue, 31 Mar 2015 12:09:42 GMT
+Content-Length: 37
+Content-Type: text/plain; charset=utf-8
+
+{"error":{"message":"Unauthorized"}}

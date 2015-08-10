@@ -1,0 +1,61 @@
+HTTP/1.1 200 OK
+Cache-Control: private, no-cache
+Content-Type: application/json; charset=utf-8
+Last-Modified: Tue, 31 Mar 2015 14:30:43 GMT
+P3p: CP="This is not a P3P policy!"
+Vary: Cookie
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+X-Ua-Compatible: IE=edge
+X-Xss-Protection: 1; mode=block
+Date: Tue, 31 Mar 2015 14:30:43 GMT
+
+{
+  "kind": "store#catalogs",
+  "selfLink": "https://store2.meplato.com/api/v2/catalogs?pretty=1",
+  "totalItems": 2,
+  "items": [
+    {
+      "kind": "store#catalog",
+      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9",
+      "id": 12,
+      "merchantId": 8,
+      "merchantName": "ABC Elektronik",
+      "projectId": 1,
+      "projectName": "Testprojekt",
+      "slug": "demo-katalog",
+      "name": "Demo-Katalog",
+      "description": "Ein mittelgroßer Demokatalog.",
+      "pin": "AD8CCDD5F9",
+      "validFrom": "2015-01-01",
+      "validUntil": "2015-12-31",
+      "currency": "EUR",
+      "language": "de",
+      "state": "idle",
+      "lastImported": "2015-03-20T13:11:34Z",
+      "created": "2015-03-20T13:10:25Z",
+      "updated": "2015-03-26T11:39:16Z"
+    },
+    {
+      "kind": "store#catalog",
+      "selfLink": "https://store2.meplato.com/api/v2/catalogs/5094310527",
+      "id": 14,
+      "merchantId": 8,
+      "merchantName": "ABC Elektronik",
+      "projectId": 2,
+      "projectName": "BigBuy",
+      "slug": "ersatzteile",
+      "name": "Ersatzteile",
+      "pin": "5094310527",
+      "validFrom": "2015-03-26",
+      "validUntil": "2015-12-31",
+      "currency": "EUR",
+      "language": "de",
+      "state": "idle",
+      "publishedVersion": 5,
+      "lastPublished": "2015-03-31T14:28:47Z",
+      "created": "2015-03-26T16:30:24Z",
+      "updated": "2015-03-31T14:28:47Z"
+    }
+  ]
+}

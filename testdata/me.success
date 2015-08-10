@@ -1,0 +1,48 @@
+HTTP/1.1 200 OK
+Content-Type: application/json
+P3p: CP="This is not a P3P policy!"
+Vary: Cookie
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+X-Ua-Compatible: IE=edge
+X-Xss-Protection: 1; mode=block
+Date: Tue, 31 Mar 2015 12:09:31 GMT
+
+{
+  "kind": "store#me",
+  "selfLink": "https://store2.meplato.com/api/v2?pretty=1",
+  "catalogsLink": "https://store2.meplato.com/api/v2/catalogs",
+  "merchant": {
+    "kind": "store#merchant",
+    "selfLink": "https://store2.meplato.com/api/v2/merchants/8",
+    "id": 8,
+    "name": "ABC Elektronik",
+    "token": "3feeb58c65a4ff1c",
+    "mpcc": "abc-elektronik",
+    "mpsc": "abc-elektronik",
+    "country": "DE",
+    "language": "de",
+    "locale": "de_DE",
+    "timeZone": "Europe/Berlin",
+    "currency": "EUR",
+    "ou": "PCE",
+    "created": "2015-03-19T12:09:45Z",
+    "updated": "2015-03-19T12:09:45Z"
+  },
+  "user": {
+    "kind": "store#user",
+    "id": 2,
+    "merchantId": 8,
+    "name": "Max Mustermann",
+    "email": "max.mustermann@meplato.com",
+    "provider": "meplato",
+    "uid": "135",
+    "country": "DE",
+    "language": "de",
+    "locale": "de_DE",
+    "timeZone": "Europe/Berlin",
+    "currency": "EUR",
+    "created": "2015-03-19T12:09:45Z",
+    "updated": "2015-03-26T11:30:26Z"
+  }
+}

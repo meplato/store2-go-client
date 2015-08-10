@@ -1,0 +1,9 @@
+HTTP/1.1 204 No Content
+P3p: CP="This is not a P3P policy!"
+Vary: Cookie
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+X-Ua-Compatible: IE=edge
+X-Xss-Protection: 1; mode=block
+Date: Wed, 01 Apr 2015 13:54:39 GMT
+
