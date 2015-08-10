@@ -1,6 +1,8 @@
 package main
 
 import (
+	"encoding/csv"
+	"errors"
 	"flag"
 	"fmt"
 	"io"
@@ -10,7 +12,6 @@ import (
 // downloadCommand downloads a specific catalog.
 type downloadCommand struct {
 	verbose bool
-	pin     string
 	area    string
 	outfile string
 }
@@ -19,7 +20,6 @@ func init() {
 	RegisterCommand("download", func(flags *flag.FlagSet) Command {
 		cmd := new(downloadCommand)
 		flags.BoolVar(&cmd.verbose, "v", false, "Print progress")
-		flags.StringVar(&cmd.pin, "pin", "", "PIN of catalog")
 		flags.StringVar(&cmd.area, "area", "live", "Area to download (work/live)")
 		flags.StringVar(&cmd.outfile, "o", "", "Output file")
 		return cmd
@@ -36,12 +36,16 @@ func (c *downloadCommand) Usage() {
 
 func (c *downloadCommand) Examples() []string {
 	return []string{
-		"-pin=ABCDE12345 -v",
-		"-pin=ABCDE12345 -o catalog.out",
+		"ABCDE12345 -v",
+		"ABCDE12345 -o catalog.out",
 	}
 }
 
 func (c *downloadCommand) Run(args []string) error {
+	if len(args) != 1 {
+		return errors.New("no pin specified")
+	}
+
 	service, err := GetProductsService()
 	if err != nil {
 		return err
@@ -59,17 +63,33 @@ func (c *downloadCommand) Run(args []string) error {
 		out = os.Stdout
 	}
 
+	csvw := csv.NewWriter(out)
+	csvw.Comma = ';'
+	csvw.UseCRLF = true
+	err = csvw.Write([]string{"Supplier SKU", "Name", "Price", "Price Qty", "Currency", "Order unit", "Manufacturer", "Manufacturer SKU", "GTIN/EAN"})
+
 	var n int
 	var pageToken string
 	for {
-		res, err := service.Scroll().PIN(c.pin).Area(c.area).PageToken(pageToken).Do()
+		res, err := service.Scroll().PIN(args[0]).Area(c.area).PageToken(pageToken).Do()
 		if err != nil {
 			return err
 		}
 
 		for _, item := range res.Items {
 			n++
-			fmt.Fprintf(out, "%v\n", item)
+
+			csvw.Write([]string{
+				item.Spn,
+				item.Name,
+				fmt.Sprintf("%.2f", item.Price),
+				fmt.Sprintf("%.2f", item.PriceQty),
+				item.Currency,
+				item.OrderUnit,
+				item.Manufacturer,
+				item.Mpn,
+				item.Gtin,
+			})
 		}
 
 		if res.PageToken == "" {

@@ -1,10 +1,12 @@
 package main
 
 import (
+	"bytes"
 	"flag"
 	"fmt"
 	"os"
 	"strings"
+	"unicode/utf8"
 )
 
 // catalogsCommand lists your catalogs.
@@ -60,11 +62,25 @@ func (c *catalogsCommand) Run(args []string) error {
 	}
 
 	fmt.Printf("%d catalogs found.\n", res.TotalItems)
-	fmt.Printf("%3s  %-50s %-10s\n", "ID", "Name", "Created")
+	fmt.Printf("%3s  %-50s %-10s %-10s\n", "ID", "Name", "Created", "PIN")
 	fmt.Printf("%s\n", strings.Repeat("=", 78))
 	for _, cat := range res.Items {
-		fmt.Printf("%3d. %-50s %-10s\n", cat.ID, cat.Name, cat.Created.Format("2006-01-02"))
+		fmt.Printf("%3d. %-50s %-10s %-10s\n", cat.ID, substring(cat.Name, 50), cat.Created.Format("2006-01-02"), cat.PIN)
 	}
 
 	return nil
+}
+
+func substring(s string, n int) string {
+	if utf8.RuneCountInString(s) <= n {
+		return s
+	}
+	var b bytes.Buffer
+	for i, r := range s {
+		if i >= n {
+			break
+		}
+		b.WriteRune(r)
+	}
+	return b.String()
 }

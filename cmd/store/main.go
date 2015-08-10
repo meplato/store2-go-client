@@ -6,6 +6,7 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"sort"
 )
 
 var (
@@ -74,14 +75,22 @@ Commands:
 
 `)
 
-	for name, cmd := range commands {
+	var names []string
+	for name, _ := range commands {
+		names = append(names, name)
+	}
+	sort.Strings(names)
+
+	for _, name := range names {
+		cmd, _ := commands[name]
 		if des, ok := cmd.(describer); ok {
 			Errorf("  %-15s %s\n", name, des.Describe())
 		}
 	}
 
 	Errorf("\nExamples:\n")
-	for name, cmd := range commands {
+	for _, name := range names {
+		cmd, _ := commands[name]
 		if ex, ok := cmd.(exampler); ok {
 			exs := ex.Examples()
 			if len(exs) > 0 {
