@@ -154,19 +154,27 @@ type PublishResponse struct {
 // PublishStatusResponse returns current information about the status of a
 // publish request.
 type PublishStatusResponse struct {
+	// Busy indicates whether the catalog is still busy.
+	Busy bool `json:"busy,omitempty"`
+	// Canceled indicates whether the publishing process has been canceled.
+	Canceled bool `json:"canceled,omitempty"`
 	// CurrentStep is an indicator of the current step in the total list of
 	// steps. Use in combination with TotalSteps to retrieve the progress in
 	// percent.
-	CurrentStep int `json:"currentStep,omitempty"`
+	CurrentStep int64 `json:"currentStep,omitempty"`
+	// Done indicates whether publishing is finished.
+	Done bool `json:"done,omitempty"`
 	// Kind is store#catalogPublishStatus for this kind of response.
 	Kind string `json:"kind,omitempty"`
+	// Percent indicates the progress of the publish request.
+	Percent int `json:"percent,omitempty"`
 	// SelfLink returns the URL to this page.
 	SelfLink string `json:"selfLink,omitempty"`
 	// Status describes the general status of the publish request.
 	Status string `json:"status,omitempty"`
 	// TotalSteps is an indicator of the total number steps required to
 	// complete the publish request. Use in combination with CurrentStep.
-	TotalSteps int `json:"totalSteps,omitempty"`
+	TotalSteps int64 `json:"totalSteps,omitempty"`
 }
 
 // SearchResponse is a partial listing of catalogs.
