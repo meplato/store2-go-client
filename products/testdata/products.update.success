@@ -9,6 +9,6 @@ X-Xss-Protection: 1; mode=block
 Date: Tue, 31 Mar 2015 14:48:14 GMT
 
 {
-  "id": "MBA11@12",
-  "link": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/MBA11%254012?pretty=1"
+  "kind": "store#productsUpdateResponse",
+  "link": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/MBA11?pretty=1"
 }

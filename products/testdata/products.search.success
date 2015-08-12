@@ -18,7 +18,7 @@ Date: Tue, 31 Mar 2015 14:41:59 GMT
   "items": [
     {
       "kind": "store#product",
-      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50763599%254012?pretty=1",
+      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50763599?pretty=1",
       "id": "50763599@12",
       "merchantId": 8,
       "projectId": 1,
@@ -129,7 +129,7 @@ Date: Tue, 31 Mar 2015 14:41:59 GMT
     },
     {
       "kind": "store#product",
-      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50763601%254012?pretty=1",
+      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50763601?pretty=1",
       "id": "50763601@12",
       "merchantId": 8,
       "projectId": 1,
@@ -240,7 +240,7 @@ Date: Tue, 31 Mar 2015 14:41:59 GMT
     },
     {
       "kind": "store#product",
-      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50763603%254012?pretty=1",
+      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50763603?pretty=1",
       "id": "50763603@12",
       "merchantId": 8,
       "projectId": 1,
@@ -351,7 +351,7 @@ Date: Tue, 31 Mar 2015 14:41:59 GMT
     },
     {
       "kind": "store#product",
-      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50763605%254012?pretty=1",
+      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50763605?pretty=1",
       "id": "50763605@12",
       "merchantId": 8,
       "projectId": 1,
@@ -462,7 +462,7 @@ Date: Tue, 31 Mar 2015 14:41:59 GMT
     },
     {
       "kind": "store#product",
-      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50763607%254012?pretty=1",
+      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50763607?pretty=1",
       "id": "50763607@12",
       "merchantId": 8,
       "projectId": 1,
@@ -573,7 +573,7 @@ Date: Tue, 31 Mar 2015 14:41:59 GMT
     },
     {
       "kind": "store#product",
-      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50763609%254012?pretty=1",
+      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50763609?pretty=1",
       "id": "50763609@12",
       "merchantId": 8,
       "projectId": 1,
@@ -684,7 +684,7 @@ Date: Tue, 31 Mar 2015 14:41:59 GMT
     },
     {
       "kind": "store#product",
-      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50763618%254012?pretty=1",
+      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50763618?pretty=1",
       "id": "50763618@12",
       "merchantId": 8,
       "projectId": 1,
@@ -795,7 +795,7 @@ Date: Tue, 31 Mar 2015 14:41:59 GMT
     },
     {
       "kind": "store#product",
-      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50763621%254012?pretty=1",
+      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50763621?pretty=1",
       "id": "50763621@12",
       "merchantId": 8,
       "projectId": 1,
@@ -911,7 +911,7 @@ Date: Tue, 31 Mar 2015 14:41:59 GMT
     },
     {
       "kind": "store#product",
-      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50763623%254012?pretty=1",
+      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50763623?pretty=1",
       "id": "50763623@12",
       "merchantId": 8,
       "projectId": 1,
@@ -1022,7 +1022,7 @@ Date: Tue, 31 Mar 2015 14:41:59 GMT
     },
     {
       "kind": "store#product",
-      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50763634%254012?pretty=1",
+      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50763634?pretty=1",
       "id": "50763634@12",
       "merchantId": 8,
       "projectId": 1,
@@ -1133,7 +1133,7 @@ Date: Tue, 31 Mar 2015 14:41:59 GMT
     },
     {
       "kind": "store#product",
-      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50763636%254012?pretty=1",
+      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50763636?pretty=1",
       "id": "50763636@12",
       "merchantId": 8,
       "projectId": 1,
@@ -1244,7 +1244,7 @@ Date: Tue, 31 Mar 2015 14:41:59 GMT
     },
     {
       "kind": "store#product",
-      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50763638%254012?pretty=1",
+      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50763638?pretty=1",
       "id": "50763638@12",
       "merchantId": 8,
       "projectId": 1,
@@ -1357,7 +1357,7 @@ Date: Tue, 31 Mar 2015 14:41:59 GMT
     },
     {
       "kind": "store#product",
-      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50763643%254012?pretty=1",
+      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50763643?pretty=1",
       "id": "50763643@12",
       "merchantId": 8,
       "projectId": 1,
@@ -1471,7 +1471,7 @@ Date: Tue, 31 Mar 2015 14:41:59 GMT
     },
     {
       "kind": "store#product",
-      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50763672%254012?pretty=1",
+      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50763672?pretty=1",
       "id": "50763672@12",
       "merchantId": 8,
       "projectId": 1,
@@ -1582,7 +1582,7 @@ Date: Tue, 31 Mar 2015 14:41:59 GMT
     },
     {
       "kind": "store#product",
-      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50764554%254012?pretty=1",
+      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50764554?pretty=1",
       "id": "50764554@12",
       "merchantId": 8,
       "projectId": 1,
@@ -1700,7 +1700,7 @@ Date: Tue, 31 Mar 2015 14:41:59 GMT
     },
     {
       "kind": "store#product",
-      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50764556%254012?pretty=1",
+      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50764556?pretty=1",
       "id": "50764556@12",
       "merchantId": 8,
       "projectId": 1,
@@ -1818,7 +1818,7 @@ Date: Tue, 31 Mar 2015 14:41:59 GMT
     },
     {
       "kind": "store#product",
-      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50764558%254012?pretty=1",
+      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50764558?pretty=1",
       "id": "50764558@12",
       "merchantId": 8,
       "projectId": 1,
@@ -1937,7 +1937,7 @@ Date: Tue, 31 Mar 2015 14:41:59 GMT
     },
     {
       "kind": "store#product",
-      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50764561%254012?pretty=1",
+      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50764561?pretty=1",
       "id": "50764561@12",
       "merchantId": 8,
       "projectId": 1,
@@ -2055,7 +2055,7 @@ Date: Tue, 31 Mar 2015 14:41:59 GMT
     },
     {
       "kind": "store#product",
-      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50764563%254012?pretty=1",
+      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50764563?pretty=1",
       "id": "50764563@12",
       "merchantId": 8,
       "projectId": 1,
@@ -2173,7 +2173,7 @@ Date: Tue, 31 Mar 2015 14:41:59 GMT
     },
     {
       "kind": "store#product",
-      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50764583%254012?pretty=1",
+      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50764583?pretty=1",
       "id": "50764583@12",
       "merchantId": 8,
       "projectId": 1,
@@ -2290,7 +2290,7 @@ Date: Tue, 31 Mar 2015 14:41:59 GMT
     },
     {
       "kind": "store#product",
-      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50764596%254012?pretty=1",
+      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50764596?pretty=1",
       "id": "50764596@12",
       "merchantId": 8,
       "projectId": 1,
@@ -2406,7 +2406,7 @@ Date: Tue, 31 Mar 2015 14:41:59 GMT
     },
     {
       "kind": "store#product",
-      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50764604%254012?pretty=1",
+      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50764604?pretty=1",
       "id": "50764604@12",
       "merchantId": 8,
       "projectId": 1,
@@ -2522,7 +2522,7 @@ Date: Tue, 31 Mar 2015 14:41:59 GMT
     },
     {
       "kind": "store#product",
-      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50764631%254012?pretty=1",
+      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50764631?pretty=1",
       "id": "50764631@12",
       "merchantId": 8,
       "projectId": 1,
@@ -2638,7 +2638,7 @@ Date: Tue, 31 Mar 2015 14:41:59 GMT
     },
     {
       "kind": "store#product",
-      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50764633%254012?pretty=1",
+      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50764633?pretty=1",
       "id": "50764633@12",
       "merchantId": 8,
       "projectId": 1,
@@ -2755,7 +2755,7 @@ Date: Tue, 31 Mar 2015 14:41:59 GMT
     },
     {
       "kind": "store#product",
-      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50764637%254012?pretty=1",
+      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50764637?pretty=1",
       "id": "50764637@12",
       "merchantId": 8,
       "projectId": 1,
@@ -2872,7 +2872,7 @@ Date: Tue, 31 Mar 2015 14:41:59 GMT
     },
     {
       "kind": "store#product",
-      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50764640%254012?pretty=1",
+      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50764640?pretty=1",
       "id": "50764640@12",
       "merchantId": 8,
       "projectId": 1,
@@ -2989,7 +2989,7 @@ Date: Tue, 31 Mar 2015 14:41:59 GMT
     },
     {
       "kind": "store#product",
-      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50764642%254012?pretty=1",
+      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50764642?pretty=1",
       "id": "50764642@12",
       "merchantId": 8,
       "projectId": 1,
@@ -3106,7 +3106,7 @@ Date: Tue, 31 Mar 2015 14:41:59 GMT
     },
     {
       "kind": "store#product",
-      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50764644%254012?pretty=1",
+      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50764644?pretty=1",
       "id": "50764644@12",
       "merchantId": 8,
       "projectId": 1,
@@ -3219,7 +3219,7 @@ Date: Tue, 31 Mar 2015 14:41:59 GMT
     },
     {
       "kind": "store#product",
-      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50764659%254012?pretty=1",
+      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50764659?pretty=1",
       "id": "50764659@12",
       "merchantId": 8,
       "projectId": 1,
@@ -3336,7 +3336,7 @@ Date: Tue, 31 Mar 2015 14:41:59 GMT
     },
     {
       "kind": "store#product",
-      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50764660%254012?pretty=1",
+      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50764660?pretty=1",
       "id": "50764660@12",
       "merchantId": 8,
       "projectId": 1,

@@ -12,7 +12,7 @@ Date: Thu, 02 Apr 2015 17:03:55 GMT
 
 {
   "kind": "store#product",
-  "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50763599%254012?pretty=1",
+  "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50763599?pretty=1",
   "id": "50763599@12",
   "merchantId": 8,
   "projectId": 1,
@@ -130,8 +130,8 @@ Date: Thu, 02 Apr 2015 17:03:55 GMT
   "availability": null,
   "messages": [],
   "tags": [],
-  "imageURL": "http://store2.go/afb-elektronik/media?file=50763599.jpg\u0026h=230\u0026w=330",
-  "thumbnailURL": "http://store2.go/afb-elektronik/media?file=50763599.jpg\u0026h=90\u0026w=90",
+  "imageURL": "https://store2.meplato.com/abc-elektronik/media?file=50763599.jpg\u0026h=230\u0026w=330",
+  "thumbnailURL": "https://store2.meplato.com/abc-elektronik/media?file=50763599.jpg\u0026h=90\u0026w=90",
   "price": 10.92,
   "extProductId": "50763599@12",
   "created": "2015-04-02T16:55:42Z",

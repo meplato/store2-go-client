@@ -42,7 +42,7 @@ func getService(responseFile string) (*products.Service, *httptest.Server, error
 	if err != nil {
 		return service, nil, err
 	}
-	service.BaseURL = ts.URL // "http://store2.go/api/v2"
+	service.BaseURL = ts.URL
 	service.User = os.Getenv("STORE2_USER")
 	service.Password = os.Getenv("STORE2_PASSWORD")
 	return service, ts, nil
@@ -77,7 +77,7 @@ func TestProductGet(t *testing.T) {
 	}
 	defer ts.Close()
 
-	res, err := service.Get().PIN("AD8CCDD5F9").Area("work").ID("50763599@12").Do()
+	res, err := service.Get().PIN("AD8CCDD5F9").Area("work").Spn("50763599").Do()
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -110,8 +110,8 @@ func TestProductCreate(t *testing.T) {
 	if cres == nil {
 		t.Fatal("expected response; got: nil")
 	}
-	if cres.ID == "" {
-		t.Fatalf("expected ID; got: %v", cres.ID)
+	if cres.Kind != "store#productsCreateResponse" {
+		t.Fatalf("expected kind %q; got: %v", "store#productsCreateResponse", cres.Kind)
 	}
 	if cres.Link == "" {
 		t.Fatalf("expected link to product; got: %v", cres.Link)
@@ -128,14 +128,14 @@ func TestProductDelete(t *testing.T) {
 	}
 	defer ts.Close()
 
-	err = service.Delete().PIN("AD8CCDD5F9").Area("work").ID("1000@14").Do()
+	err = service.Delete().PIN("AD8CCDD5F9").Area("work").Spn("1000").Do()
 	if err != nil {
 		t.Fatal(err)
 	}
 }
 
 func TestProductUpdate(t *testing.T) {
-	service, ts, err := getService("products.create.success")
+	service, ts, err := getService("products.update.success")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -151,15 +151,15 @@ func TestProductUpdate(t *testing.T) {
 		Price: &newPrice,
 	}
 
-	ures, err := service.Update().PIN("AD8CCDD5F9").Area("work").ID("MBA11@12").Product(update).Do()
+	ures, err := service.Update().PIN("AD8CCDD5F9").Area("work").Spn("MBA11").Product(update).Do()
 	if err != nil {
 		t.Fatal(err)
 	}
 	if ures == nil {
 		t.Fatal("expected response; got: nil")
 	}
-	if ures.ID == "" {
-		t.Fatalf("expected ID; got: %v", ures.ID)
+	if ures.Kind != "store#productsUpdateResponse" {
+		t.Fatalf("expected kind %q; got: %v", "store#productsUpdateResponse", ures.Kind)
 	}
 	if ures.Link == "" {
 		t.Fatalf("expected link to product; got: %v", ures.Link)
@@ -182,15 +182,15 @@ func TestProductReplace(t *testing.T) {
 		OrderUnit: "PK",
 	}
 
-	rres, err := service.Replace().PIN("AD8CCDD5F9").Area("work").ID("MBA11@12").Product(replace).Do()
+	rres, err := service.Replace().PIN("AD8CCDD5F9").Area("work").Spn("MBA11").Product(replace).Do()
 	if err != nil {
 		t.Fatal(err)
 	}
 	if rres == nil {
 		t.Fatal("expected response; got: nil")
 	}
-	if rres.ID == "" {
-		t.Fatalf("expected ID; got: %v", rres.ID)
+	if rres.Kind != "store#productsReplaceResponse" {
+		t.Fatalf("expected kind %q; got: %v", "store#productsReplaceResponse", rres.Kind)
 	}
 	if rres.Link == "" {
 		t.Fatalf("expected link to product; got: %v", rres.Link)

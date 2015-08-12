@@ -260,8 +260,6 @@ type CreateProduct struct {
 // CreateProductResponse is the outcome of a successful request to create
 // a product.
 type CreateProductResponse struct {
-	// ID is the identifier of the newly created product.
-	ID string `json:"id,omitempty"`
 	// Kind describes this entity.
 	Kind string `json:"kind,omitempty"`
 	// Link returns a URL to the representation of the newly created product.
@@ -607,8 +605,6 @@ type ReplaceProduct struct {
 // ReplaceProductResponse is the outcome of a successful replacement of a
 // product.
 type ReplaceProductResponse struct {
-	// ID is the identifier of the replaced product.
-	ID string `json:"id,omitempty"`
 	// Kind describes this entity.
 	Kind string `json:"kind,omitempty"`
 	// Link returns a URL to the representation of the replaced product.
@@ -797,8 +793,6 @@ type UpdateProduct struct {
 // UpdateProductResponse is the outcome of a successful request to update
 // a product.
 type UpdateProductResponse struct {
-	// ID is the identifier of the updated product.
-	ID string `json:"id,omitempty"`
 	// Kind describes this entity.
 	Kind string `json:"kind,omitempty"`
 	// Link returns a URL to the representation of the updated product.
@@ -886,7 +880,7 @@ type DeleteService struct {
 	hdr_ map[string]interface{}
 	pin  string
 	area string
-	id   string
+	spn  string
 }
 
 // NewDeleteService creates a new instance of DeleteService.
@@ -901,15 +895,15 @@ func (s *DeleteService) Area(area string) *DeleteService {
 	return s
 }
 
-// ID is the identifier of the product to delete.
-func (s *DeleteService) ID(id string) *DeleteService {
-	s.id = id
-	return s
-}
-
 // PIN of the catalog.
 func (s *DeleteService) PIN(pin string) *DeleteService {
 	s.pin = pin
+	return s
+}
+
+// SPN is the supplier part number of the product to delete.
+func (s *DeleteService) Spn(spn string) *DeleteService {
+	s.spn = spn
 	return s
 }
 
@@ -918,9 +912,9 @@ func (s *DeleteService) Do() error {
 	var body io.Reader
 	params := make(map[string]interface{})
 	params["area"] = s.area
-	params["id"] = s.id
 	params["pin"] = s.pin
-	path, err := meplatoapi.Expand("/catalogs/{pin}/{area}/products/{id}", params)
+	params["spn"] = s.spn
+	path, err := meplatoapi.Expand("/catalogs/{pin}/{area}/products/{spn}", params)
 	if err != nil {
 		return err
 	}
@@ -946,14 +940,14 @@ func (s *DeleteService) Do() error {
 	return nil
 }
 
-// Get returns a single product.
+// Get returns a single product by its Supplier Part Number (SPN).
 type GetService struct {
 	s    *Service
 	opt_ map[string]interface{}
 	hdr_ map[string]interface{}
 	pin  string
 	area string
-	id   string
+	spn  string
 }
 
 // NewGetService creates a new instance of GetService.
@@ -968,15 +962,15 @@ func (s *GetService) Area(area string) *GetService {
 	return s
 }
 
-// ID of the product to get.
-func (s *GetService) ID(id string) *GetService {
-	s.id = id
-	return s
-}
-
 // PIN of the catalog.
 func (s *GetService) PIN(pin string) *GetService {
 	s.pin = pin
+	return s
+}
+
+// SPN is the supplier part number of the product to get.
+func (s *GetService) Spn(spn string) *GetService {
+	s.spn = spn
 	return s
 }
 
@@ -985,9 +979,9 @@ func (s *GetService) Do() (*Product, error) {
 	var body io.Reader
 	params := make(map[string]interface{})
 	params["area"] = s.area
-	params["id"] = s.id
 	params["pin"] = s.pin
-	path, err := meplatoapi.Expand("/catalogs/{pin}/{area}/products/{id}", params)
+	params["spn"] = s.spn
+	path, err := meplatoapi.Expand("/catalogs/{pin}/{area}/products/{spn}", params)
 	if err != nil {
 		return nil, err
 	}
@@ -1025,7 +1019,7 @@ type ReplaceService struct {
 	hdr_    map[string]interface{}
 	pin     string
 	area    string
-	id      string
+	spn     string
 	product *ReplaceProduct
 }
 
@@ -1041,12 +1035,6 @@ func (s *ReplaceService) Area(area string) *ReplaceService {
 	return s
 }
 
-// ID is the identifier of the product to replace.
-func (s *ReplaceService) ID(id string) *ReplaceService {
-	s.id = id
-	return s
-}
-
 // PIN of the catalog.
 func (s *ReplaceService) PIN(pin string) *ReplaceService {
 	s.pin = pin
@@ -1059,6 +1047,12 @@ func (s *ReplaceService) Product(product *ReplaceProduct) *ReplaceService {
 	return s
 }
 
+// SPN is the supplier part number of the product to replace.
+func (s *ReplaceService) Spn(spn string) *ReplaceService {
+	s.spn = spn
+	return s
+}
+
 // Do executes the operation.
 func (s *ReplaceService) Do() (*ReplaceProductResponse, error) {
 	var body io.Reader
@@ -1068,9 +1062,9 @@ func (s *ReplaceService) Do() (*ReplaceProductResponse, error) {
 	}
 	params := make(map[string]interface{})
 	params["area"] = s.area
-	params["id"] = s.id
 	params["pin"] = s.pin
-	path, err := meplatoapi.Expand("/catalogs/{pin}/{area}/products/{id}", params)
+	params["spn"] = s.spn
+	path, err := meplatoapi.Expand("/catalogs/{pin}/{area}/products/{spn}", params)
 	if err != nil {
 		return nil, err
 	}
@@ -1281,7 +1275,7 @@ type UpdateService struct {
 	hdr_    map[string]interface{}
 	pin     string
 	area    string
-	id      string
+	spn     string
 	product *UpdateProduct
 }
 
@@ -1297,12 +1291,6 @@ func (s *UpdateService) Area(area string) *UpdateService {
 	return s
 }
 
-// ID is the identifier of the product to update.
-func (s *UpdateService) ID(id string) *UpdateService {
-	s.id = id
-	return s
-}
-
 // PIN of the catalog.
 func (s *UpdateService) PIN(pin string) *UpdateService {
 	s.pin = pin
@@ -1315,6 +1303,12 @@ func (s *UpdateService) Product(product *UpdateProduct) *UpdateService {
 	return s
 }
 
+// SPN is the supplier part number of the product to update.
+func (s *UpdateService) Spn(spn string) *UpdateService {
+	s.spn = spn
+	return s
+}
+
 // Do executes the operation.
 func (s *UpdateService) Do() (*UpdateProductResponse, error) {
 	var body io.Reader
@@ -1324,9 +1318,9 @@ func (s *UpdateService) Do() (*UpdateProductResponse, error) {
 	}
 	params := make(map[string]interface{})
 	params["area"] = s.area
-	params["id"] = s.id
 	params["pin"] = s.pin
-	path, err := meplatoapi.Expand("/catalogs/{pin}/{area}/products/{id}", params)
+	params["spn"] = s.spn
+	path, err := meplatoapi.Expand("/catalogs/{pin}/{area}/products/{spn}", params)
 	if err != nil {
 		return nil, err
 	}
