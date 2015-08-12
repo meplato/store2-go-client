@@ -21,6 +21,7 @@ _testmain.go
 
 *.exe
 
+.DS_Store
 *.log
 /genapi.bash
 /tmp
