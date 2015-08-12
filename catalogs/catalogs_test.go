@@ -124,6 +124,8 @@ func TestCatalogPublish(t *testing.T) {
 	var i int
 	const N = 10
 	for {
+		time.Sleep(5 * time.Second)
+
 		status, err := service.PublishStatus().PIN("AD8CCDD5F9").Do()
 		if err != nil {
 			t.Fatal(err)
@@ -134,10 +136,9 @@ func TestCatalogPublish(t *testing.T) {
 		if status.Kind != "store#catalogPublishStatus" {
 			t.Errorf("expected %q; got: %q", "store#catalogPublishStatus", status.Kind)
 		}
-		if status.Status == "done" {
+		if status.Done {
 			break
 		}
-		time.Sleep(1 * time.Second)
 		i += 1
 		if i > N {
 			t.Fatal("expected publish to complete after a while")

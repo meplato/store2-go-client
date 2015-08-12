@@ -13,5 +13,11 @@ Date: Tue, 31 Mar 2015 14:28:20 GMT
 {
   "kind": "store#catalogPublishStatus",
   "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/publish/status?pretty=1",
-  "status": "busy"
+  "status": "busy",
+  "current": 512,
+  "total": 1024,
+  "percent": 50,
+  "busy": true,
+  "done": false,
+  "canceled": false
 }

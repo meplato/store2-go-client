@@ -181,6 +181,10 @@ type CreateProduct struct {
 	// ErpGroupSupplier: erpGroupSupplier is the material group of the product
 	// on the merchant-/supplier-side.
 	ErpGroupSupplier string `json:"erpGroupSupplier,omitempty"`
+	// Excluded is a flag that indicates whether to exclude this product from
+	// the catalog. If true, this product will not be published into the live
+	// area.
+	Excluded bool `json:"excluded,omitempty"`
 	// ExtCategory is the EXT_CATEGORY field of the SAP OCI specification.
 	ExtCategory string `json:"extCategory,omitempty"`
 	// ExtCategoryID is the EXT_CATEGORY_ID field of the SAP OCI
@@ -368,6 +372,10 @@ type Product struct {
 	// ErpGroupSupplier: erpGroupSupplier is the material group of the product
 	// on the merchant-/supplier-side.
 	ErpGroupSupplier string `json:"erpGroupSupplier,omitempty"`
+	// Excluded is a flag that indicates whether to exclude this product from
+	// the catalog. If true, this product will not be published into the live
+	// area.
+	Excluded bool `json:"excluded,omitempty"`
 	// ExtCategory is the EXT_CATEGORY field of the SAP OCI specification.
 	ExtCategory string `json:"extCategory,omitempty"`
 	// ExtCategoryID is the EXT_CATEGORY_ID field of the SAP OCI
@@ -528,6 +536,10 @@ type ReplaceProduct struct {
 	// ErpGroupSupplier: erpGroupSupplier is the material group of the product
 	// on the merchant-/supplier-side.
 	ErpGroupSupplier string `json:"erpGroupSupplier,omitempty"`
+	// Excluded is a flag that indicates whether to exclude this product from
+	// the catalog. If true, this product will not be published into the live
+	// area.
+	Excluded bool `json:"excluded,omitempty"`
 	// ExtCategory is the EXT_CATEGORY field of the SAP OCI specification.
 	ExtCategory string `json:"extCategory,omitempty"`
 	// ExtCategoryID is the EXT_CATEGORY_ID field of the SAP OCI
@@ -716,6 +728,10 @@ type UpdateProduct struct {
 	// ErpGroupSupplier: erpGroupSupplier is the material group of the product
 	// on the merchant-/supplier-side.
 	ErpGroupSupplier *string `json:"erpGroupSupplier,omitempty"`
+	// Excluded is a flag that indicates whether to exclude this product from
+	// the catalog. If true, this product will not be published into the live
+	// area.
+	Excluded *bool `json:"excluded,omitempty"`
 	// ExtCategory is the EXT_CATEGORY field of the SAP OCI specification.
 	ExtCategory *string `json:"extCategory,omitempty"`
 	// ExtCategoryID is the EXT_CATEGORY_ID field of the SAP OCI
