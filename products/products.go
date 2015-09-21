@@ -106,7 +106,7 @@ type Availability struct {
 	// E.g. you can indicate the number of items in stock.
 	Qty *float64 `json:"qty,omitempty"`
 	// Updated indicates when the availability message has been last updated.
-	Updated *time.Time `json:"updated,omitempty"`
+	Updated string `json:"updated,omitempty"`
 }
 
 // Blob describes external product data, e.g. an image or a datasheet.
