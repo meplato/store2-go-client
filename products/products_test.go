@@ -269,3 +269,35 @@ func TestProductScroll(t *testing.T) {
 		}
 	*/
 }
+
+func TestProductUpsert(t *testing.T) {
+	service, ts, err := getService("products.upsert.success")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if service == nil {
+		t.Fatal("expected service; got: nil")
+	}
+	defer ts.Close()
+
+	up := &products.UpsertProduct{
+		Spn:       "1000",
+		Name:      "Produkt 1000",
+		Price:     4.99,
+		OrderUnit: "PCE",
+	}
+
+	res, err := service.Upsert().PIN("AD8CCDD5F9").Area("work").Product(up).Do()
+	if err != nil {
+		t.Fatal(err)
+	}
+	if res == nil {
+		t.Fatal("expected response; got: nil")
+	}
+	if res.Kind != "store#productsUpsertResponse" {
+		t.Fatalf("expected kind %q; got: %v", "store#productsUpsertResponse", res.Kind)
+	}
+	if res.Link == "" {
+		t.Fatalf("expected link to product; got: %v", res.Link)
+	}
+}

@@ -1,0 +1,14 @@
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+P3p: CP="This is not a P3P policy!"
+Vary: Cookie
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+X-Ua-Compatible: IE=edge
+X-Xss-Protection: 1; mode=block
+Date: Wed, 01 Apr 2015 13:53:54 GMT
+
+{
+  "kind": "store#productsUpsertResponse",
+  "link": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/MBA11?pretty=1"
+}

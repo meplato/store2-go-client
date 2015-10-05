@@ -50,7 +50,7 @@ var (
 
 const (
 	title   = "Meplato Store 2 API"
-	version = "2.0.0.beta2"
+	version = "2.0.0.beta3"
 	baseURL = "https://store2.meplato.com/api/v2"
 )
 
@@ -78,6 +78,10 @@ func (s *Service) Publish() *PublishService {
 
 func (s *Service) PublishStatus() *PublishStatusService {
 	return NewPublishStatusService(s)
+}
+
+func (s *Service) Purge() *PurgeService {
+	return NewPurgeService(s)
 }
 
 func (s *Service) Search() *SearchService {
@@ -175,6 +179,13 @@ type PublishStatusResponse struct {
 	// TotalSteps is an indicator of the total number steps required to
 	// complete the publish request. Use in combination with CurrentStep.
 	TotalSteps int64 `json:"totalSteps,omitempty"`
+}
+
+// PurgeResponse is the response of the request to purge an area of a
+// catalog.
+type PurgeResponse struct {
+	// Kind is store#catalogPurge for this kind of response.
+	Kind string `json:"kind,omitempty"`
 }
 
 // SearchResponse is a partial listing of catalogs.
@@ -353,6 +364,70 @@ func (s *PublishStatusService) Do() (*PublishStatusResponse, error) {
 		return nil, err
 	}
 	ret := new(PublishStatusResponse)
+	if err := json.NewDecoder(res.Body).Decode(ret); err != nil {
+		return nil, err
+	}
+	return ret, nil
+}
+
+// Purge the work or live area of a catalog, i.e. remove all products in
+// the given area, but do not delete the catalog itself.
+type PurgeService struct {
+	s    *Service
+	opt_ map[string]interface{}
+	hdr_ map[string]interface{}
+	pin  string
+	area string
+}
+
+// NewPurgeService creates a new instance of PurgeService.
+func NewPurgeService(s *Service) *PurgeService {
+	rs := &PurgeService{s: s, opt_: make(map[string]interface{}), hdr_: make(map[string]interface{})}
+	return rs
+}
+
+// Area of the catalog to purge, i.e. work or live.
+func (s *PurgeService) Area(area string) *PurgeService {
+	s.area = area
+	return s
+}
+
+// PIN of the catalog to purge.
+func (s *PurgeService) PIN(pin string) *PurgeService {
+	s.pin = pin
+	return s
+}
+
+// Do executes the operation.
+func (s *PurgeService) Do() (*PurgeResponse, error) {
+	var body io.Reader
+	params := make(map[string]interface{})
+	params["area"] = s.area
+	params["pin"] = s.pin
+	path, err := meplatoapi.Expand("/catalogs/{pin}/{area}", params)
+	if err != nil {
+		return nil, err
+	}
+	req, err := http.NewRequest("DELETE", s.s.BaseURL+path, body)
+	if err != nil {
+		return nil, err
+	}
+	req.Header.Set("Accept", "application/json")
+	req.Header.Set("Accept-Charset", "utf-8")
+	req.Header.Set("Content-Type", "application/json")
+	req.Header.Set("User-Agent", meplatoapi.UserAgent)
+	if s.s.User != "" || s.s.Password != "" {
+		req.Header.Set("Authorization", meplatoapi.HTTPBasicAuthorizationHeader(s.s.User, s.s.Password))
+	}
+	res, err := s.s.client.Do(req)
+	if err != nil {
+		return nil, err
+	}
+	defer meplatoapi.CloseBody(res)
+	if err := meplatoapi.CheckResponse(res); err != nil {
+		return nil, err
+	}
+	ret := new(PurgeResponse)
 	if err := json.NewDecoder(res.Body).Decode(ret); err != nil {
 		return nil, err
 	}

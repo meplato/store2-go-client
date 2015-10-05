@@ -145,3 +145,25 @@ func TestCatalogPublish(t *testing.T) {
 		}
 	}
 */
+
+func TestCatalogPurge(t *testing.T) {
+	service, ts, err := getService("catalogs.purge.success")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if service == nil {
+		t.Fatal("expected service; got: nil")
+	}
+	defer ts.Close()
+
+	c, err := service.Purge().PIN("5094310527").Area("work").Do()
+	if err != nil {
+		t.Fatal(err)
+	}
+	if c == nil {
+		t.Fatal("expected response; got: nil")
+	}
+	if c.Kind != "store#catalogPurge" {
+		t.Errorf("expected %q; got: %q", "store#catalogPurge", c.Kind)
+	}
+}

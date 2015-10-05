@@ -50,7 +50,7 @@ var (
 
 const (
 	title   = "Meplato Store 2 API"
-	version = "2.0.0.beta2"
+	version = "2.0.0.beta3"
 	baseURL = "https://store2.meplato.com/api/v2"
 )
 
@@ -94,6 +94,10 @@ func (s *Service) Search() *SearchService {
 
 func (s *Service) Update() *UpdateService {
 	return NewUpdateService(s)
+}
+
+func (s *Service) Upsert() *UpsertService {
+	return NewUpsertService(s)
 }
 
 // Availability details product availability.
@@ -174,7 +178,7 @@ type CreateProduct struct {
 	// Datasheet is the name of an datasheet file (in the media files) or a
 	// URL to the datasheet on the internet.
 	Datasheet string `json:"datasheet,omitempty"`
-	// Description of the catalog.
+	// Description of the product.
 	Description string `json:"description,omitempty"`
 	// Eclasses is a list of eCl@ss categories the product belongs to.
 	Eclasses []*Eclass `json:"eclasses,omitempty"`
@@ -219,7 +223,7 @@ type CreateProduct struct {
 	Matgroup string `json:"matgroup,omitempty"`
 	// Mpn: MPN is the manufacturer part number.
 	Mpn string `json:"mpn,omitempty"`
-	// Name of the catalog.
+	// Name of the product.
 	Name string `json:"name,omitempty"`
 	// OrderUnit is the order unit of the product, a 3-character ISO code
 	// (usually project-specific).
@@ -365,7 +369,7 @@ type Product struct {
 	Datasheet string `json:"datasheet,omitempty"`
 	// DatasheetURL is the URL to the data sheet (if available).
 	DatasheetURL string `json:"datasheetURL,omitempty"`
-	// Description of the catalog.
+	// Description of the product.
 	Description string `json:"description,omitempty"`
 	// Eclasses is a list of eCl@ss categories the product belongs to.
 	Eclasses []*Eclass `json:"eclasses,omitempty"`
@@ -422,7 +426,7 @@ type Product struct {
 	MerchantID int64 `json:"merchantId,omitempty"`
 	// Mpn: MPN is the manufacturer part number.
 	Mpn string `json:"mpn,omitempty"`
-	// Name of the catalog.
+	// Name of the product.
 	Name string `json:"name,omitempty"`
 	// OrderUnit is the order unit of the product, a 3-character ISO code
 	// (usually project-specific).
@@ -529,7 +533,7 @@ type ReplaceProduct struct {
 	// Datasheet is the name of an datasheet file (in the media files) or a
 	// URL to the datasheet on the internet.
 	Datasheet string `json:"datasheet,omitempty"`
-	// Description of the catalog.
+	// Description of the product.
 	Description string `json:"description,omitempty"`
 	// Eclasses is a list of eCl@ss categories the product belongs to.
 	Eclasses []*Eclass `json:"eclasses,omitempty"`
@@ -574,7 +578,7 @@ type ReplaceProduct struct {
 	Matgroup string `json:"matgroup,omitempty"`
 	// Mpn: MPN is the manufacturer part number.
 	Mpn string `json:"mpn,omitempty"`
-	// Name of the catalog.
+	// Name of the product.
 	Name string `json:"name,omitempty"`
 	// OrderUnit is the order unit of the product, a 3-character ISO code
 	// (usually project-specific).
@@ -721,7 +725,7 @@ type UpdateProduct struct {
 	// Datasheet is the name of an datasheet file (in the media files) or a
 	// URL to the datasheet on the internet.
 	Datasheet *string `json:"datasheet,omitempty"`
-	// Description of the catalog.
+	// Description of the product.
 	Description *string `json:"description,omitempty"`
 	// Eclasses is a list of eCl@ss categories the product belongs to.
 	Eclasses []*Eclass `json:"eclasses,omitempty"`
@@ -766,7 +770,7 @@ type UpdateProduct struct {
 	Matgroup *string `json:"matgroup,omitempty"`
 	// Mpn: MPN is the manufacturer part number.
 	Mpn *string `json:"mpn,omitempty"`
-	// Name of the catalog.
+	// Name of the product.
 	Name *string `json:"name,omitempty"`
 	// OrderUnit is the order unit of the product, a 3-character ISO code
 	// (usually project-specific).
@@ -812,6 +816,145 @@ type UpdateProductResponse struct {
 	// Kind describes this entity.
 	Kind string `json:"kind,omitempty"`
 	// Link returns a URL to the representation of the updated product.
+	Link string `json:"link,omitempty"`
+}
+
+// UpsertProduct holds the properties of the product to create or update.
+type UpsertProduct struct {
+	// Availability allows the update of product availability data, e.g. the
+	// number of items in stock or the date when the product will be available
+	// again.
+	Availability *Availability `json:"availability,omitempty"`
+	// Blobs specifies external data, e.g. images or datasheets.
+	Blobs []*Blob `json:"blobs,omitempty"`
+	// Bpn: BPN is the buyer part number of the product.
+	Bpn string `json:"bpn,omitempty"`
+	// Categories is a list of (supplier-specific) category names the product
+	// belongs to.
+	Categories []string `json:"categories,omitempty"`
+	// Conditions describes the product conditions, e.g. refurbished or used.
+	Conditions []*Condition `json:"conditions,omitempty"`
+	// ContentUnit is the content unit of the product, a 3-character ISO code
+	// (usually project-specific).
+	ContentUnit string `json:"cu,omitempty"`
+	// CuPerOu describes the number of content units per order unit, e.g. the
+	// 12 in '1 case contains 12 bottles'.
+	CuPerOu *float64 `json:"cuPerOu,omitempty"`
+	// CustField1 is the CUST_FIELD1 of the SAP OCI specification. It has a
+	// maximum length of 10 characters.
+	CustField1 string `json:"custField1,omitempty"`
+	// CustField2 is the CUST_FIELD2 of the SAP OCI specification. It has a
+	// maximum length of 10 characters.
+	CustField2 string `json:"custField2,omitempty"`
+	// CustField3 is the CUST_FIELD3 of the SAP OCI specification. It has a
+	// maximum length of 10 characters.
+	CustField3 string `json:"custField3,omitempty"`
+	// CustField4 is the CUST_FIELD4 of the SAP OCI specification. It has a
+	// maximum length of 20 characters.
+	CustField4 string `json:"custField4,omitempty"`
+	// CustField5 is the CUST_FIELD5 of the SAP OCI specification. It has a
+	// maximum length of 50 characters.
+	CustField5 string `json:"custField5,omitempty"`
+	// CustFields is an array of generic name/value pairs for
+	// customer-specific attributes.
+	CustFields []*CustField `json:"custFields,omitempty"`
+	// Datasheet is the name of an datasheet file (in the media files) or a
+	// URL to the datasheet on the internet.
+	Datasheet string `json:"datasheet,omitempty"`
+	// Description of the product.
+	Description string `json:"description,omitempty"`
+	// Eclasses is a list of eCl@ss categories the product belongs to.
+	Eclasses []*Eclass `json:"eclasses,omitempty"`
+	// ErpGroupSupplier: erpGroupSupplier is the material group of the product
+	// on the merchant-/supplier-side.
+	ErpGroupSupplier string `json:"erpGroupSupplier,omitempty"`
+	// Excluded is a flag that indicates whether to exclude this product from
+	// the catalog. If true, this product will not be published into the live
+	// area.
+	Excluded bool `json:"excluded,omitempty"`
+	// ExtCategory is the EXT_CATEGORY field of the SAP OCI specification.
+	ExtCategory string `json:"extCategory,omitempty"`
+	// ExtCategoryID is the EXT_CATEGORY_ID field of the SAP OCI
+	// specification.
+	ExtCategoryID string `json:"extCategoryId,omitempty"`
+	// ExtSchemaType is the EXT_SCHEMA_TYPE field of the SAP OCI
+	// specification.
+	ExtSchemaType string `json:"extSchemaType,omitempty"`
+	// Features defines product features, i.e. additional properties of the
+	// product.
+	Features []*Feature `json:"features,omitempty"`
+	// Gtin: GTIN is the global trade item number of the product (used to be
+	// EAN).
+	Gtin string `json:"gtin,omitempty"`
+	// Hazmats classifies hazardous/dangerous goods.
+	Hazmats []*Hazmat `json:"hazmats,omitempty"`
+	// Image is the name of an image file (in the media files) or a URL to the
+	// image on the internet.
+	Image string `json:"image,omitempty"`
+	// Keywords is a list of aliases for the product.
+	Keywords []string `json:"keywords,omitempty"`
+	// Leadtime is the number of days for delivery.
+	Leadtime *float64 `json:"leadtime,omitempty"`
+	// ListPrice is the net list price of the product.
+	ListPrice *float64 `json:"listPrice,omitempty"`
+	// Manufactcode is the manufacturer code as used in the SAP OCI
+	// specification.
+	Manufactcode string `json:"manufactcode,omitempty"`
+	// Manufacturer is the name of the manufacturer.
+	Manufacturer string `json:"manufacturer,omitempty"`
+	// Matgroup is the material group of the product on the buy-side.
+	Matgroup string `json:"matgroup,omitempty"`
+	// Mpn: MPN is the manufacturer part number.
+	Mpn string `json:"mpn,omitempty"`
+	// Name of the product. The product name is a required field
+	Name string `json:"name,omitempty"`
+	// OrderUnit is the order unit of the product, a 3-character ISO code
+	// (usually project-specific). OrderUnit is a required field.
+	OrderUnit string `json:"ou,omitempty"`
+	// Price is the net price (per order unit) of the product for the
+	// end-user. Price is a required field.
+	Price float64 `json:"price,omitempty"`
+	// PriceQty is the quantity for which the price is specified (default:
+	// 1.0).
+	PriceQty *float64 `json:"priceQty,omitempty"`
+	// QuantityInterval is the interval in which this product can be ordered.
+	// E.g. if the quantity interval is 5, the end-user can only order in
+	// quantities of 5,10,15 etc.
+	QuantityInterval *float64 `json:"quantityInterval,omitempty"`
+	// QuantityMax is the maximum order quantity for this product.
+	QuantityMax *float64 `json:"quantityMax,omitempty"`
+	// QuantityMin is the minimum order quantity for this product.
+	QuantityMin *float64 `json:"quantityMin,omitempty"`
+	// References defines cross-product references, e.g. alternatives or
+	// follow-up products.
+	References []*Reference `json:"references,omitempty"`
+	// Safetysheet is the name of an safetysheet file (in the media files) or
+	// a URL to the safetysheet on the internet.
+	Safetysheet string `json:"safetysheet,omitempty"`
+	// ScalePrices can be used when the price of the product is dependent on
+	// the ordered quantity.
+	ScalePrices []*ScalePrice `json:"scalePrices,omitempty"`
+	// Service indicates if the is a good (false) or a service (true). The
+	// default value is false.
+	Service bool `json:"service,omitempty"`
+	// Spn: SPN is the supplier part number. SPN is a required field.
+	Spn string `json:"spn,omitempty"`
+	// TaxCode to use for this product. This is typically project-specific.
+	TaxCode string `json:"taxCode,omitempty"`
+	// Thumbnail is the name of an thumbnail image file (in the media files)
+	// or a URL to the image on the internet.
+	Thumbnail string `json:"thumbnail,omitempty"`
+	// Unspscs is a list of UNSPSC categories the product belongs to.
+	Unspscs []*Unspsc `json:"unspscs,omitempty"`
+}
+
+// UpsertProductResponse is the outcome of a successful request to upsert
+// a product.
+type UpsertProductResponse struct {
+	// Kind describes this entity.
+	Kind string `json:"kind,omitempty"`
+	// Link returns a URL to the representation of the created or updated
+	// product.
 	Link string `json:"link,omitempty"`
 }
 
@@ -1360,6 +1503,81 @@ func (s *UpdateService) Do() (*UpdateProductResponse, error) {
 		return nil, err
 	}
 	ret := new(UpdateProductResponse)
+	if err := json.NewDecoder(res.Body).Decode(ret); err != nil {
+		return nil, err
+	}
+	return ret, nil
+}
+
+// Upsert a product in the given catalog and area. Upsert will create if
+// the product does not exist yet, otherwise it will update.
+type UpsertService struct {
+	s       *Service
+	opt_    map[string]interface{}
+	hdr_    map[string]interface{}
+	pin     string
+	area    string
+	product *UpsertProduct
+}
+
+// NewUpsertService creates a new instance of UpsertService.
+func NewUpsertService(s *Service) *UpsertService {
+	rs := &UpsertService{s: s, opt_: make(map[string]interface{}), hdr_: make(map[string]interface{})}
+	return rs
+}
+
+// Area of the catalog, e.g. work or live.
+func (s *UpsertService) Area(area string) *UpsertService {
+	s.area = area
+	return s
+}
+
+// PIN of the catalog.
+func (s *UpsertService) PIN(pin string) *UpsertService {
+	s.pin = pin
+	return s
+}
+
+// Product properties of the new product.
+func (s *UpsertService) Product(product *UpsertProduct) *UpsertService {
+	s.product = product
+	return s
+}
+
+// Do executes the operation.
+func (s *UpsertService) Do() (*UpsertProductResponse, error) {
+	var body io.Reader
+	body, err := meplatoapi.ReadJSON(s.product)
+	if err != nil {
+		return nil, err
+	}
+	params := make(map[string]interface{})
+	params["area"] = s.area
+	params["pin"] = s.pin
+	path, err := meplatoapi.Expand("/catalogs/{pin}/{area}/products/upsert", params)
+	if err != nil {
+		return nil, err
+	}
+	req, err := http.NewRequest("POST", s.s.BaseURL+path, body)
+	if err != nil {
+		return nil, err
+	}
+	req.Header.Set("Accept", "application/json")
+	req.Header.Set("Accept-Charset", "utf-8")
+	req.Header.Set("Content-Type", "application/json")
+	req.Header.Set("User-Agent", meplatoapi.UserAgent)
+	if s.s.User != "" || s.s.Password != "" {
+		req.Header.Set("Authorization", meplatoapi.HTTPBasicAuthorizationHeader(s.s.User, s.s.Password))
+	}
+	res, err := s.s.client.Do(req)
+	if err != nil {
+		return nil, err
+	}
+	defer meplatoapi.CloseBody(res)
+	if err := meplatoapi.CheckResponse(res); err != nil {
+		return nil, err
+	}
+	ret := new(UpsertProductResponse)
 	if err := json.NewDecoder(res.Body).Decode(ret); err != nil {
 		return nil, err
 	}
