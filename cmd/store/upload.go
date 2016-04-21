@@ -41,7 +41,8 @@ and (optionally) enclosed by double-quotes. All rows in the CSV file must
 have the same number of columns.
 
 The first line is the header line and must include one or more of the
-following columns: MODE, SPN, NAME, PRICE, ORDER_UNIT, MPN, and MANUFACTURER.
+following columns: MODE, SPN, NAME, PRICE, ORDER_UNIT, MPN, MANUFACTURER,
+ECLASS_VERSION, ECLASS_CODE, and TAX_CODE.
 The header row must have the two columns MODE and SPN.
 
 The MODE column of each row must have one of the following values:
@@ -176,6 +177,15 @@ func (c *uploadCommand) Run(args []string) error {
 			if r.Manufacturer != nil {
 				p.Manufacturer = *r.Manufacturer
 			}
+			if r.EclassVersion != nil && r.EclassCode != nil {
+				p.Eclasses = append(p.Eclasses, &products.Eclass{
+					Version: *r.EclassVersion,
+					Code:    *r.EclassCode,
+				})
+			}
+			if r.TaxCode != nil {
+				p.TaxCode = *r.TaxCode
+			}
 			_, err := service.Create().PIN(pin).Area("work").Product(p).Do()
 			if err != nil {
 				return fmt.Errorf("line %d: create failed: %v", err)
@@ -188,6 +198,13 @@ func (c *uploadCommand) Run(args []string) error {
 				OrderUnit:    r.OrderUnit,
 				Mpn:          r.MPN,
 				Manufacturer: r.Manufacturer,
+				TaxCode:      r.TaxCode,
+			}
+			if r.EclassVersion != nil && r.EclassCode != nil {
+				p.Eclasses = append(p.Eclasses, &products.Eclass{
+					Version: *r.EclassVersion,
+					Code:    *r.EclassCode,
+				})
 			}
 			_, err := service.Update().PIN(pin).Area("work").Spn(r.SPN).Product(p).Do()
 			if err != nil {
@@ -211,14 +228,17 @@ func (c *uploadCommand) Run(args []string) error {
 
 // row is an intermediary structure to read data into.
 type row struct {
-	Line         int
-	Mode         string
-	SPN          string
-	Name         *string
-	Price        *float64
-	OrderUnit    *string
-	MPN          *string
-	Manufacturer *string
+	Line          int
+	Mode          string
+	SPN           string
+	Name          *string
+	Price         *float64
+	OrderUnit     *string
+	MPN           *string
+	Manufacturer  *string
+	EclassVersion *string
+	EclassCode    *string
+	TaxCode       *string
 }
 
 // Validate checks for errors in a row. It also ensures that the given
@@ -250,13 +270,16 @@ type rowHandler func(r *row, cell string) error
 
 // rowHandlers by column name.
 var rowHandlers = map[string]rowHandler{
-	"MODE":         handleMode,
-	"SPN":          handleSPN,
-	"NAME":         handleName,
-	"PRICE":        handlePrice,
-	"ORDER_UNIT":   handleOrderUnit,
-	"MPN":          handleMPN,
-	"MANUFACTURER": handleManufacturer,
+	"MODE":           handleMode,
+	"SPN":            handleSPN,
+	"NAME":           handleName,
+	"PRICE":          handlePrice,
+	"ORDER_UNIT":     handleOrderUnit,
+	"MPN":            handleMPN,
+	"MANUFACTURER":   handleManufacturer,
+	"ECLASS_VERSION": handleEclassVersion,
+	"ECLASS_CODE":    handleEclassCode,
+	"TAX_CODE":       handleTaxCode,
 }
 
 func handleMode(r *row, cell string) error {
@@ -304,6 +327,27 @@ func handleMPN(r *row, cell string) error {
 func handleManufacturer(r *row, cell string) error {
 	if cell != "" {
 		r.Manufacturer = &cell
+	}
+	return nil
+}
+
+func handleEclassVersion(r *row, cell string) error {
+	if cell != "" {
+		r.EclassVersion = &cell
+	}
+	return nil
+}
+
+func handleEclassCode(r *row, cell string) error {
+	if cell != "" {
+		r.EclassCode = &cell
+	}
+	return nil
+}
+
+func handleTaxCode(r *row, cell string) error {
+	if cell != "" {
+		r.TaxCode = &cell
 	}
 	return nil
 }
