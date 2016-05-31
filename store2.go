@@ -1,4 +1,4 @@
-// Copyright (c) 2015 Meplato GmbH, Switzerland.
+// Copyright (c) 2015-2016 Meplato GmbH, Switzerland.
 //
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
 // in compliance with the License. You may obtain a copy of the License at
@@ -50,7 +50,7 @@ var (
 
 const (
 	title   = "Meplato Store 2 API"
-	version = "2.0.0.beta3"
+	version = "2.0.0.beta5"
 	baseURL = "https://store2.meplato.com/api/v2"
 )
 

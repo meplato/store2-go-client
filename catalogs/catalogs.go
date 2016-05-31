@@ -1,4 +1,4 @@
-// Copyright (c) 2015 Meplato GmbH, Switzerland.
+// Copyright (c) 2015-2016 Meplato GmbH, Switzerland.
 //
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
 // in compliance with the License. You may obtain a copy of the License at
@@ -50,7 +50,7 @@ var (
 
 const (
 	title   = "Meplato Store 2 API"
-	version = "2.0.0.beta3"
+	version = "2.0.0.beta5"
 	baseURL = "https://store2.meplato.com/api/v2"
 )
 
@@ -100,6 +100,9 @@ type Catalog struct {
 	// ErpNumberBuyer: ERPNumberBuyer is the number of the merchant of this
 	// catalog in the SAP/ERP system of the buyer.
 	ErpNumberBuyer string `json:"erpNumberBuyer,omitempty"`
+	// HubURL represents the Meplato Hub URL for this catalog, e.g.
+	// https://hub.meplato.de/forward/12345/shop
+	HubURL string `json:"hubUrl,omitempty"`
 	// ID is a unique (internal) identifier of the catalog.
 	ID int64 `json:"id,omitempty"`
 	// Kind is store#catalog for a catalog entity.
@@ -123,6 +126,9 @@ type Catalog struct {
 	// NumProductsWork: Number of products currently in the work area (only
 	// returned when getting the details of a catalog).
 	NumProductsWork *int64 `json:"numProductsWork,omitempty"`
+	// OciURL represents the OCI punchout URL that the supplier specified for
+	// this catalog, e.g. https://my-shop.com/oci?param1=a
+	OciURL string `json:"ociUrl,omitempty"`
 	// PIN of the catalog.
 	PIN string `json:"pin,omitempty"`
 	// ProjectID: ID of the project.

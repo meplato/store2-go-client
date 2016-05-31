@@ -1,4 +1,4 @@
-// Copyright (c) 2015 Meplato GmbH, Switzerland.
+// Copyright (c) 2015-2016 Meplato GmbH, Switzerland.
 //
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
 // in compliance with the License. You may obtain a copy of the License at
@@ -50,7 +50,7 @@ var (
 
 const (
 	title   = "Meplato Store 2 API"
-	version = "2.0.0.beta3"
+	version = "2.0.0.beta5"
 	baseURL = "https://store2.meplato.com/api/v2"
 )
 
@@ -146,6 +146,9 @@ type CreateProduct struct {
 	Blobs []*Blob `json:"blobs,omitempty"`
 	// Bpn: BPN is the buyer part number of the product.
 	Bpn string `json:"bpn,omitempty"`
+	// CatalogManaged is a flag that indicates whether this product is
+	// configurable (or catalog managed in OCI parlance).
+	CatalogManaged bool `json:"catalogManaged,omitempty"`
 	// Categories is a list of (supplier-specific) category names the product
 	// belongs to.
 	Categories []string `json:"categories,omitempty"`
@@ -194,6 +197,9 @@ type CreateProduct struct {
 	// ExtCategoryID is the EXT_CATEGORY_ID field of the SAP OCI
 	// specification.
 	ExtCategoryID string `json:"extCategoryId,omitempty"`
+	// ExtProductID is the EXT_PRODUCT_ID field of the SAP OCI specification.
+	// It is e.g. required for configurable/catalog managed products.
+	ExtProductID string `json:"extProductId,omitempty"`
 	// ExtSchemaType is the EXT_SCHEMA_TYPE field of the SAP OCI
 	// specification.
 	ExtSchemaType string `json:"extSchemaType,omitempty"`
@@ -331,6 +337,9 @@ type Product struct {
 	Bpn string `json:"bpn,omitempty"`
 	// CatalogID: ID of the catalog this products belongs to.
 	CatalogID int64 `json:"catalogId,omitempty"`
+	// CatalogManaged is a flag that indicates whether this product is
+	// configurable (or catalog managed in OCI parlance).
+	CatalogManaged bool `json:"catalogManaged,omitempty"`
 	// Categories is a list of (supplier-specific) category names the product
 	// belongs to.
 	Categories []string `json:"categories,omitempty"`
@@ -386,6 +395,7 @@ type Product struct {
 	// specification.
 	ExtCategoryID string `json:"extCategoryId,omitempty"`
 	// ExtProductID is the EXT_PRODUCT_ID field of the SAP OCI specification.
+	// It is e.g. required for configurable/catalog managed products.
 	ExtProductID string `json:"extProductId,omitempty"`
 	// ExtSchemaType is the EXT_SCHEMA_TYPE field of the SAP OCI
 	// specification.
@@ -501,6 +511,9 @@ type ReplaceProduct struct {
 	Blobs []*Blob `json:"blobs,omitempty"`
 	// Bpn: BPN is the buyer part number of the product.
 	Bpn string `json:"bpn,omitempty"`
+	// CatalogManaged is a flag that indicates whether this product is
+	// configurable (or catalog managed in OCI parlance).
+	CatalogManaged bool `json:"catalogManaged,omitempty"`
 	// Categories is a list of (supplier-specific) category names the product
 	// belongs to.
 	Categories []string `json:"categories,omitempty"`
@@ -549,6 +562,9 @@ type ReplaceProduct struct {
 	// ExtCategoryID is the EXT_CATEGORY_ID field of the SAP OCI
 	// specification.
 	ExtCategoryID string `json:"extCategoryId,omitempty"`
+	// ExtProductID is the EXT_PRODUCT_ID field of the SAP OCI specification.
+	// It is e.g. required for configurable/catalog managed products.
+	ExtProductID string `json:"extProductId,omitempty"`
 	// ExtSchemaType is the EXT_SCHEMA_TYPE field of the SAP OCI
 	// specification.
 	ExtSchemaType string `json:"extSchemaType,omitempty"`
@@ -693,6 +709,9 @@ type UpdateProduct struct {
 	Blobs []*Blob `json:"blobs,omitempty"`
 	// Bpn: BPN is the buyer part number of the product.
 	Bpn *string `json:"bpn,omitempty"`
+	// CatalogManaged is a flag that indicates whether this product is
+	// configurable (or catalog managed in OCI parlance).
+	CatalogManaged *bool `json:"catalogManaged,omitempty"`
 	// Categories is a list of (supplier-specific) category names the product
 	// belongs to.
 	Categories []string `json:"categories,omitempty"`
@@ -741,6 +760,9 @@ type UpdateProduct struct {
 	// ExtCategoryID is the EXT_CATEGORY_ID field of the SAP OCI
 	// specification.
 	ExtCategoryID *string `json:"extCategoryId,omitempty"`
+	// ExtProductID is the EXT_PRODUCT_ID field of the SAP OCI specification.
+	// It is e.g. required for configurable/catalog managed products.
+	ExtProductID *string `json:"extProductId,omitempty"`
 	// ExtSchemaType is the EXT_SCHEMA_TYPE field of the SAP OCI
 	// specification.
 	ExtSchemaType *string `json:"extSchemaType,omitempty"`
@@ -829,6 +851,9 @@ type UpsertProduct struct {
 	Blobs []*Blob `json:"blobs,omitempty"`
 	// Bpn: BPN is the buyer part number of the product.
 	Bpn string `json:"bpn,omitempty"`
+	// CatalogManaged is a flag that indicates whether this product is
+	// configurable (or catalog managed in OCI parlance).
+	CatalogManaged bool `json:"catalogManaged,omitempty"`
 	// Categories is a list of (supplier-specific) category names the product
 	// belongs to.
 	Categories []string `json:"categories,omitempty"`
@@ -877,6 +902,9 @@ type UpsertProduct struct {
 	// ExtCategoryID is the EXT_CATEGORY_ID field of the SAP OCI
 	// specification.
 	ExtCategoryID string `json:"extCategoryId,omitempty"`
+	// ExtProductID is the EXT_PRODUCT_ID field of the SAP OCI specification.
+	// It is e.g. required for configurable/catalog managed products.
+	ExtProductID string `json:"extProductId,omitempty"`
 	// ExtSchemaType is the EXT_SCHEMA_TYPE field of the SAP OCI
 	// specification.
 	ExtSchemaType string `json:"extSchemaType,omitempty"`
