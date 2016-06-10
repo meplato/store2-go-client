@@ -50,7 +50,7 @@ var (
 
 const (
 	title   = "Meplato Store 2 API"
-	version = "2.0.0.beta5"
+	version = "2.0.0.beta6"
 	baseURL = "https://store2.meplato.com/api/v2"
 )
 
@@ -90,10 +90,13 @@ func (s *Service) Search() *SearchService {
 
 // Catalog is a container for products, to be used in a certain project.
 type Catalog struct {
+	// Country is the ISO-3166 alpha-2 code for the country that the catalog
+	// is destined for (e.g. DE or US).
+	Country string `json:"country,omitempty"`
 	// Created is the creation date and time of the catalog.
 	Created *time.Time `json:"created,omitempty"`
 	// Currency is the ISO-4217 currency code that is used for all products in
-	// the catalog.
+	// the catalog (e.g. EUR or USD).
 	Currency string `json:"currency,omitempty"`
 	// Description of the catalog.
 	Description string `json:"description,omitempty"`
@@ -108,7 +111,7 @@ type Catalog struct {
 	// Kind is store#catalog for a catalog entity.
 	Kind string `json:"kind,omitempty"`
 	// Language is the IETF language tag of the language of all products in
-	// the catalog.
+	// the catalog (e.g. de or pt-BR).
 	Language string `json:"language,omitempty"`
 	// LastImported is the date and time the catalog was last imported.
 	LastImported *time.Time `json:"lastImported,omitempty"`
@@ -133,6 +136,8 @@ type Catalog struct {
 	PIN string `json:"pin,omitempty"`
 	// ProjectID: ID of the project.
 	ProjectID int64 `json:"projectId,omitempty"`
+	// ProjectName: Name of the project.
+	ProjectName string `json:"projectName,omitempty"`
 	// PublishedVersion is the version number of the published catalog. It is
 	// incremented when the publish task publishes the catalog.
 	PublishedVersion *int64 `json:"publishedVersion,omitempty"`
@@ -144,9 +149,9 @@ type Catalog struct {
 	State string `json:"state,omitempty"`
 	// Updated is the last modification date and time of the catalog.
 	Updated *time.Time `json:"updated,omitempty"`
-	// ValidFrom is the date the catalog becomes effective.
+	// ValidFrom is the date the catalog becomes effective (YYYY-MM-DD).
 	ValidFrom *string `json:"validFrom,omitempty"`
-	// ValidUntil is the date the catalog expires.
+	// ValidUntil is the date the catalog expires (YYYY-MM-DD).
 	ValidUntil *string `json:"validUntil,omitempty"`
 }
 
