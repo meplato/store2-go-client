@@ -117,6 +117,9 @@ type Catalog struct {
 	LastImported *time.Time `json:"lastImported,omitempty"`
 	// LastPublished is the date and time the catalog was last published.
 	LastPublished *time.Time `json:"lastPublished,omitempty"`
+	// LockedForDownload indicates whether a catalog is locked and cannot be
+	// downloaded.
+	LockedForDownload bool `json:"lockedForDownload,omitempty"`
 	// MerchantID: ID of the merchant.
 	MerchantID int64 `json:"merchantId,omitempty"`
 	// MerchantName: Name of the merchant.
@@ -141,6 +144,12 @@ type Catalog struct {
 	// PublishedVersion is the version number of the published catalog. It is
 	// incremented when the publish task publishes the catalog.
 	PublishedVersion *int64 `json:"publishedVersion,omitempty"`
+	// SageContract represents the internal identifier at Meplato for the
+	// contract of this catalog.
+	SageContract string `json:"sageContract,omitempty"`
+	// SageNumber represents the internal identifier at Meplato for the
+	// merchant of this catalog.
+	SageNumber string `json:"sageNumber,omitempty"`
 	// SelfLink: URL to this page.
 	SelfLink string `json:"selfLink,omitempty"`
 	// Slug of the catalog.
