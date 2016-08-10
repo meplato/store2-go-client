@@ -50,7 +50,7 @@ var (
 
 const (
 	title   = "Meplato Store 2 API"
-	version = "2.0.0.beta6"
+	version = "2.0.0.beta7"
 	baseURL = "https://store2.meplato.com/api/v2"
 )
 
@@ -156,6 +156,27 @@ type Catalog struct {
 	Slug string `json:"slug,omitempty"`
 	// State describes the current state of the catalog, e.g. idle.
 	State string `json:"state,omitempty"`
+	// SupportsOciBackgroundsearch indicates whether a catalog supports the
+	// OCI BACKGROUNDSEARCH transaction.
+	SupportsOciBackgroundsearch bool `json:"supportsOciBackgroundsearch,omitempty"`
+	// SupportsOciDetail indicates whether a catalog supports the OCI DETAIL
+	// transaction.
+	SupportsOciDetail bool `json:"supportsOciDetail,omitempty"`
+	// SupportsOciDetailadd indicates whether a catalog supports the OCI
+	// DETAILADD transaction.
+	SupportsOciDetailadd bool `json:"supportsOciDetailadd,omitempty"`
+	// SupportsOciDownloadjson indicates whether a catalog supports the OCI
+	// DOWNLOADJSON transaction.
+	SupportsOciDownloadjson bool `json:"supportsOciDownloadjson,omitempty"`
+	// SupportsOciQuantitycheck indicates whether a catalog supports the OCI
+	// QUANTITYCHECK transaction.
+	SupportsOciQuantitycheck bool `json:"supportsOciQuantitycheck,omitempty"`
+	// SupportsOciSourcing indicates whether a catalog supports the OCI
+	// SOURCING transaction.
+	SupportsOciSourcing bool `json:"supportsOciSourcing,omitempty"`
+	// SupportsOciValidate indicates whether a catalog supports the OCI
+	// VALIDATE transaction.
+	SupportsOciValidate bool `json:"supportsOciValidate,omitempty"`
 	// Updated is the last modification date and time of the catalog.
 	Updated *time.Time `json:"updated,omitempty"`
 	// ValidFrom is the date the catalog becomes effective (YYYY-MM-DD).

@@ -50,7 +50,7 @@ var (
 
 const (
 	title   = "Meplato Store 2 API"
-	version = "2.0.0.beta6"
+	version = "2.0.0.beta7"
 	baseURL = "https://store2.meplato.com/api/v2"
 )
 
@@ -648,6 +648,10 @@ type ScalePrice struct {
 	// Lbound: LBound is the lower bound when this price will become
 	// effective.
 	Lbound float64 `json:"lbound,omitempty"`
+	// ListPrice is the list price for the given lower bound.
+	ListPrice *float64 `json:"listPrice,omitempty"`
+	// MeplatoPrice is the Meplato price for the given lower bound.
+	MeplatoPrice *float64 `json:"meplatoPrice,omitempty"`
 	// Price is the net price for the given lower bound.
 	Price float64 `json:"price,omitempty"`
 }
