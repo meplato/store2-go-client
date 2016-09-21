@@ -50,7 +50,7 @@ var (
 
 const (
 	title   = "Meplato Store 2 API"
-	version = "2.0.0.beta8"
+	version = "2.0.0.beta9"
 	baseURL = "https://store2.meplato.com/api/v2"
 )
 
@@ -125,6 +125,8 @@ type Blob struct {
 	Source string `json:"source,omitempty"`
 	// Text gives a textual description the blob.
 	Text string `json:"text,omitempty"`
+	// Url: URL is the URL to the blob.
+	Url string `json:"url,omitempty"`
 }
 
 // Condition describes a product status, e.g. refurbished or used.

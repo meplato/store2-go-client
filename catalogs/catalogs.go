@@ -50,7 +50,7 @@ var (
 
 const (
 	title   = "Meplato Store 2 API"
-	version = "2.0.0.beta8"
+	version = "2.0.0.beta9"
 	baseURL = "https://store2.meplato.com/api/v2"
 )
 
@@ -108,6 +108,9 @@ type Catalog struct {
 	HubURL string `json:"hubUrl,omitempty"`
 	// ID is a unique (internal) identifier of the catalog.
 	ID int64 `json:"id,omitempty"`
+	// KeepOriginalBlobs indicates whether the URLs in a blob will be passed
+	// through and not cached by Store.
+	KeepOriginalBlobs bool `json:"keepOriginalBlobs,omitempty"`
 	// Kind is store#catalog for a catalog entity.
 	Kind string `json:"kind,omitempty"`
 	// Language is the IETF language tag of the language of all products in
@@ -137,6 +140,8 @@ type Catalog struct {
 	OciURL string `json:"ociUrl,omitempty"`
 	// PIN of the catalog.
 	PIN string `json:"pin,omitempty"`
+	// Project references the project that this catalog belongs to.
+	Project *Project `json:"project,omitempty"`
 	// ProjectID: ID of the project.
 	ProjectID int64 `json:"projectId,omitempty"`
 	// ProjectName: Name of the project.
@@ -183,6 +188,39 @@ type Catalog struct {
 	ValidFrom *string `json:"validFrom,omitempty"`
 	// ValidUntil is the date the catalog expires (YYYY-MM-DD).
 	ValidUntil *string `json:"validUntil,omitempty"`
+}
+
+// Project describes customer-specific settings, typically encompassing a
+// set of catalogs.
+type Project struct {
+	// Country specifies the country code where catalogs for this project are
+	// located.
+	Country string `json:"country,omitempty"`
+	// Created is the creation date and time of the project.
+	Created *time.Time `json:"created,omitempty"`
+	// ID is a unique (internal) identifier of the project.
+	ID int64 `json:"id,omitempty"`
+	// Kind is store#project for a project entity.
+	Kind string `json:"kind,omitempty"`
+	// Language specifies the language code of the catalogs of this project.
+	Language string `json:"language,omitempty"`
+	// Mpbc: MPBC is the Meplato Buyer Code that identifies a set of buy-side
+	// companies that belong together.
+	Mpbc string `json:"mpbc,omitempty"`
+	// Mpcc: MPCC is the Meplato Company Code that uniquely identifies the
+	// buy-side.
+	Mpcc string `json:"mpcc,omitempty"`
+	// Name is a short description of the project.
+	Name string `json:"name,omitempty"`
+	// SelfLink: URL to this page.
+	SelfLink string `json:"selfLink,omitempty"`
+	// Type describes the type of project which can be either corporate or
+	// basic.
+	Type string `json:"type,omitempty"`
+	// Updated is the last modification date and time of the project.
+	Updated *time.Time `json:"updated,omitempty"`
+	// Visible indicates whether this project is visible to merchants.
+	Visible bool `json:"visible,omitempty"`
 }
 
 // PublishResponse is the response of the request to publish a catalog.
