@@ -62,7 +62,7 @@ import (
 	"net/http"
 	"log"
 
-	catalogs "github.com/meplato/store2-api-go-client/catalogs"
+	catalogs "github.com/meplato/store2-go-client/catalogs"
 )
 
 ...
