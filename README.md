@@ -80,7 +80,7 @@ execute the service call. For example, the following snippet will print
 the first 10 catalogs in your Meplato Store, sorted by catalog name.
 
 ```go
-res, err := catalogs.Search().Skip(0).Take(10).Sort("name").Do()
+res, err := service.Search().Skip(0).Take(10).Sort("name").Do()
 if err != nil {
 	log.Fatal(err)
 }
