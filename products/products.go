@@ -10,7 +10,7 @@
 // or implied. See the License for the specific language governing permissions and limitations under
 // the License.
 
-// Package products implements the Meplato Store 2 API.
+// Package products implements the Meplato Store API.
 //
 // See https://developer.meplato.com/store2/.
 package products
@@ -49,9 +49,9 @@ var (
 )
 
 const (
-	title   = "Meplato Store 2 API"
-	version = "2.0.0.beta9"
-	baseURL = "https://store2.meplato.com/api/v2"
+	title   = "Meplato Store API"
+	version = "2.0.0"
+	baseURL = "https://store.meplato.com/api/v2"
 )
 
 type Service struct {
@@ -140,6 +140,8 @@ type Condition struct {
 
 // CreateProduct holds the properties of a new product.
 type CreateProduct struct {
+	// Asin: ASIN is the unique Amazon article number of the product.
+	Asin string `json:"asin,omitempty"`
 	// Availability allows the update of product availability data, e.g. the
 	// number of items in stock or the date when the product will be available
 	// again.
@@ -231,6 +233,12 @@ type CreateProduct struct {
 	Matgroup string `json:"matgroup,omitempty"`
 	// Mpn: MPN is the manufacturer part number.
 	Mpn string `json:"mpn,omitempty"`
+	// MultiSupplierID represents an optional field for the unique identifier
+	// of a supplier in a multi-supplier catalog.
+	MultiSupplierID string `json:"multiSupplierId,omitempty"`
+	// MultiSupplierName represents an optional field for the name of the
+	// supplier in a multi-supplier catalog.
+	MultiSupplierName string `json:"multiSupplierName,omitempty"`
 	// Name of the product.
 	Name string `json:"name,omitempty"`
 	// OrderUnit is the order unit of the product, a 3-character ISO code
@@ -266,6 +274,8 @@ type CreateProduct struct {
 	Spn string `json:"spn,omitempty"`
 	// TaxCode to use for this product. This is typically project-specific.
 	TaxCode string `json:"taxCode,omitempty"`
+	// TaxRate for this product, a numeric value between 0.0 and 1.0.
+	TaxRate float64 `json:"taxRate,omitempty"`
 	// Thumbnail is the name of an thumbnail image file (in the media files)
 	// or a URL to the image on the internet.
 	Thumbnail string `json:"thumbnail,omitempty"`
@@ -329,6 +339,8 @@ type Hazmat struct {
 
 // Product is a good or service in a catalog.
 type Product struct {
+	// Asin: ASIN is the unique Amazon article number of the product.
+	Asin string `json:"asin,omitempty"`
 	// Availability allows the update of product availability data, e.g. the
 	// number of items in stock or the date when the product will be available
 	// again.
@@ -438,6 +450,12 @@ type Product struct {
 	MerchantID int64 `json:"merchantId,omitempty"`
 	// Mpn: MPN is the manufacturer part number.
 	Mpn string `json:"mpn,omitempty"`
+	// MultiSupplierID represents an optional field for the unique identifier
+	// of a supplier in a multi-supplier catalog.
+	MultiSupplierID string `json:"multiSupplierId,omitempty"`
+	// MultiSupplierName represents an optional field for the name of the
+	// supplier in a multi-supplier catalog.
+	MultiSupplierName string `json:"multiSupplierName,omitempty"`
 	// Name of the product.
 	Name string `json:"name,omitempty"`
 	// OrderUnit is the order unit of the product, a 3-character ISO code
@@ -477,8 +495,10 @@ type Product struct {
 	Service bool `json:"service,omitempty"`
 	// Spn: SPN is the supplier part number.
 	Spn string `json:"spn,omitempty"`
-	// TaxCode to use for this product. This is typically project-specific.
+	// TaxCode to use for this product.
 	TaxCode string `json:"taxCode,omitempty"`
+	// TaxRate for this product, a numeric value between 0.0 and 1.0.
+	TaxRate float64 `json:"taxRate,omitempty"`
 	// Thumbnail is the name of an thumbnail image file (in the media files)
 	// or a URL to the image on the internet.
 	Thumbnail string `json:"thumbnail,omitempty"`
@@ -504,6 +524,8 @@ type Reference struct {
 
 // ReplaceProduct replace all properties of an existing product.
 type ReplaceProduct struct {
+	// Asin: ASIN is the unique Amazon article number of the product.
+	Asin string `json:"asin,omitempty"`
 	// Availability allows the update of product availability data, e.g. the
 	// number of items in stock or the date when the product will be available
 	// again.
@@ -596,6 +618,12 @@ type ReplaceProduct struct {
 	Matgroup string `json:"matgroup,omitempty"`
 	// Mpn: MPN is the manufacturer part number.
 	Mpn string `json:"mpn,omitempty"`
+	// MultiSupplierID represents an optional field for the unique identifier
+	// of a supplier in a multi-supplier catalog.
+	MultiSupplierID string `json:"multiSupplierId,omitempty"`
+	// MultiSupplierName represents an optional field for the name of the
+	// supplier in a multi-supplier catalog.
+	MultiSupplierName string `json:"multiSupplierName,omitempty"`
 	// Name of the product.
 	Name string `json:"name,omitempty"`
 	// OrderUnit is the order unit of the product, a 3-character ISO code
@@ -629,6 +657,8 @@ type ReplaceProduct struct {
 	Service bool `json:"service,omitempty"`
 	// TaxCode to use for this product. This is typically project-specific.
 	TaxCode string `json:"taxCode,omitempty"`
+	// TaxRate for this product, a numeric value between 0.0 and 1.0.
+	TaxRate float64 `json:"taxRate,omitempty"`
 	// Thumbnail is the name of an thumbnail image file (in the media files)
 	// or a URL to the image on the internet.
 	Thumbnail string `json:"thumbnail,omitempty"`
@@ -707,6 +737,8 @@ type Unspsc struct {
 // UpdateProduct holds the properties of a product that need to be
 // updated.
 type UpdateProduct struct {
+	// Asin: ASIN is the unique Amazon article number of the product.
+	Asin *string `json:"asin,omitempty"`
 	// Availability allows the update of product availability data, e.g. the
 	// number of items in stock or the date when the product will be available
 	// again.
@@ -798,6 +830,12 @@ type UpdateProduct struct {
 	Matgroup *string `json:"matgroup,omitempty"`
 	// Mpn: MPN is the manufacturer part number.
 	Mpn *string `json:"mpn,omitempty"`
+	// MultiSupplierID represents an optional field for the unique identifier
+	// of a supplier in a multi-supplier catalog.
+	MultiSupplierID *string `json:"multiSupplierId,omitempty"`
+	// MultiSupplierName represents an optional field for the name of the
+	// supplier in a multi-supplier catalog.
+	MultiSupplierName *string `json:"multiSupplierName,omitempty"`
 	// Name of the product.
 	Name *string `json:"name,omitempty"`
 	// OrderUnit is the order unit of the product, a 3-character ISO code
@@ -831,6 +869,8 @@ type UpdateProduct struct {
 	Service *bool `json:"service,omitempty"`
 	// TaxCode to use for this product. This is typically project-specific.
 	TaxCode *string `json:"taxCode,omitempty"`
+	// TaxRate for this product, a numeric value between 0.0 and 1.0.
+	TaxRate *float64 `json:"taxRate,omitempty"`
 	// Thumbnail is the name of an thumbnail image file (in the media files)
 	// or a URL to the image on the internet.
 	Thumbnail *string `json:"thumbnail,omitempty"`
@@ -849,6 +889,8 @@ type UpdateProductResponse struct {
 
 // UpsertProduct holds the properties of the product to create or update.
 type UpsertProduct struct {
+	// Asin: ASIN is the unique Amazon article number of the product.
+	Asin string `json:"asin,omitempty"`
 	// Availability allows the update of product availability data, e.g. the
 	// number of items in stock or the date when the product will be available
 	// again.
@@ -940,6 +982,12 @@ type UpsertProduct struct {
 	Matgroup string `json:"matgroup,omitempty"`
 	// Mpn: MPN is the manufacturer part number.
 	Mpn string `json:"mpn,omitempty"`
+	// MultiSupplierID represents an optional field for the unique identifier
+	// of a supplier in a multi-supplier catalog.
+	MultiSupplierID string `json:"multiSupplierId,omitempty"`
+	// MultiSupplierName represents an optional field for the name of the
+	// supplier in a multi-supplier catalog.
+	MultiSupplierName string `json:"multiSupplierName,omitempty"`
 	// Name of the product. The product name is a required field
 	Name string `json:"name,omitempty"`
 	// OrderUnit is the order unit of the product, a 3-character ISO code
@@ -975,6 +1023,8 @@ type UpsertProduct struct {
 	Spn string `json:"spn,omitempty"`
 	// TaxCode to use for this product. This is typically project-specific.
 	TaxCode string `json:"taxCode,omitempty"`
+	// TaxRate for this product, a numeric value between 0.0 and 1.0.
+	TaxRate float64 `json:"taxRate,omitempty"`
 	// Thumbnail is the name of an thumbnail image file (in the media files)
 	// or a URL to the image on the internet.
 	Thumbnail string `json:"thumbnail,omitempty"`

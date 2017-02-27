@@ -10,7 +10,7 @@
 // or implied. See the License for the specific language governing permissions and limitations under
 // the License.
 
-// Package catalogs implements the Meplato Store 2 API.
+// Package catalogs implements the Meplato Store API.
 //
 // See https://developer.meplato.com/store2/.
 package catalogs
@@ -49,9 +49,9 @@ var (
 )
 
 const (
-	title   = "Meplato Store 2 API"
-	version = "2.0.0.beta9"
-	baseURL = "https://store2.meplato.com/api/v2"
+	title   = "Meplato Store API"
+	version = "2.0.0"
+	baseURL = "https://store.meplato.com/api/v2"
 )
 
 type Service struct {

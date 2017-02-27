@@ -10,7 +10,7 @@
 // or implied. See the License for the specific language governing permissions and limitations under
 // the License.
 
-// Package store2 implements the Meplato Store 2 API.
+// Package store2 implements the Meplato Store API.
 //
 // See https://developer.meplato.com/store2/.
 package store2
@@ -49,9 +49,9 @@ var (
 )
 
 const (
-	title   = "Meplato Store 2 API"
-	version = "2.0.0.beta9"
-	baseURL = "https://store2.meplato.com/api/v2"
+	title   = "Meplato Store API"
+	version = "2.0.0"
+	baseURL = "https://store.meplato.com/api/v2"
 )
 
 type Service struct {
@@ -117,6 +117,9 @@ type Merchant struct {
 	Ou string `json:"ou,omitempty"`
 	// SelfLink is the URL for this merchant.
 	SelfLink string `json:"selfLink,omitempty"`
+	// SelfService indicates whether this merchant is on self-service or
+	// managed by Meplato.
+	SelfService bool `json:"selfService,omitempty"`
 	// TimeZone is the time zone in the format Europe/Berlin.
 	TimeZone string `json:"timeZone,omitempty"`
 	// Token is a shared token for this merchant.
