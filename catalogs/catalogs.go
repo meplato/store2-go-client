@@ -50,7 +50,7 @@ var (
 
 const (
 	title   = "Meplato Store API"
-	version = "2.0.0"
+	version = "2.0.1"
 	baseURL = "https://store.meplato.com/api/v2"
 )
 
@@ -532,7 +532,7 @@ func (s *SearchService) Skip(skip int64) *SearchService {
 	return s
 }
 
-// Sort order, e.g. name or id or -created (default: name).
+// Sort order, e.g. name or id or -created (default: score).
 func (s *SearchService) Sort(sort string) *SearchService {
 	s.opt_["sort"] = sort
 	return s

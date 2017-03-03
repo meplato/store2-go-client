@@ -50,7 +50,7 @@ var (
 
 const (
 	title   = "Meplato Store API"
-	version = "2.0.0"
+	version = "2.0.1"
 	baseURL = "https://store.meplato.com/api/v2"
 )
 
@@ -1459,6 +1459,12 @@ func (s *SearchService) Skip(skip int64) *SearchService {
 	return s
 }
 
+// Sort order, e.g. name, spn, id or -created (default: score).
+func (s *SearchService) Sort(sort string) *SearchService {
+	s.opt_["sort"] = sort
+	return s
+}
+
 // Take defines how many products to return (max 100, default 20).
 func (s *SearchService) Take(take int64) *SearchService {
 	s.opt_["take"] = take
@@ -1477,10 +1483,13 @@ func (s *SearchService) Do() (*SearchResponse, error) {
 	if v, ok := s.opt_["skip"]; ok {
 		params["skip"] = v
 	}
+	if v, ok := s.opt_["sort"]; ok {
+		params["sort"] = v
+	}
 	if v, ok := s.opt_["take"]; ok {
 		params["take"] = v
 	}
-	path, err := meplatoapi.Expand("/catalogs/{pin}/{area}/products{?q,skip,take}", params)
+	path, err := meplatoapi.Expand("/catalogs/{pin}/{area}/products{?q,skip,take,sort}", params)
 	if err != nil {
 		return nil, err
 	}
