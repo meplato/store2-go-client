@@ -69,6 +69,7 @@ func getLoginAndPasswordFromNetrc(serviceEndpoint string) (username, password st
 	}
 	return
 }
+
 func GetHttpClient() (*http.Client, error) {
 	return http.DefaultClient, nil
 }
