@@ -1,0 +1,5 @@
+package: github.com/meplato/store2-go-client
+import:
+- package: github.com/bgentry/go-netrc
+  subpackages:
+  - netrc

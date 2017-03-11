@@ -1,0 +1,8 @@
+hash: 3da6d5859dcd6b825267ac1c3a69857ebd2a42e39a82417301ce5528e0e8a899
+updated: 2017-03-11T16:57:10.478995548+01:00
+imports:
+- name: github.com/bgentry/go-netrc
+  version: 9fd32a8b3d3d3f9d43c341bfe098430e07609480
+  subpackages:
+  - netrc
+testImports: []
