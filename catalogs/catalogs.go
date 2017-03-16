@@ -50,7 +50,7 @@ var (
 
 const (
 	title   = "Meplato Store API"
-	version = "2.0.1"
+	version = "2.0.2"
 	baseURL = "https://store.meplato.com/api/v2"
 )
 
@@ -125,6 +125,8 @@ type Catalog struct {
 	LockedForDownload bool `json:"lockedForDownload,omitempty"`
 	// MerchantID: ID of the merchant.
 	MerchantID int64 `json:"merchantId,omitempty"`
+	// MerchantMpcc: MPCC of the merchant.
+	MerchantMpcc string `json:"merchantMpcc,omitempty"`
 	// MerchantName: Name of the merchant.
 	MerchantName string `json:"merchantName,omitempty"`
 	// Name of the catalog.
@@ -144,6 +146,8 @@ type Catalog struct {
 	Project *Project `json:"project,omitempty"`
 	// ProjectID: ID of the project.
 	ProjectID int64 `json:"projectId,omitempty"`
+	// ProjectMpcc: MPCC of the project.
+	ProjectMpcc string `json:"projectMpcc,omitempty"`
 	// ProjectName: Name of the project.
 	ProjectName string `json:"projectName,omitempty"`
 	// PublishedVersion is the version number of the published catalog. It is
@@ -526,6 +530,12 @@ func NewSearchService(s *Service) *SearchService {
 	return rs
 }
 
+// Q defines are full text query.
+func (s *SearchService) Q(q string) *SearchService {
+	s.opt_["q"] = q
+	return s
+}
+
 // Skip specifies how many catalogs to skip (default 0).
 func (s *SearchService) Skip(skip int64) *SearchService {
 	s.opt_["skip"] = skip
@@ -548,6 +558,9 @@ func (s *SearchService) Take(take int64) *SearchService {
 func (s *SearchService) Do() (*SearchResponse, error) {
 	var body io.Reader
 	params := make(map[string]interface{})
+	if v, ok := s.opt_["q"]; ok {
+		params["q"] = v
+	}
 	if v, ok := s.opt_["skip"]; ok {
 		params["skip"] = v
 	}
@@ -557,7 +570,7 @@ func (s *SearchService) Do() (*SearchResponse, error) {
 	if v, ok := s.opt_["take"]; ok {
 		params["take"] = v
 	}
-	path, err := meplatoapi.Expand("/catalogs{?skip,take,sort}", params)
+	path, err := meplatoapi.Expand("/catalogs{?q,skip,take,sort}", params)
 	if err != nil {
 		return nil, err
 	}
