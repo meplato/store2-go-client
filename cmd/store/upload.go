@@ -9,6 +9,7 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/meplato/store2-go-client/products"
 )
@@ -78,8 +79,8 @@ However, the Store API remains unchanged regardless of the backend.
 
 func (c *uploadCommand) Examples() []string {
 	return []string{
-		"ABCDE12345 -v < catalogfile.csv",
-		"ABCDE12345 -i catalogdata.csv",
+		"-v ABCDE12345 < catalogfile.csv",
+		"-i catalogdata.csv ABCDE12345",
 	}
 }
 
@@ -128,6 +129,7 @@ func (c *uploadCommand) Run(args []string) error {
 	}
 
 	// Read input file line-by-line
+	start := time.Now()
 	var line int = 1
 	for {
 		record, err := csvr.Read()
@@ -153,12 +155,13 @@ func (c *uploadCommand) Run(args []string) error {
 		}
 
 		if c.verbose {
-			fmt.Fprintf(os.Stdout, "line %6d\r", line)
+			pps := int64(float64(line) / time.Since(start).Seconds())
+			fmt.Fprintf(os.Stdout, "line %6d | %04d tx/s\r", line, pps)
 		}
 
 		// Validate the row
 		if err := r.Validate(); err != nil {
-			return fmt.Errorf("line %d: %v", err)
+			return fmt.Errorf("line %d: %v", line, err)
 		}
 
 		// Call Create, Update, or Delete API
@@ -188,7 +191,7 @@ func (c *uploadCommand) Run(args []string) error {
 			}
 			_, err := service.Create().PIN(pin).Area("work").Product(p).Do()
 			if err != nil {
-				return fmt.Errorf("line %d: create failed: %v", err)
+				return fmt.Errorf("line %d: create failed: %v", line, err)
 			}
 		case "U":
 			// Update a product
@@ -208,19 +211,20 @@ func (c *uploadCommand) Run(args []string) error {
 			}
 			_, err := service.Update().PIN(pin).Area("work").Spn(r.SPN).Product(p).Do()
 			if err != nil {
-				return fmt.Errorf("line %d: update failed: %v", err)
+				return fmt.Errorf("line %d: update failed: %v", line, err)
 			}
 		case "D":
 			// Delete a product
 			err := service.Delete().PIN(pin).Area("work").Spn(r.SPN).Do()
 			if err != nil {
-				return fmt.Errorf("line %d: delete failed: %v", err)
+				return fmt.Errorf("line %d: delete failed: %v", line, err)
 			}
 		}
 	}
 
 	if c.verbose {
-		fmt.Fprintf(os.Stdout, "Read %d lines\n", line)
+		pps := int64(float64(line) / time.Since(start).Seconds())
+		fmt.Fprintf(os.Stdout, "Read %d lines in %v (%04d tx/s)\n", line, time.Since(start), pps)
 	}
 
 	return nil
