@@ -1,0 +1,52 @@
+HTTP/1.1 200 OK
+Cache-Control: private, no-cache
+Content-Type: application/json; charset=utf-8
+Last-Modified: Tue, 31 Mar 2015 14:30:43 GMT
+P3p: CP="This is not a P3P policy!"
+Vary: Cookie
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+X-Ua-Compatible: IE=edge
+X-Xss-Protection: 1; mode=block
+Date: Tue, 31 Mar 2015 14:30:43 GMT
+
+{
+  "kind": "store#jobs",
+  "selfLink": "https://store.meplato.com/api/v2/jobs?take=2\u0026pretty=1",
+  "nextLink": "https://store.meplato.com/api/v2/jobs?pretty=1\u0026skip=2\u0026take=2",
+  "totalItems": 32,
+  "items": [
+    {
+      "id": "58097dc3-b279-49b5-a5da-23eb1c77d840",
+      "kind": "store#job",
+      "selfLink": "https://store.meplato.com/api/v2/jobs/58097dc3-b279-49b5-a5da-23eb1c77d840",
+      "merchantId": 1,
+      "merchantMpcc": "meplato",
+      "merchantName": "Meplato",
+      "catalogId": 57,
+      "catalogName": "Office Supplies",
+      "state": "succeeded",
+      "topic": "CatalogValidateProjectTask",
+      "email": "joe.average@example.com",
+      "created": "2017-06-07T15:40:37.040890947+02:00",
+      "started": "2017-06-07T15:40:37.224111733+02:00",
+      "completed": "2017-06-07T15:40:37.352725626+02:00"
+    },
+    {
+      "id": "10b4efd7-fa0e-41b2-af19-d84e6c0d43ab",
+      "kind": "store#job",
+      "selfLink": "https://store.meplato.com/api/v2/jobs/10b4efd7-fa0e-41b2-af19-d84e6c0d43ab",
+      "merchantId": 1,
+      "merchantMpcc": "meplato",
+      "merchantName": "Meplato",
+      "catalogId": 57,
+      "catalogName": "Office Supplies",
+      "state": "succeeded",
+      "topic": "CatalogBMEcatImportTask",
+      "email": "joe.average@example.com",
+      "created": "2017-06-07T15:40:15.297142656+02:00",
+      "started": "2017-06-07T15:40:16.224260959+02:00",
+      "completed": "2017-06-07T15:40:37.052681256+02:00"
+    }
+  ]
+}

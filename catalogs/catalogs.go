@@ -50,7 +50,7 @@ var (
 
 const (
 	title   = "Meplato Store API"
-	version = "2.0.2"
+	version = "2.0.3"
 	baseURL = "https://store.meplato.com/api/v2"
 )
 
@@ -103,6 +103,8 @@ type Catalog struct {
 	// ErpNumberBuyer: ERPNumberBuyer is the number of the merchant of this
 	// catalog in the SAP/ERP system of the buyer.
 	ErpNumberBuyer string `json:"erpNumberBuyer,omitempty"`
+	// Expired indicates whether the catalog is expired as of now.
+	Expired bool `json:"expired,omitempty"`
 	// HubURL represents the Meplato Hub URL for this catalog, e.g.
 	// https://hub.meplato.de/forward/12345/shop
 	HubURL string `json:"hubUrl,omitempty"`
