@@ -50,7 +50,7 @@ var (
 
 const (
 	title   = "Meplato Store API"
-	version = "2.0.3"
+	version = "2.0.4"
 	baseURL = "https://store.meplato.com/api/v2"
 )
 
@@ -129,6 +129,8 @@ type Catalog struct {
 	MerchantID int64 `json:"merchantId,omitempty"`
 	// MerchantMpcc: MPCC of the merchant.
 	MerchantMpcc string `json:"merchantMpcc,omitempty"`
+	// MerchantMpsc: MPSC of the merchant.
+	MerchantMpsc string `json:"merchantMpsc,omitempty"`
 	// MerchantName: Name of the merchant.
 	MerchantName string `json:"merchantName,omitempty"`
 	// Name of the catalog.
@@ -148,6 +150,8 @@ type Catalog struct {
 	Project *Project `json:"project,omitempty"`
 	// ProjectID: ID of the project.
 	ProjectID int64 `json:"projectId,omitempty"`
+	// ProjectMpbc: MPBC of the project.
+	ProjectMpbc string `json:"projectMpbc,omitempty"`
 	// ProjectMpcc: MPCC of the project.
 	ProjectMpcc string `json:"projectMpcc,omitempty"`
 	// ProjectName: Name of the project.
