@@ -50,7 +50,7 @@ var (
 
 const (
 	title   = "Meplato Store API"
-	version = "2.0.4"
+	version = "2.1.0"
 	baseURL = "https://store.meplato.com/api/v2"
 )
 
@@ -142,12 +142,20 @@ type Condition struct {
 type CreateProduct struct {
 	// Asin: ASIN is the unique Amazon article number of the product.
 	Asin string `json:"asin,omitempty"`
+	// AutoConfigure is a flag that indicates whether this product can be
+	// configured automatically. Please consult your Store Manager before
+	// setting a value for this field.
+	AutoConfigure *bool `json:"autoConfigure,omitempty"`
 	// Availability allows the update of product availability data, e.g. the
 	// number of items in stock or the date when the product will be available
 	// again.
 	Availability *Availability `json:"availability,omitempty"`
 	// Blobs specifies external data, e.g. images or datasheets.
 	Blobs []*Blob `json:"blobs,omitempty"`
+	// BoostFactor represents a positive or negative boost for the product.
+	// Please consult your Store Manager before setting a value for this
+	// field.
+	BoostFactor *float64 `json:"boostFactor,omitempty"`
 	// Bpn: BPN is the buyer part number of the product.
 	Bpn string `json:"bpn,omitempty"`
 	// CatalogManaged is a flag that indicates whether this product is
@@ -158,6 +166,22 @@ type CreateProduct struct {
 	Categories []string `json:"categories,omitempty"`
 	// Conditions describes the product conditions, e.g. refurbished or used.
 	Conditions []*Condition `json:"conditions,omitempty"`
+	// Contract represents the contract number to be used when purchasing this
+	// product. Please consult your Store Manager before setting a value for
+	// this field.
+	Contract string `json:"contract,omitempty"`
+	// ContractItem represents line number in the contract to be used when
+	// purchasing this product. See also Contract. Please consult your Store
+	// Manager before setting a value for this field.
+	ContractItem string `json:"contractItem,omitempty"`
+	// ConversionDenumerator is the denumerator for calculating price
+	// quantities. Please consult your Store Manager before setting a value
+	// for this field.
+	ConversionDenumerator *float64 `json:"conversionDenumerator,omitempty"`
+	// ConversionNumerator is the numerator for calculating price quantities.
+	// Please consult your Store Manager before setting a value for this
+	// field.
+	ConversionNumerator *float64 `json:"conversionNumerator,omitempty"`
 	// ContentUnit is the content unit of the product, a 3-character ISO code
 	// (usually project-specific).
 	ContentUnit string `json:"cu,omitempty"`
@@ -182,6 +206,81 @@ type CreateProduct struct {
 	// CustFields is an array of generic name/value pairs for
 	// customer-specific attributes.
 	CustFields []*CustField `json:"custFields,omitempty"`
+	// CustomField10 represents the 10th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField10 string `json:"customField10,omitempty"`
+	// CustomField11 represents the 11th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField11 string `json:"customField11,omitempty"`
+	// CustomField12 represents the 12th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField12 string `json:"customField12,omitempty"`
+	// CustomField13 represents the 13th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField13 string `json:"customField13,omitempty"`
+	// CustomField14 represents the 14th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField14 string `json:"customField14,omitempty"`
+	// CustomField15 represents the 15th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField15 string `json:"customField15,omitempty"`
+	// CustomField16 represents the 16th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField16 string `json:"customField16,omitempty"`
+	// CustomField17 represents the 17th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField17 string `json:"customField17,omitempty"`
+	// CustomField18 represents the 18th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField18 string `json:"customField18,omitempty"`
+	// CustomField19 represents the 19th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField19 string `json:"customField19,omitempty"`
+	// CustomField20 represents the 20th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField20 string `json:"customField20,omitempty"`
+	// CustomField21 represents the 21st customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField21 string `json:"customField21,omitempty"`
+	// CustomField22 represents the 22nd customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField22 string `json:"customField22,omitempty"`
+	// CustomField23 represents the 23rd customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField23 string `json:"customField23,omitempty"`
+	// CustomField24 represents the 24th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField24 string `json:"customField24,omitempty"`
+	// CustomField25 represents the 25th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField25 string `json:"customField25,omitempty"`
+	// CustomField26 represents the 26th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField26 string `json:"customField26,omitempty"`
+	// CustomField27 represents the 27th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField27 string `json:"customField27,omitempty"`
+	// CustomField28 represents the 28th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField28 string `json:"customField28,omitempty"`
+	// CustomField29 represents the 29th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField29 string `json:"customField29,omitempty"`
+	// CustomField30 represents the 30th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField30 string `json:"customField30,omitempty"`
+	// CustomField6 represents the 6th customer-specific field. Please consult
+	// your Store Manager before setting a value for this field.
+	CustomField6 string `json:"customField6,omitempty"`
+	// CustomField7 represents the 7th customer-specific field. Please consult
+	// your Store Manager before setting a value for this field.
+	CustomField7 string `json:"customField7,omitempty"`
+	// CustomField8 represents the 8th customer-specific field. Please consult
+	// your Store Manager before setting a value for this field.
+	CustomField8 string `json:"customField8,omitempty"`
+	// CustomField9 represents the 9th customer-specific field. Please consult
+	// your Store Manager before setting a value for this field.
+	CustomField9 string `json:"customField9,omitempty"`
 	// Datasheet is the name of an datasheet file (in the media files) or a
 	// URL to the datasheet on the internet.
 	Datasheet string `json:"datasheet,omitempty"`
@@ -201,6 +300,14 @@ type CreateProduct struct {
 	// ExtCategoryID is the EXT_CATEGORY_ID field of the SAP OCI
 	// specification.
 	ExtCategoryID string `json:"extCategoryId,omitempty"`
+	// ExtConfigForm represents information required to make the product
+	// configurable. Please consult your Store Manager before setting a value
+	// for this field.
+	ExtConfigForm string `json:"extConfigForm,omitempty"`
+	// ExtConfigService represents additional information required to make the
+	// product configurable. See also ExtConfigForm. Please consult your Store
+	// Manager before setting a value for this field.
+	ExtConfigService string `json:"extConfigService,omitempty"`
 	// ExtProductID is the EXT_PRODUCT_ID field of the SAP OCI specification.
 	// It is e.g. required for configurable/catalog managed products.
 	ExtProductID string `json:"extProductId,omitempty"`
@@ -210,6 +317,10 @@ type CreateProduct struct {
 	// Features defines product features, i.e. additional properties of the
 	// product.
 	Features []*Feature `json:"features,omitempty"`
+	// GlAccount: GLAccount represents the GL account number to use for this
+	// product. Please consult your Store Manager before setting a value for
+	// this field.
+	GlAccount string `json:"glAccount,omitempty"`
 	// Gtin: GTIN is the global trade item number of the product (used to be
 	// EAN).
 	Gtin string `json:"gtin,omitempty"`
@@ -218,6 +329,18 @@ type CreateProduct struct {
 	// Image is the name of an image file (in the media files) or a URL to the
 	// image on the internet.
 	Image string `json:"image,omitempty"`
+	// Incomplete is a flag that indicates whether this product is incomplete.
+	// Please consult your Store Manager before setting a value for this
+	// field.
+	Incomplete *bool `json:"incomplete,omitempty"`
+	// IsPassword is a flag that indicates whether this product will be used
+	// to purchase a password, e.g. for a software product. Please consult
+	// your Store Manager before setting a value for this field.
+	IsPassword *bool `json:"isPassword,omitempty"`
+	// KeepPrice is a flag that indicates whether the price of the product
+	// will or will not be calculated by the catalog. Please consult your
+	// Store Manager before setting a value for this field.
+	KeepPrice *bool `json:"keepPrice,omitempty"`
 	// Keywords is a list of aliases for the product.
 	Keywords []string `json:"keywords,omitempty"`
 	// Leadtime is the number of days for delivery.
@@ -241,12 +364,44 @@ type CreateProduct struct {
 	MultiSupplierName string `json:"multiSupplierName,omitempty"`
 	// Name of the product.
 	Name string `json:"name,omitempty"`
+	// NeedsGoodsReceipt is a flag that indicates whether this product
+	// requires a goods receipt process. Please consult your Store Manager
+	// before setting a value for this field.
+	NeedsGoodsReceipt *bool `json:"needsGoodsReceipt,omitempty"`
+	// NfBasePrice: NFBasePrice represents a part for calculating metal
+	// surcharges. Please consult your Store Manager before setting a value
+	// for this field.
+	NfBasePrice *float64 `json:"nfBasePrice,omitempty"`
+	// NfBasePriceQuantity: NFBasePriceQuantity represents a part for
+	// calculating metal surcharges. Please consult your Store Manager before
+	// setting a value for this field.
+	NfBasePriceQuantity *float64 `json:"nfBasePriceQuantity,omitempty"`
+	// NfCndID: NFCndID represents the key to calculate metal surcharges.
+	// Please consult your Store Manager before setting a value for this
+	// field.
+	NfCndID string `json:"nfCndId,omitempty"`
+	// NfScale: NFScale represents a part for calculating metal surcharges.
+	// Please consult your Store Manager before setting a value for this
+	// field.
+	NfScale *float64 `json:"nfScale,omitempty"`
+	// NfScaleQuantity: NFScaleQuantity represents a part for calculating
+	// metal surcharges. Please consult your Store Manager before setting a
+	// value for this field.
+	NfScaleQuantity *float64 `json:"nfScaleQuantity,omitempty"`
+	// Orderable is a flag that indicates whether this product will be
+	// orderable to the end-user when shopping. Please consult your Store
+	// Manager before setting a value for this field.
+	Orderable *bool `json:"orderable,omitempty"`
 	// OrderUnit is the order unit of the product, a 3-character ISO code
 	// (usually project-specific).
 	OrderUnit string `json:"ou,omitempty"`
 	// Price is the net price (per order unit) of the product for the
 	// end-user.
 	Price float64 `json:"price,omitempty"`
+	// PriceFormula represents the formula to calculate the price of the
+	// product. Please consult your Store Manager before setting a value for
+	// this field.
+	PriceFormula string `json:"priceFormula,omitempty"`
 	// PriceQty is the quantity for which the price is specified (default:
 	// 1.0).
 	PriceQty *float64 `json:"priceQty,omitempty"`
@@ -258,6 +413,14 @@ type CreateProduct struct {
 	QuantityMax *float64 `json:"quantityMax,omitempty"`
 	// QuantityMin is the minimum order quantity for this product.
 	QuantityMin *float64 `json:"quantityMin,omitempty"`
+	// Rateable is a flag that indicates whether the product can be rated by
+	// end-users. Please consult your Store Manager before setting a value for
+	// this field.
+	Rateable *bool `json:"rateable,omitempty"`
+	// RateableOnlyIfOrdered is a flag that indicates whether the product can
+	// be rated only after being ordered. Please consult your Store Manager
+	// before setting a value for this field.
+	RateableOnlyIfOrdered *bool `json:"rateableOnlyIfOrdered,omitempty"`
 	// References defines cross-product references, e.g. alternatives or
 	// follow-up products.
 	References []*Reference `json:"references,omitempty"`
@@ -281,6 +444,10 @@ type CreateProduct struct {
 	Thumbnail string `json:"thumbnail,omitempty"`
 	// Unspscs is a list of UNSPSC categories the product belongs to.
 	Unspscs []*Unspsc `json:"unspscs,omitempty"`
+	// Visible is a flag that indicates whether this product will be visible
+	// to the end-user when shopping. Please consult your Store Manager before
+	// setting a value for this field.
+	Visible *bool `json:"visible,omitempty"`
 }
 
 // CreateProductResponse is the outcome of a successful request to create
@@ -341,12 +508,17 @@ type Hazmat struct {
 type Product struct {
 	// Asin: ASIN is the unique Amazon article number of the product.
 	Asin string `json:"asin,omitempty"`
+	// AutoConfigure is a flag that indicates whether this product can be
+	// configured automatically.
+	AutoConfigure *bool `json:"autoConfigure,omitempty"`
 	// Availability allows the update of product availability data, e.g. the
 	// number of items in stock or the date when the product will be available
 	// again.
 	Availability *Availability `json:"availability,omitempty"`
 	// Blobs specifies external data, e.g. images or datasheets.
 	Blobs []*Blob `json:"blobs,omitempty"`
+	// BoostFactor represents a positive or negative boost for the product.
+	BoostFactor *float64 `json:"boostFactor,omitempty"`
 	// Bpn: BPN is the buyer part number of the product.
 	Bpn string `json:"bpn,omitempty"`
 	// CatalogID: ID of the catalog this products belongs to.
@@ -359,6 +531,17 @@ type Product struct {
 	Categories []string `json:"categories,omitempty"`
 	// Conditions describes the product conditions, e.g. refurbished or used.
 	Conditions []*Condition `json:"conditions,omitempty"`
+	// Contract represents the contract number to be used when purchasing this
+	// product.
+	Contract string `json:"contract,omitempty"`
+	// ContractItem represents line number in the contract to be used when
+	// purchasing this product. See also Contract.
+	ContractItem string `json:"contractItem,omitempty"`
+	// ConversionDenumerator is the denumerator for calculating price
+	// quantities.
+	ConversionDenumerator *float64 `json:"conversionDenumerator,omitempty"`
+	// ConversionNumerator is the numerator for calculating price quantities.
+	ConversionNumerator *float64 `json:"conversionNumerator,omitempty"`
 	// Created is the creation date and time of the product.
 	Created *time.Time `json:"created,omitempty"`
 	// ContentUnit is the content unit of the product, a 3-character ISO code
@@ -387,6 +570,56 @@ type Product struct {
 	// CustFields is an array of generic name/value pairs for
 	// customer-specific attributes.
 	CustFields []*CustField `json:"custFields,omitempty"`
+	// CustomField10 represents the 10th customer-specific field.
+	CustomField10 string `json:"customField10,omitempty"`
+	// CustomField11 represents the 11th customer-specific field.
+	CustomField11 string `json:"customField11,omitempty"`
+	// CustomField12 represents the 12th customer-specific field.
+	CustomField12 string `json:"customField12,omitempty"`
+	// CustomField13 represents the 13th customer-specific field.
+	CustomField13 string `json:"customField13,omitempty"`
+	// CustomField14 represents the 14th customer-specific field.
+	CustomField14 string `json:"customField14,omitempty"`
+	// CustomField15 represents the 15th customer-specific field.
+	CustomField15 string `json:"customField15,omitempty"`
+	// CustomField16 represents the 16th customer-specific field.
+	CustomField16 string `json:"customField16,omitempty"`
+	// CustomField17 represents the 17th customer-specific field.
+	CustomField17 string `json:"customField17,omitempty"`
+	// CustomField18 represents the 18th customer-specific field.
+	CustomField18 string `json:"customField18,omitempty"`
+	// CustomField19 represents the 19th customer-specific field.
+	CustomField19 string `json:"customField19,omitempty"`
+	// CustomField20 represents the 20th customer-specific field.
+	CustomField20 string `json:"customField20,omitempty"`
+	// CustomField21 represents the 21st customer-specific field.
+	CustomField21 string `json:"customField21,omitempty"`
+	// CustomField22 represents the 22nd customer-specific field.
+	CustomField22 string `json:"customField22,omitempty"`
+	// CustomField23 represents the 23rd customer-specific field.
+	CustomField23 string `json:"customField23,omitempty"`
+	// CustomField24 represents the 24th customer-specific field.
+	CustomField24 string `json:"customField24,omitempty"`
+	// CustomField25 represents the 25th customer-specific field.
+	CustomField25 string `json:"customField25,omitempty"`
+	// CustomField26 represents the 26th customer-specific field.
+	CustomField26 string `json:"customField26,omitempty"`
+	// CustomField27 represents the 27th customer-specific field.
+	CustomField27 string `json:"customField27,omitempty"`
+	// CustomField28 represents the 28th customer-specific field.
+	CustomField28 string `json:"customField28,omitempty"`
+	// CustomField29 represents the 29th customer-specific field.
+	CustomField29 string `json:"customField29,omitempty"`
+	// CustomField30 represents the 30th customer-specific field.
+	CustomField30 string `json:"customField30,omitempty"`
+	// CustomField6 represents the 6th customer-specific field.
+	CustomField6 string `json:"customField6,omitempty"`
+	// CustomField7 represents the 7th customer-specific field.
+	CustomField7 string `json:"customField7,omitempty"`
+	// CustomField8 represents the 8th customer-specific field.
+	CustomField8 string `json:"customField8,omitempty"`
+	// CustomField9 represents the 9th customer-specific field.
+	CustomField9 string `json:"customField9,omitempty"`
 	// Datasheet is the name of an datasheet file (in the media files) or a
 	// URL to the datasheet on the internet.
 	Datasheet string `json:"datasheet,omitempty"`
@@ -408,6 +641,12 @@ type Product struct {
 	// ExtCategoryID is the EXT_CATEGORY_ID field of the SAP OCI
 	// specification.
 	ExtCategoryID string `json:"extCategoryId,omitempty"`
+	// ExtConfigForm represents information required to make the product
+	// configurable.
+	ExtConfigForm string `json:"extConfigForm,omitempty"`
+	// ExtConfigService represents additional information required to make the
+	// product configurable. See also ExtConfigForm.
+	ExtConfigService string `json:"extConfigService,omitempty"`
 	// ExtProductID is the EXT_PRODUCT_ID field of the SAP OCI specification.
 	// It is e.g. required for configurable/catalog managed products.
 	ExtProductID string `json:"extProductId,omitempty"`
@@ -417,6 +656,9 @@ type Product struct {
 	// Features defines product features, i.e. additional properties of the
 	// product.
 	Features []*Feature `json:"features,omitempty"`
+	// GlAccount: GLAccount represents the GL account number to use for this
+	// product.
+	GlAccount string `json:"glAccount,omitempty"`
 	// Gtin: GTIN is the global trade item number of the product (used to be
 	// EAN).
 	Gtin string `json:"gtin,omitempty"`
@@ -429,6 +671,14 @@ type Product struct {
 	Image string `json:"image,omitempty"`
 	// ImageURL is the URL to the image.
 	ImageURL string `json:"imageURL,omitempty"`
+	// Incomplete is a flag that indicates whether this product is incomplete.
+	Incomplete *bool `json:"incomplete,omitempty"`
+	// IsPassword is a flag that indicates whether this product will be used
+	// to purchase a password, e.g. for a software product.
+	IsPassword *bool `json:"isPassword,omitempty"`
+	// KeepPrice is a flag that indicates whether the price of the product
+	// will or will not be calculated by the catalog.
+	KeepPrice *bool `json:"keepPrice,omitempty"`
 	// Keywords is a list of aliases for the product.
 	Keywords []string `json:"keywords,omitempty"`
 	// Kind is store#product for a product entity.
@@ -458,12 +708,34 @@ type Product struct {
 	MultiSupplierName string `json:"multiSupplierName,omitempty"`
 	// Name of the product.
 	Name string `json:"name,omitempty"`
+	// NeedsGoodsReceipt is a flag that indicates whether this product
+	// requires a goods receipt process.
+	NeedsGoodsReceipt *bool `json:"needsGoodsReceipt,omitempty"`
+	// NfBasePrice: NFBasePrice represents a part for calculating metal
+	// surcharges.
+	NfBasePrice *float64 `json:"nfBasePrice,omitempty"`
+	// NfBasePriceQuantity: NFBasePriceQuantity represents a part for
+	// calculating metal surcharges.
+	NfBasePriceQuantity *float64 `json:"nfBasePriceQuantity,omitempty"`
+	// NfCndID: NFCndID represents the key to calculate metal surcharges.
+	NfCndID string `json:"nfCndId,omitempty"`
+	// NfScale: NFScale represents a part for calculating metal surcharges.
+	NfScale *float64 `json:"nfScale,omitempty"`
+	// NfScaleQuantity: NFScaleQuantity represents a part for calculating
+	// metal surcharges.
+	NfScaleQuantity *float64 `json:"nfScaleQuantity,omitempty"`
+	// Orderable is a flag that indicates whether this product will be
+	// orderable to the end-user when shopping.
+	Orderable *bool `json:"orderable,omitempty"`
 	// OrderUnit is the order unit of the product, a 3-character ISO code
 	// (usually project-specific).
 	OrderUnit string `json:"ou,omitempty"`
 	// Price is the net price (per order unit) of the product for the
 	// end-user.
 	Price float64 `json:"price,omitempty"`
+	// PriceFormula represents the formula to calculate the price of the
+	// product.
+	PriceFormula string `json:"priceFormula,omitempty"`
 	// PriceQty is the quantity for which the price is specified (default:
 	// 1.0).
 	PriceQty float64 `json:"priceQty,omitempty"`
@@ -477,6 +749,12 @@ type Product struct {
 	QuantityMax *float64 `json:"quantityMax,omitempty"`
 	// QuantityMin is the minimum order quantity for this product.
 	QuantityMin *float64 `json:"quantityMin,omitempty"`
+	// Rateable is a flag that indicates whether the product can be rated by
+	// end-users.
+	Rateable *bool `json:"rateable,omitempty"`
+	// RateableOnlyIfOrdered is a flag that indicates whether the product can
+	// be rated only after being ordered.
+	RateableOnlyIfOrdered *bool `json:"rateableOnlyIfOrdered,omitempty"`
 	// References defines cross-product references, e.g. alternatives or
 	// follow-up products.
 	References []*Reference `json:"references,omitempty"`
@@ -508,6 +786,9 @@ type Product struct {
 	Unspscs []*Unspsc `json:"unspscs,omitempty"`
 	// Updated is the last modification date and time of the product.
 	Updated *time.Time `json:"updated,omitempty"`
+	// Visible is a flag that indicates whether this product will be visible
+	// to the end-user when shopping.
+	Visible *bool `json:"visible,omitempty"`
 }
 
 // Reference describes a reference from one product to another product.
@@ -526,6 +807,10 @@ type Reference struct {
 type ReplaceProduct struct {
 	// Asin: ASIN is the unique Amazon article number of the product.
 	Asin string `json:"asin,omitempty"`
+	// AutoConfigure is a flag that indicates whether this product can be
+	// configured automatically. Please consult your Store Manager before
+	// setting a value for this field.
+	AutoConfigure *bool `json:"autoConfigure,omitempty"`
 	// Availability allows the update of product availability data, e.g. the
 	// number of items in stock or the date when the product will be available
 	// again.
@@ -533,6 +818,10 @@ type ReplaceProduct struct {
 	// Blobs contains information about external data, e.g. attachments like
 	// images or datasheets.
 	Blobs []*Blob `json:"blobs,omitempty"`
+	// BoostFactor represents a positive or negative boost for the product.
+	// Please consult your Store Manager before setting a value for this
+	// field.
+	BoostFactor *float64 `json:"boostFactor,omitempty"`
 	// Bpn: BPN is the buyer part number of the product.
 	Bpn string `json:"bpn,omitempty"`
 	// CatalogManaged is a flag that indicates whether this product is
@@ -543,6 +832,22 @@ type ReplaceProduct struct {
 	Categories []string `json:"categories,omitempty"`
 	// Conditions describes the product conditions, e.g. refurbished or used.
 	Conditions []*Condition `json:"conditions,omitempty"`
+	// Contract represents the contract number to be used when purchasing this
+	// product. Please consult your Store Manager before setting a value for
+	// this field.
+	Contract string `json:"contract,omitempty"`
+	// ContractItem represents line number in the contract to be used when
+	// purchasing this product. See also Contract. Please consult your Store
+	// Manager before setting a value for this field.
+	ContractItem string `json:"contractItem,omitempty"`
+	// ConversionDenumerator is the denumerator for calculating price
+	// quantities. Please consult your Store Manager before setting a value
+	// for this field.
+	ConversionDenumerator *float64 `json:"conversionDenumerator,omitempty"`
+	// ConversionNumerator is the numerator for calculating price quantities.
+	// Please consult your Store Manager before setting a value for this
+	// field.
+	ConversionNumerator *float64 `json:"conversionNumerator,omitempty"`
 	// ContentUnit is the content unit of the product, a 3-character ISO code
 	// (usually project-specific).
 	ContentUnit string `json:"cu,omitempty"`
@@ -567,6 +872,81 @@ type ReplaceProduct struct {
 	// CustFields is an array of generic name/value pairs for
 	// customer-specific attributes.
 	CustFields []*CustField `json:"custFields,omitempty"`
+	// CustomField10 represents the 10th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField10 string `json:"customField10,omitempty"`
+	// CustomField11 represents the 11th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField11 string `json:"customField11,omitempty"`
+	// CustomField12 represents the 12th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField12 string `json:"customField12,omitempty"`
+	// CustomField13 represents the 13th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField13 string `json:"customField13,omitempty"`
+	// CustomField14 represents the 14th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField14 string `json:"customField14,omitempty"`
+	// CustomField15 represents the 15th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField15 string `json:"customField15,omitempty"`
+	// CustomField16 represents the 16th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField16 string `json:"customField16,omitempty"`
+	// CustomField17 represents the 17th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField17 string `json:"customField17,omitempty"`
+	// CustomField18 represents the 18th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField18 string `json:"customField18,omitempty"`
+	// CustomField19 represents the 19th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField19 string `json:"customField19,omitempty"`
+	// CustomField20 represents the 20th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField20 string `json:"customField20,omitempty"`
+	// CustomField21 represents the 21st customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField21 string `json:"customField21,omitempty"`
+	// CustomField22 represents the 22nd customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField22 string `json:"customField22,omitempty"`
+	// CustomField23 represents the 23rd customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField23 string `json:"customField23,omitempty"`
+	// CustomField24 represents the 24th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField24 string `json:"customField24,omitempty"`
+	// CustomField25 represents the 25th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField25 string `json:"customField25,omitempty"`
+	// CustomField26 represents the 26th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField26 string `json:"customField26,omitempty"`
+	// CustomField27 represents the 27th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField27 string `json:"customField27,omitempty"`
+	// CustomField28 represents the 28th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField28 string `json:"customField28,omitempty"`
+	// CustomField29 represents the 29th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField29 string `json:"customField29,omitempty"`
+	// CustomField30 represents the 30th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField30 string `json:"customField30,omitempty"`
+	// CustomField6 represents the 6th customer-specific field. Please consult
+	// your Store Manager before setting a value for this field.
+	CustomField6 string `json:"customField6,omitempty"`
+	// CustomField7 represents the 7th customer-specific field. Please consult
+	// your Store Manager before setting a value for this field.
+	CustomField7 string `json:"customField7,omitempty"`
+	// CustomField8 represents the 8th customer-specific field. Please consult
+	// your Store Manager before setting a value for this field.
+	CustomField8 string `json:"customField8,omitempty"`
+	// CustomField9 represents the 9th customer-specific field. Please consult
+	// your Store Manager before setting a value for this field.
+	CustomField9 string `json:"customField9,omitempty"`
 	// Datasheet is the name of an datasheet file (in the media files) or a
 	// URL to the datasheet on the internet.
 	Datasheet string `json:"datasheet,omitempty"`
@@ -586,6 +966,14 @@ type ReplaceProduct struct {
 	// ExtCategoryID is the EXT_CATEGORY_ID field of the SAP OCI
 	// specification.
 	ExtCategoryID string `json:"extCategoryId,omitempty"`
+	// ExtConfigForm represents information required to make the product
+	// configurable. Please consult your Store Manager before setting a value
+	// for this field.
+	ExtConfigForm string `json:"extConfigForm,omitempty"`
+	// ExtConfigService represents additional information required to make the
+	// product configurable. See also ExtConfigForm. Please consult your Store
+	// Manager before setting a value for this field.
+	ExtConfigService string `json:"extConfigService,omitempty"`
 	// ExtProductID is the EXT_PRODUCT_ID field of the SAP OCI specification.
 	// It is e.g. required for configurable/catalog managed products.
 	ExtProductID string `json:"extProductId,omitempty"`
@@ -595,6 +983,10 @@ type ReplaceProduct struct {
 	// Features defines product features, i.e. additional properties of the
 	// product.
 	Features []*Feature `json:"features,omitempty"`
+	// GlAccount: GLAccount represents the GL account number to use for this
+	// product. Please consult your Store Manager before setting a value for
+	// this field.
+	GlAccount string `json:"glAccount,omitempty"`
 	// Gtin: GTIN is the global trade item number of the product (used to be
 	// EAN).
 	Gtin string `json:"gtin,omitempty"`
@@ -603,6 +995,18 @@ type ReplaceProduct struct {
 	// Image is the name of an image file (in the media files) or a URL to the
 	// image on the internet.
 	Image string `json:"image,omitempty"`
+	// Incomplete is a flag that indicates whether this product is incomplete.
+	// Please consult your Store Manager before setting a value for this
+	// field.
+	Incomplete *bool `json:"incomplete,omitempty"`
+	// IsPassword is a flag that indicates whether this product will be used
+	// to purchase a password, e.g. for a software product. Please consult
+	// your Store Manager before setting a value for this field.
+	IsPassword *bool `json:"isPassword,omitempty"`
+	// KeepPrice is a flag that indicates whether the price of the product
+	// will or will not be calculated by the catalog. Please consult your
+	// Store Manager before setting a value for this field.
+	KeepPrice *bool `json:"keepPrice,omitempty"`
 	// Keywords is a list of aliases for the product.
 	Keywords []string `json:"keywords,omitempty"`
 	// Leadtime is the number of days for delivery.
@@ -626,12 +1030,44 @@ type ReplaceProduct struct {
 	MultiSupplierName string `json:"multiSupplierName,omitempty"`
 	// Name of the product.
 	Name string `json:"name,omitempty"`
+	// NeedsGoodsReceipt is a flag that indicates whether this product
+	// requires a goods receipt process. Please consult your Store Manager
+	// before setting a value for this field.
+	NeedsGoodsReceipt *bool `json:"needsGoodsReceipt,omitempty"`
+	// NfBasePrice: NFBasePrice represents a part for calculating metal
+	// surcharges. Please consult your Store Manager before setting a value
+	// for this field.
+	NfBasePrice *float64 `json:"nfBasePrice,omitempty"`
+	// NfBasePriceQuantity: NFBasePriceQuantity represents a part for
+	// calculating metal surcharges. Please consult your Store Manager before
+	// setting a value for this field.
+	NfBasePriceQuantity *float64 `json:"nfBasePriceQuantity,omitempty"`
+	// NfCndID: NFCndID represents the key to calculate metal surcharges.
+	// Please consult your Store Manager before setting a value for this
+	// field.
+	NfCndID string `json:"nfCndId,omitempty"`
+	// NfScale: NFScale represents a part for calculating metal surcharges.
+	// Please consult your Store Manager before setting a value for this
+	// field.
+	NfScale *float64 `json:"nfScale,omitempty"`
+	// NfScaleQuantity: NFScaleQuantity represents a part for calculating
+	// metal surcharges. Please consult your Store Manager before setting a
+	// value for this field.
+	NfScaleQuantity *float64 `json:"nfScaleQuantity,omitempty"`
+	// Orderable is a flag that indicates whether this product will be
+	// orderable to the end-user when shopping. Please consult your Store
+	// Manager before setting a value for this field.
+	Orderable *bool `json:"orderable,omitempty"`
 	// OrderUnit is the order unit of the product, a 3-character ISO code
 	// (usually project-specific).
 	OrderUnit string `json:"ou,omitempty"`
 	// Price is the net price (per order unit) of the product for the
 	// end-user.
 	Price float64 `json:"price,omitempty"`
+	// PriceFormula represents the formula to calculate the price of the
+	// product. Please consult your Store Manager before setting a value for
+	// this field.
+	PriceFormula string `json:"priceFormula,omitempty"`
 	// PriceQty is the quantity for which the price is specified (default:
 	// 1.0).
 	PriceQty float64 `json:"priceQty,omitempty"`
@@ -643,6 +1079,14 @@ type ReplaceProduct struct {
 	QuantityMax *float64 `json:"quantityMax,omitempty"`
 	// QuantityMin is the minimum order quantity for this product.
 	QuantityMin *float64 `json:"quantityMin,omitempty"`
+	// Rateable is a flag that indicates whether the product can be rated by
+	// end-users. Please consult your Store Manager before setting a value for
+	// this field.
+	Rateable *bool `json:"rateable,omitempty"`
+	// RateableOnlyIfOrdered is a flag that indicates whether the product can
+	// be rated only after being ordered. Please consult your Store Manager
+	// before setting a value for this field.
+	RateableOnlyIfOrdered *bool `json:"rateableOnlyIfOrdered,omitempty"`
 	// References defines cross-product references, e.g. alternatives or
 	// follow-up products.
 	References []*Reference `json:"references,omitempty"`
@@ -664,6 +1108,10 @@ type ReplaceProduct struct {
 	Thumbnail string `json:"thumbnail,omitempty"`
 	// Unspscs is a list of UNSPSC categories the product belongs to.
 	Unspscs []*Unspsc `json:"unspscs,omitempty"`
+	// Visible is a flag that indicates whether this product will be visible
+	// to the end-user when shopping. Please consult your Store Manager before
+	// setting a value for this field.
+	Visible *bool `json:"visible,omitempty"`
 }
 
 // ReplaceProductResponse is the outcome of a successful replacement of a
@@ -739,12 +1187,20 @@ type Unspsc struct {
 type UpdateProduct struct {
 	// Asin: ASIN is the unique Amazon article number of the product.
 	Asin *string `json:"asin,omitempty"`
+	// AutoConfigure is a flag that indicates whether this product can be
+	// configured automatically. Please consult your Store Manager before
+	// setting a value for this field.
+	AutoConfigure *bool `json:"autoConfigure,omitempty"`
 	// Availability allows the update of product availability data, e.g. the
 	// number of items in stock or the date when the product will be available
 	// again.
 	Availability *Availability `json:"availability,omitempty"`
 	// Blobs specifies external data, e.g. images or datasheets.
 	Blobs []*Blob `json:"blobs,omitempty"`
+	// BoostFactor represents a positive or negative boost for the product.
+	// Please consult your Store Manager before setting a value for this
+	// field.
+	BoostFactor *float64 `json:"boostFactor,omitempty"`
 	// Bpn: BPN is the buyer part number of the product.
 	Bpn *string `json:"bpn,omitempty"`
 	// CatalogManaged is a flag that indicates whether this product is
@@ -755,6 +1211,22 @@ type UpdateProduct struct {
 	Categories []string `json:"categories,omitempty"`
 	// Conditions describes the product conditions, e.g. refurbished or used.
 	Conditions []*Condition `json:"conditions,omitempty"`
+	// Contract represents the contract number to be used when purchasing this
+	// product. Please consult your Store Manager before setting a value for
+	// this field.
+	Contract *string `json:"contract,omitempty"`
+	// ContractItem represents line number in the contract to be used when
+	// purchasing this product. See also Contract. Please consult your Store
+	// Manager before setting a value for this field.
+	ContractItem *string `json:"contractItem,omitempty"`
+	// ConversionDenumerator is the denumerator for calculating price
+	// quantities. Please consult your Store Manager before setting a value
+	// for this field.
+	ConversionDenumerator *float64 `json:"conversionDenumerator,omitempty"`
+	// ConversionNumerator is the numerator for calculating price quantities.
+	// Please consult your Store Manager before setting a value for this
+	// field.
+	ConversionNumerator *float64 `json:"conversionNumerator,omitempty"`
 	// ContentUnit is the content unit of the product, a 3-character ISO code
 	// (usually project-specific).
 	ContentUnit *string `json:"cu,omitempty"`
@@ -779,6 +1251,81 @@ type UpdateProduct struct {
 	// CustFields is an array of generic name/value pairs for
 	// customer-specific attributes.
 	CustFields []*CustField `json:"custFields,omitempty"`
+	// CustomField10 represents the 10th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField10 *string `json:"customField10,omitempty"`
+	// CustomField11 represents the 11th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField11 *string `json:"customField11,omitempty"`
+	// CustomField12 represents the 12th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField12 *string `json:"customField12,omitempty"`
+	// CustomField13 represents the 13th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField13 *string `json:"customField13,omitempty"`
+	// CustomField14 represents the 14th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField14 *string `json:"customField14,omitempty"`
+	// CustomField15 represents the 15th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField15 *string `json:"customField15,omitempty"`
+	// CustomField16 represents the 16th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField16 *string `json:"customField16,omitempty"`
+	// CustomField17 represents the 17th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField17 *string `json:"customField17,omitempty"`
+	// CustomField18 represents the 18th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField18 *string `json:"customField18,omitempty"`
+	// CustomField19 represents the 19th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField19 *string `json:"customField19,omitempty"`
+	// CustomField20 represents the 20th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField20 *string `json:"customField20,omitempty"`
+	// CustomField21 represents the 21st customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField21 *string `json:"customField21,omitempty"`
+	// CustomField22 represents the 22nd customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField22 *string `json:"customField22,omitempty"`
+	// CustomField23 represents the 23rd customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField23 *string `json:"customField23,omitempty"`
+	// CustomField24 represents the 24th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField24 *string `json:"customField24,omitempty"`
+	// CustomField25 represents the 25th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField25 *string `json:"customField25,omitempty"`
+	// CustomField26 represents the 26th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField26 *string `json:"customField26,omitempty"`
+	// CustomField27 represents the 27th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField27 *string `json:"customField27,omitempty"`
+	// CustomField28 represents the 28th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField28 *string `json:"customField28,omitempty"`
+	// CustomField29 represents the 29th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField29 *string `json:"customField29,omitempty"`
+	// CustomField30 represents the 30th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField30 *string `json:"customField30,omitempty"`
+	// CustomField6 represents the 6th customer-specific field. Please consult
+	// your Store Manager before setting a value for this field.
+	CustomField6 *string `json:"customField6,omitempty"`
+	// CustomField7 represents the 7th customer-specific field. Please consult
+	// your Store Manager before setting a value for this field.
+	CustomField7 *string `json:"customField7,omitempty"`
+	// CustomField8 represents the 8th customer-specific field. Please consult
+	// your Store Manager before setting a value for this field.
+	CustomField8 *string `json:"customField8,omitempty"`
+	// CustomField9 represents the 9th customer-specific field. Please consult
+	// your Store Manager before setting a value for this field.
+	CustomField9 *string `json:"customField9,omitempty"`
 	// Datasheet is the name of an datasheet file (in the media files) or a
 	// URL to the datasheet on the internet.
 	Datasheet *string `json:"datasheet,omitempty"`
@@ -798,6 +1345,14 @@ type UpdateProduct struct {
 	// ExtCategoryID is the EXT_CATEGORY_ID field of the SAP OCI
 	// specification.
 	ExtCategoryID *string `json:"extCategoryId,omitempty"`
+	// ExtConfigForm represents information required to make the product
+	// configurable. Please consult your Store Manager before setting a value
+	// for this field.
+	ExtConfigForm *string `json:"extConfigForm,omitempty"`
+	// ExtConfigService represents additional information required to make the
+	// product configurable. See also ExtConfigForm. Please consult your Store
+	// Manager before setting a value for this field.
+	ExtConfigService *string `json:"extConfigService,omitempty"`
 	// ExtProductID is the EXT_PRODUCT_ID field of the SAP OCI specification.
 	// It is e.g. required for configurable/catalog managed products.
 	ExtProductID *string `json:"extProductId,omitempty"`
@@ -807,6 +1362,10 @@ type UpdateProduct struct {
 	// Features defines product features, i.e. additional properties of the
 	// product.
 	Features []*Feature `json:"features,omitempty"`
+	// GlAccount: GLAccount represents the GL account number to use for this
+	// product. Please consult your Store Manager before setting a value for
+	// this field.
+	GlAccount *string `json:"glAccount,omitempty"`
 	// Gtin: GTIN is the global trade item number of the product (used to be
 	// EAN).
 	Gtin *string `json:"gtin,omitempty"`
@@ -815,6 +1374,18 @@ type UpdateProduct struct {
 	// Image is the name of an image file (in the media files) or a URL to the
 	// image on the internet.
 	Image *string `json:"image,omitempty"`
+	// Incomplete is a flag that indicates whether this product is incomplete.
+	// Please consult your Store Manager before setting a value for this
+	// field.
+	Incomplete *bool `json:"incomplete,omitempty"`
+	// IsPassword is a flag that indicates whether this product will be used
+	// to purchase a password, e.g. for a software product. Please consult
+	// your Store Manager before setting a value for this field.
+	IsPassword *bool `json:"isPassword,omitempty"`
+	// KeepPrice is a flag that indicates whether the price of the product
+	// will or will not be calculated by the catalog. Please consult your
+	// Store Manager before setting a value for this field.
+	KeepPrice *bool `json:"keepPrice,omitempty"`
 	// Keywords is a list of aliases for the product.
 	Keywords []string `json:"keywords,omitempty"`
 	// Leadtime is the number of days for delivery.
@@ -838,12 +1409,44 @@ type UpdateProduct struct {
 	MultiSupplierName *string `json:"multiSupplierName,omitempty"`
 	// Name of the product.
 	Name *string `json:"name,omitempty"`
+	// NeedsGoodsReceipt is a flag that indicates whether this product
+	// requires a goods receipt process. Please consult your Store Manager
+	// before setting a value for this field.
+	NeedsGoodsReceipt *bool `json:"needsGoodsReceipt,omitempty"`
+	// NfBasePrice: NFBasePrice represents a part for calculating metal
+	// surcharges. Please consult your Store Manager before setting a value
+	// for this field.
+	NfBasePrice *float64 `json:"nfBasePrice,omitempty"`
+	// NfBasePriceQuantity: NFBasePriceQuantity represents a part for
+	// calculating metal surcharges. Please consult your Store Manager before
+	// setting a value for this field.
+	NfBasePriceQuantity *float64 `json:"nfBasePriceQuantity,omitempty"`
+	// NfCndID: NFCndID represents the key to calculate metal surcharges.
+	// Please consult your Store Manager before setting a value for this
+	// field.
+	NfCndID *string `json:"nfCndId,omitempty"`
+	// NfScale: NFScale represents a part for calculating metal surcharges.
+	// Please consult your Store Manager before setting a value for this
+	// field.
+	NfScale *float64 `json:"nfScale,omitempty"`
+	// NfScaleQuantity: NFScaleQuantity represents a part for calculating
+	// metal surcharges. Please consult your Store Manager before setting a
+	// value for this field.
+	NfScaleQuantity *float64 `json:"nfScaleQuantity,omitempty"`
+	// Orderable is a flag that indicates whether this product will be
+	// orderable to the end-user when shopping. Please consult your Store
+	// Manager before setting a value for this field.
+	Orderable *bool `json:"orderable,omitempty"`
 	// OrderUnit is the order unit of the product, a 3-character ISO code
 	// (usually project-specific).
 	OrderUnit *string `json:"ou,omitempty"`
 	// Price is the net price (per order unit) of the product for the
 	// end-user.
 	Price *float64 `json:"price,omitempty"`
+	// PriceFormula represents the formula to calculate the price of the
+	// product. Please consult your Store Manager before setting a value for
+	// this field.
+	PriceFormula *string `json:"priceFormula,omitempty"`
 	// PriceQty is the quantity for which the price is specified (default:
 	// 1.0).
 	PriceQty *float64 `json:"priceQty,omitempty"`
@@ -855,6 +1458,14 @@ type UpdateProduct struct {
 	QuantityMax *float64 `json:"quantityMax,omitempty"`
 	// QuantityMin is the minimum order quantity for this product.
 	QuantityMin *float64 `json:"quantityMin,omitempty"`
+	// Rateable is a flag that indicates whether the product can be rated by
+	// end-users. Please consult your Store Manager before setting a value for
+	// this field.
+	Rateable *bool `json:"rateable,omitempty"`
+	// RateableOnlyIfOrdered is a flag that indicates whether the product can
+	// be rated only after being ordered. Please consult your Store Manager
+	// before setting a value for this field.
+	RateableOnlyIfOrdered *bool `json:"rateableOnlyIfOrdered,omitempty"`
 	// References defines cross-product references, e.g. alternatives or
 	// follow-up products.
 	References []*Reference `json:"references,omitempty"`
@@ -876,6 +1487,10 @@ type UpdateProduct struct {
 	Thumbnail *string `json:"thumbnail,omitempty"`
 	// Unspscs is a list of UNSPSC categories the product belongs to.
 	Unspscs []*Unspsc `json:"unspscs,omitempty"`
+	// Visible is a flag that indicates whether this product will be visible
+	// to the end-user when shopping. Please consult your Store Manager before
+	// setting a value for this field.
+	Visible *bool `json:"visible,omitempty"`
 }
 
 // UpdateProductResponse is the outcome of a successful request to update
@@ -891,12 +1506,20 @@ type UpdateProductResponse struct {
 type UpsertProduct struct {
 	// Asin: ASIN is the unique Amazon article number of the product.
 	Asin string `json:"asin,omitempty"`
+	// AutoConfigure is a flag that indicates whether this product can be
+	// configured automatically. Please consult your Store Manager before
+	// setting a value for this field.
+	AutoConfigure *bool `json:"autoConfigure,omitempty"`
 	// Availability allows the update of product availability data, e.g. the
 	// number of items in stock or the date when the product will be available
 	// again.
 	Availability *Availability `json:"availability,omitempty"`
 	// Blobs specifies external data, e.g. images or datasheets.
 	Blobs []*Blob `json:"blobs,omitempty"`
+	// BoostFactor represents a positive or negative boost for the product.
+	// Please consult your Store Manager before setting a value for this
+	// field.
+	BoostFactor *float64 `json:"boostFactor,omitempty"`
 	// Bpn: BPN is the buyer part number of the product.
 	Bpn string `json:"bpn,omitempty"`
 	// CatalogManaged is a flag that indicates whether this product is
@@ -907,6 +1530,22 @@ type UpsertProduct struct {
 	Categories []string `json:"categories,omitempty"`
 	// Conditions describes the product conditions, e.g. refurbished or used.
 	Conditions []*Condition `json:"conditions,omitempty"`
+	// Contract represents the contract number to be used when purchasing this
+	// product. Please consult your Store Manager before setting a value for
+	// this field.
+	Contract string `json:"contract,omitempty"`
+	// ContractItem represents line number in the contract to be used when
+	// purchasing this product. See also Contract. Please consult your Store
+	// Manager before setting a value for this field.
+	ContractItem string `json:"contractItem,omitempty"`
+	// ConversionDenumerator is the denumerator for calculating price
+	// quantities. Please consult your Store Manager before setting a value
+	// for this field.
+	ConversionDenumerator *float64 `json:"conversionDenumerator,omitempty"`
+	// ConversionNumerator is the numerator for calculating price quantities.
+	// Please consult your Store Manager before setting a value for this
+	// field.
+	ConversionNumerator *float64 `json:"conversionNumerator,omitempty"`
 	// ContentUnit is the content unit of the product, a 3-character ISO code
 	// (usually project-specific).
 	ContentUnit string `json:"cu,omitempty"`
@@ -931,6 +1570,81 @@ type UpsertProduct struct {
 	// CustFields is an array of generic name/value pairs for
 	// customer-specific attributes.
 	CustFields []*CustField `json:"custFields,omitempty"`
+	// CustomField10 represents the 10th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField10 string `json:"customField10,omitempty"`
+	// CustomField11 represents the 11th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField11 string `json:"customField11,omitempty"`
+	// CustomField12 represents the 12th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField12 string `json:"customField12,omitempty"`
+	// CustomField13 represents the 13th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField13 string `json:"customField13,omitempty"`
+	// CustomField14 represents the 14th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField14 string `json:"customField14,omitempty"`
+	// CustomField15 represents the 15th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField15 string `json:"customField15,omitempty"`
+	// CustomField16 represents the 16th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField16 string `json:"customField16,omitempty"`
+	// CustomField17 represents the 17th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField17 string `json:"customField17,omitempty"`
+	// CustomField18 represents the 18th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField18 string `json:"customField18,omitempty"`
+	// CustomField19 represents the 19th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField19 string `json:"customField19,omitempty"`
+	// CustomField20 represents the 20th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField20 string `json:"customField20,omitempty"`
+	// CustomField21 represents the 21st customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField21 string `json:"customField21,omitempty"`
+	// CustomField22 represents the 22nd customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField22 string `json:"customField22,omitempty"`
+	// CustomField23 represents the 23rd customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField23 string `json:"customField23,omitempty"`
+	// CustomField24 represents the 24th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField24 string `json:"customField24,omitempty"`
+	// CustomField25 represents the 25th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField25 string `json:"customField25,omitempty"`
+	// CustomField26 represents the 26th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField26 string `json:"customField26,omitempty"`
+	// CustomField27 represents the 27th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField27 string `json:"customField27,omitempty"`
+	// CustomField28 represents the 28th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField28 string `json:"customField28,omitempty"`
+	// CustomField29 represents the 29th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField29 string `json:"customField29,omitempty"`
+	// CustomField30 represents the 30th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField30 string `json:"customField30,omitempty"`
+	// CustomField6 represents the 6th customer-specific field. Please consult
+	// your Store Manager before setting a value for this field.
+	CustomField6 string `json:"customField6,omitempty"`
+	// CustomField7 represents the 7th customer-specific field. Please consult
+	// your Store Manager before setting a value for this field.
+	CustomField7 string `json:"customField7,omitempty"`
+	// CustomField8 represents the 8th customer-specific field. Please consult
+	// your Store Manager before setting a value for this field.
+	CustomField8 string `json:"customField8,omitempty"`
+	// CustomField9 represents the 9th customer-specific field. Please consult
+	// your Store Manager before setting a value for this field.
+	CustomField9 string `json:"customField9,omitempty"`
 	// Datasheet is the name of an datasheet file (in the media files) or a
 	// URL to the datasheet on the internet.
 	Datasheet string `json:"datasheet,omitempty"`
@@ -950,6 +1664,14 @@ type UpsertProduct struct {
 	// ExtCategoryID is the EXT_CATEGORY_ID field of the SAP OCI
 	// specification.
 	ExtCategoryID string `json:"extCategoryId,omitempty"`
+	// ExtConfigForm represents information required to make the product
+	// configurable. Please consult your Store Manager before setting a value
+	// for this field.
+	ExtConfigForm string `json:"extConfigForm,omitempty"`
+	// ExtConfigService represents additional information required to make the
+	// product configurable. See also ExtConfigForm. Please consult your Store
+	// Manager before setting a value for this field.
+	ExtConfigService string `json:"extConfigService,omitempty"`
 	// ExtProductID is the EXT_PRODUCT_ID field of the SAP OCI specification.
 	// It is e.g. required for configurable/catalog managed products.
 	ExtProductID string `json:"extProductId,omitempty"`
@@ -959,6 +1681,10 @@ type UpsertProduct struct {
 	// Features defines product features, i.e. additional properties of the
 	// product.
 	Features []*Feature `json:"features,omitempty"`
+	// GlAccount: GLAccount represents the GL account number to use for this
+	// product. Please consult your Store Manager before setting a value for
+	// this field.
+	GlAccount string `json:"glAccount,omitempty"`
 	// Gtin: GTIN is the global trade item number of the product (used to be
 	// EAN).
 	Gtin string `json:"gtin,omitempty"`
@@ -967,6 +1693,18 @@ type UpsertProduct struct {
 	// Image is the name of an image file (in the media files) or a URL to the
 	// image on the internet.
 	Image string `json:"image,omitempty"`
+	// Incomplete is a flag that indicates whether this product is incomplete.
+	// Please consult your Store Manager before setting a value for this
+	// field.
+	Incomplete *bool `json:"incomplete,omitempty"`
+	// IsPassword is a flag that indicates whether this product will be used
+	// to purchase a password, e.g. for a software product. Please consult
+	// your Store Manager before setting a value for this field.
+	IsPassword *bool `json:"isPassword,omitempty"`
+	// KeepPrice is a flag that indicates whether the price of the product
+	// will or will not be calculated by the catalog. Please consult your
+	// Store Manager before setting a value for this field.
+	KeepPrice *bool `json:"keepPrice,omitempty"`
 	// Keywords is a list of aliases for the product.
 	Keywords []string `json:"keywords,omitempty"`
 	// Leadtime is the number of days for delivery.
@@ -990,12 +1728,44 @@ type UpsertProduct struct {
 	MultiSupplierName string `json:"multiSupplierName,omitempty"`
 	// Name of the product. The product name is a required field
 	Name string `json:"name,omitempty"`
+	// NeedsGoodsReceipt is a flag that indicates whether this product
+	// requires a goods receipt process. Please consult your Store Manager
+	// before setting a value for this field.
+	NeedsGoodsReceipt *bool `json:"needsGoodsReceipt,omitempty"`
+	// NfBasePrice: NFBasePrice represents a part for calculating metal
+	// surcharges. Please consult your Store Manager before setting a value
+	// for this field.
+	NfBasePrice *float64 `json:"nfBasePrice,omitempty"`
+	// NfBasePriceQuantity: NFBasePriceQuantity represents a part for
+	// calculating metal surcharges. Please consult your Store Manager before
+	// setting a value for this field.
+	NfBasePriceQuantity *float64 `json:"nfBasePriceQuantity,omitempty"`
+	// NfCndID: NFCndID represents the key to calculate metal surcharges.
+	// Please consult your Store Manager before setting a value for this
+	// field.
+	NfCndID string `json:"nfCndId,omitempty"`
+	// NfScale: NFScale represents a part for calculating metal surcharges.
+	// Please consult your Store Manager before setting a value for this
+	// field.
+	NfScale *float64 `json:"nfScale,omitempty"`
+	// NfScaleQuantity: NFScaleQuantity represents a part for calculating
+	// metal surcharges. Please consult your Store Manager before setting a
+	// value for this field.
+	NfScaleQuantity *float64 `json:"nfScaleQuantity,omitempty"`
+	// Orderable is a flag that indicates whether this product will be
+	// orderable to the end-user when shopping. Please consult your Store
+	// Manager before setting a value for this field.
+	Orderable *bool `json:"orderable,omitempty"`
 	// OrderUnit is the order unit of the product, a 3-character ISO code
 	// (usually project-specific). OrderUnit is a required field.
 	OrderUnit string `json:"ou,omitempty"`
 	// Price is the net price (per order unit) of the product for the
 	// end-user. Price is a required field.
 	Price float64 `json:"price,omitempty"`
+	// PriceFormula represents the formula to calculate the price of the
+	// product. Please consult your Store Manager before setting a value for
+	// this field.
+	PriceFormula string `json:"priceFormula,omitempty"`
 	// PriceQty is the quantity for which the price is specified (default:
 	// 1.0).
 	PriceQty *float64 `json:"priceQty,omitempty"`
@@ -1007,6 +1777,14 @@ type UpsertProduct struct {
 	QuantityMax *float64 `json:"quantityMax,omitempty"`
 	// QuantityMin is the minimum order quantity for this product.
 	QuantityMin *float64 `json:"quantityMin,omitempty"`
+	// Rateable is a flag that indicates whether the product can be rated by
+	// end-users. Please consult your Store Manager before setting a value for
+	// this field.
+	Rateable *bool `json:"rateable,omitempty"`
+	// RateableOnlyIfOrdered is a flag that indicates whether the product can
+	// be rated only after being ordered. Please consult your Store Manager
+	// before setting a value for this field.
+	RateableOnlyIfOrdered *bool `json:"rateableOnlyIfOrdered,omitempty"`
 	// References defines cross-product references, e.g. alternatives or
 	// follow-up products.
 	References []*Reference `json:"references,omitempty"`
@@ -1030,6 +1808,10 @@ type UpsertProduct struct {
 	Thumbnail string `json:"thumbnail,omitempty"`
 	// Unspscs is a list of UNSPSC categories the product belongs to.
 	Unspscs []*Unspsc `json:"unspscs,omitempty"`
+	// Visible is a flag that indicates whether this product will be visible
+	// to the end-user when shopping. Please consult your Store Manager before
+	// setting a value for this field.
+	Visible *bool `json:"visible,omitempty"`
 }
 
 // UpsertProductResponse is the outcome of a successful request to upsert

@@ -50,7 +50,7 @@ var (
 
 const (
 	title   = "Meplato Store API"
-	version = "2.0.4"
+	version = "2.1.0"
 	baseURL = "https://store.meplato.com/api/v2"
 )
 
@@ -100,6 +100,15 @@ type Catalog struct {
 	Currency string `json:"currency,omitempty"`
 	// Description of the catalog.
 	Description string `json:"description,omitempty"`
+	// DownloadChecksum represents the checksum of the catalog last
+	// downloaded.
+	DownloadChecksum string `json:"downloadChecksum,omitempty"`
+	// DownloadInterval represents the interval to use for checking new
+	// versions of a catalog at the DownloadURL.
+	DownloadInterval string `json:"downloadInterval,omitempty"`
+	// DownloadURL represents a URL which is periodically downloaded and
+	// imported as a new catalog.
+	DownloadURL string `json:"downloadUrl,omitempty"`
 	// ErpNumberBuyer: ERPNumberBuyer is the number of the merchant of this
 	// catalog in the SAP/ERP system of the buyer.
 	ErpNumberBuyer string `json:"erpNumberBuyer,omitempty"`
@@ -192,6 +201,8 @@ type Catalog struct {
 	// SupportsOciValidate indicates whether a catalog supports the OCI
 	// VALIDATE transaction.
 	SupportsOciValidate bool `json:"supportsOciValidate,omitempty"`
+	// Type of catalog, e.g. corporate or basic.
+	Type string `json:"type,omitempty"`
 	// Updated is the last modification date and time of the catalog.
 	Updated *time.Time `json:"updated,omitempty"`
 	// ValidFrom is the date the catalog becomes effective (YYYY-MM-DD).
