@@ -50,7 +50,7 @@ var (
 
 const (
 	title   = "Meplato Store API"
-	version = "2.1.0"
+	version = "2.1.1"
 	baseURL = "https://store.meplato.com/api/v2"
 )
 
@@ -124,6 +124,9 @@ type Catalog struct {
 	KeepOriginalBlobs bool `json:"keepOriginalBlobs,omitempty"`
 	// Kind is store#catalog for a catalog entity.
 	Kind string `json:"kind,omitempty"`
+	// KpiSummary: KPISummary returns the outcome of analyzing the contents
+	// for key performance indicators.
+	KpiSummary *KPISummary `json:"kpiSummary,omitempty"`
 	// Language is the IETF language tag of the language of all products in
 	// the catalog (e.g. de or pt-BR).
 	Language string `json:"language,omitempty"`
@@ -209,6 +212,33 @@ type Catalog struct {
 	ValidFrom *string `json:"validFrom,omitempty"`
 	// ValidUntil is the date the catalog expires (YYYY-MM-DD).
 	ValidUntil *string `json:"validUntil,omitempty"`
+}
+
+// KPISummary represents the outcome of analyzing the contents for key
+// performance indicators.
+type KPISummary struct {
+	// Coefficients represents the weight that is used to calculate the
+	// weighted coefficients for a criteria. It relies on the medal stored in
+	// DegreesOfFulfillment.
+	Coefficients map[string]float64 `json:"coefficients,omitempty"`
+	// CreatedAt is the date/time when the KPI summary has been created.
+	CreatedAt time.Time `json:"createdAt,omitempty"`
+	// DegreesOfFulfillment represents the medal for all KPI criteria: 3 for
+	// gold, 2 for silver, 1 for bronze, 0 for no medal.
+	DegreesOfFulfillment map[string]int `json:"degreesOfFulfillment,omitempty"`
+	// FinalResult returns a value between 0.0 and 1.0 that describes the
+	// weighted sum of all content-related test criteria.
+	FinalResult float64 `json:"finalResult,omitempty"`
+	// OverallResult returns 3 for a gold medal, 2 for a silver medal, 1 for a
+	// bronze medal, and 0 for no medal.
+	OverallResult int `json:"overallResult,omitempty"`
+	// TestResults represents the unweighted outcome for a specific KPI
+	// criteria, i.e. the percentage of products that fulfill the criteria.
+	TestResults map[string]float64 `json:"testResults,omitempty"`
+	// WeightedCoefficients is a value between 0.0 and 1.0 that represents the
+	// weighted outcome of a KPI criteria, as calculated by the coefficient
+	// and the test result.
+	WeightedCoefficients map[string]float64 `json:"weightedCoefficients,omitempty"`
 }
 
 // Project describes customer-specific settings, typically encompassing a

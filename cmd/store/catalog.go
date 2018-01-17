@@ -66,6 +66,11 @@ func (c *catalogCommand) Run(args []string) error {
 		} else {
 			fmt.Printf("%20s: %d\n", "# products live", 0)
 		}
+		if kpi := c.KpiSummary; kpi != nil {
+			fmt.Printf("%20s: %.2f%%\n", "KPI score", kpi.FinalResult*100)
+		} else {
+			fmt.Printf("%20s: n/a\n", "KPI score")
+		}
 	}
 
 	return nil
