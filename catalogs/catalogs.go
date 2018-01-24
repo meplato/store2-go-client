@@ -50,7 +50,7 @@ var (
 
 const (
 	title   = "Meplato Store API"
-	version = "2.1.1"
+	version = "2.1.2"
 	baseURL = "https://store.meplato.com/api/v2"
 )
 
@@ -98,6 +98,9 @@ type Catalog struct {
 	// Currency is the ISO-4217 currency code that is used for all products in
 	// the catalog (e.g. EUR or USD).
 	Currency string `json:"currency,omitempty"`
+	// CustFields is an array of generic name/value pairs for
+	// customer-specific attributes.
+	CustFields []*CustField `json:"custFields,omitempty"`
 	// Description of the catalog.
 	Description string `json:"description,omitempty"`
 	// DownloadChecksum represents the checksum of the catalog last
@@ -212,6 +215,15 @@ type Catalog struct {
 	ValidFrom *string `json:"validFrom,omitempty"`
 	// ValidUntil is the date the catalog expires (YYYY-MM-DD).
 	ValidUntil *string `json:"validUntil,omitempty"`
+}
+
+// CustField describes a generic name/value pair. Its purpose is to
+// provide a mechanism for customer-specific fields.
+type CustField struct {
+	// Name is the name of the customer-specific field, e.g. TaxRate.
+	Name string `json:"name,omitempty"`
+	// Value is the value of the customer-specific field, e.g. 19%%.
+	Value string `json:"value,omitempty"`
 }
 
 // KPISummary represents the outcome of analyzing the contents for key
