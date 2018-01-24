@@ -1,5 +1,7 @@
 # Meplato Store 2 API Go Client
 
+[![Build Status](https://travis-ci.org/meplato/store2-go-client.svg?branch=master)](https://travis-ci.org/meplato/store2-go-client)
+
 This is the Go client for the Meplato Store 2 API. It consists of a library
 to integrate your infrastructure with Meplato suite for suppliers. It also
 has a command line tool you can use to immediately interact with Meplato Store.
