@@ -50,7 +50,7 @@ var (
 
 const (
 	title   = "Meplato Store API"
-	version = "2.1.2"
+	version = "2.1.3"
 	baseURL = "https://store.meplato.com/api/v2"
 )
 
@@ -333,6 +333,8 @@ type CreateProduct struct {
 	// Please consult your Store Manager before setting a value for this
 	// field.
 	Incomplete *bool `json:"incomplete,omitempty"`
+	// Intrastat specifies required data for Intrastat messages.
+	Intrastat *Intrastat `json:"intrastat,omitempty"`
 	// IsPassword is a flag that indicates whether this product will be used
 	// to purchase a password, e.g. for a software product. Please consult
 	// your Store Manager before setting a value for this field.
@@ -504,6 +506,41 @@ type Hazmat struct {
 	Text string `json:"text,omitempty"`
 }
 
+// Intrastat represents data required for Intrastat messages.
+type Intrastat struct {
+	// Code represents an identifier for a product group, e.g. the tariff code
+	// of "85167100" for "Electro-thermic coffee or tea makers, for domestic
+	// use". See https://www.zolltarifnummern.de/2018 for details. This is a
+	// required field.
+	Code string `json:"code,omitempty"`
+	// GrossWeight represents the gross weight of the product.
+	GrossWeight float64 `json:"grossWeight,omitempty"`
+	// MeansOfTransport indicates how the product was delivered to its
+	// destination, e.g. by air or by train. According to the INTRASTAT
+	// documentation, the following values are permitted (see
+	// https://www-idev.destatis.de/idev/doc/intra/doc/Intrahandel_Leitfaden.pd
+	// f for a complete list): 1 - Maritime traffic 2 - Rail transport 3 -
+	// Road traffic 4 - Air traffic 5 - Mailings / postal service 7 - Pipings
+	// 8 - Inland waterways 9 - Own drive The value of "6" is missing in that
+	// list, and it's not a typo.
+	MeansOfTransport string `json:"meansOfTransport,omitempty"`
+	// NetWeight represents the net weight of the product.
+	NetWeight float64 `json:"netWeight,omitempty"`
+	// OriginCountry represents the ISO code of the country where the product
+	// has been created/produced, e.g. DE. This is a required field.
+	OriginCountry string `json:"originCountry,omitempty"`
+	// TransactionType indicates the type of transaction, e.g. if it
+	// represents a purchase or a leasing contract. In the INTRASTAT
+	// documentation, this is represented by two digits, e.g. "11" for a
+	// purchase and "14" for leasing. See
+	// https://www-idev.destatis.de/idev/doc/intra/doc/Intrahandel_Leitfaden.pd
+	// f for details.
+	TransactionType string `json:"transactionType,omitempty"`
+	// WeightUnit is the ISO code of for NetWeight and/or GrossWeight, e.g.
+	// KGM.
+	WeightUnit string `json:"weightUnit,omitempty"`
+}
+
 // Product is a good or service in a catalog.
 type Product struct {
 	// Asin: ASIN is the unique Amazon article number of the product.
@@ -673,6 +710,8 @@ type Product struct {
 	ImageURL string `json:"imageURL,omitempty"`
 	// Incomplete is a flag that indicates whether this product is incomplete.
 	Incomplete *bool `json:"incomplete,omitempty"`
+	// Intrastat specifies required data for Intrastat messages.
+	Intrastat *Intrastat `json:"intrastat,omitempty"`
 	// IsPassword is a flag that indicates whether this product will be used
 	// to purchase a password, e.g. for a software product.
 	IsPassword *bool `json:"isPassword,omitempty"`
@@ -999,6 +1038,8 @@ type ReplaceProduct struct {
 	// Please consult your Store Manager before setting a value for this
 	// field.
 	Incomplete *bool `json:"incomplete,omitempty"`
+	// Intrastat specifies required data for Intrastat messages.
+	Intrastat *Intrastat `json:"intrastat,omitempty"`
 	// IsPassword is a flag that indicates whether this product will be used
 	// to purchase a password, e.g. for a software product. Please consult
 	// your Store Manager before setting a value for this field.
@@ -1378,6 +1419,8 @@ type UpdateProduct struct {
 	// Please consult your Store Manager before setting a value for this
 	// field.
 	Incomplete *bool `json:"incomplete,omitempty"`
+	// Intrastat specifies required data for Intrastat messages.
+	Intrastat *Intrastat `json:"intrastat,omitempty"`
 	// IsPassword is a flag that indicates whether this product will be used
 	// to purchase a password, e.g. for a software product. Please consult
 	// your Store Manager before setting a value for this field.
@@ -1697,6 +1740,8 @@ type UpsertProduct struct {
 	// Please consult your Store Manager before setting a value for this
 	// field.
 	Incomplete *bool `json:"incomplete,omitempty"`
+	// Intrastat specifies required data for Intrastat messages.
+	Intrastat *Intrastat `json:"intrastat,omitempty"`
 	// IsPassword is a flag that indicates whether this product will be used
 	// to purchase a password, e.g. for a software product. Please consult
 	// your Store Manager before setting a value for this field.
