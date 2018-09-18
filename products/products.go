@@ -50,7 +50,7 @@ var (
 
 const (
 	title   = "Meplato Store API"
-	version = "2.1.3"
+	version = "2.1.4"
 	baseURL = "https://store.meplato.com/api/v2"
 )
 
@@ -579,6 +579,10 @@ type Product struct {
 	ConversionDenumerator *float64 `json:"conversionDenumerator,omitempty"`
 	// ConversionNumerator is the numerator for calculating price quantities.
 	ConversionNumerator *float64 `json:"conversionNumerator,omitempty"`
+	// Country represents the ISO code of the country of origin, i.e. the
+	// country where the product has been created/produced, e.g. DE. If
+	// unspecified, the field is initialized with the catalog's country field.
+	Country string `json:"country,omitempty"`
 	// Created is the creation date and time of the product.
 	Created *time.Time `json:"created,omitempty"`
 	// ContentUnit is the content unit of the product, a 3-character ISO code
