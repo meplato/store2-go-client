@@ -50,7 +50,7 @@ var (
 
 const (
 	title   = "Meplato Store API"
-	version = "2.1.4"
+	version = "2.1.5"
 	baseURL = "https://store.meplato.com/api/v2"
 )
 
@@ -182,6 +182,10 @@ type CreateProduct struct {
 	// Please consult your Store Manager before setting a value for this
 	// field.
 	ConversionNumerator *float64 `json:"conversionNumerator,omitempty"`
+	// Country represents the ISO code of the country of origin, i.e. the
+	// country where the product has been created/produced, e.g. DE. If
+	// unspecified, the field is initialized with the catalog's country field.
+	Country string `json:"country,omitempty"`
 	// ContentUnit is the content unit of the product, a 3-character ISO code
 	// (usually project-specific).
 	ContentUnit string `json:"cu,omitempty"`
@@ -891,6 +895,10 @@ type ReplaceProduct struct {
 	// Please consult your Store Manager before setting a value for this
 	// field.
 	ConversionNumerator *float64 `json:"conversionNumerator,omitempty"`
+	// Country represents the ISO code of the country of origin, i.e. the
+	// country where the product has been created/produced, e.g. DE. If
+	// unspecified, the field is initialized with the catalog's country field.
+	Country string `json:"country,omitempty"`
 	// ContentUnit is the content unit of the product, a 3-character ISO code
 	// (usually project-specific).
 	ContentUnit string `json:"cu,omitempty"`
@@ -1272,6 +1280,10 @@ type UpdateProduct struct {
 	// Please consult your Store Manager before setting a value for this
 	// field.
 	ConversionNumerator *float64 `json:"conversionNumerator,omitempty"`
+	// Country represents the ISO code of the country of origin, i.e. the
+	// country where the product has been created/produced, e.g. DE. If
+	// unspecified, the field is initialized with the catalog's country field.
+	Country string `json:"country,omitempty"`
 	// ContentUnit is the content unit of the product, a 3-character ISO code
 	// (usually project-specific).
 	ContentUnit *string `json:"cu,omitempty"`
@@ -1593,6 +1605,10 @@ type UpsertProduct struct {
 	// Please consult your Store Manager before setting a value for this
 	// field.
 	ConversionNumerator *float64 `json:"conversionNumerator,omitempty"`
+	// Country represents the ISO code of the country of origin, i.e. the
+	// country where the product has been created/produced, e.g. DE. If
+	// unspecified, the field is initialized with the catalog's country field.
+	Country string `json:"country,omitempty"`
 	// ContentUnit is the content unit of the product, a 3-character ISO code
 	// (usually project-specific).
 	ContentUnit string `json:"cu,omitempty"`
