@@ -98,6 +98,8 @@ func (c *downloadCommand) Run(args []string) error {
 		pageToken = res.PageToken
 	}
 
+	csvw.Flush()
+
 	if c.verbose {
 		fmt.Fprintf(os.Stdout, "Downloaded %d products\n", n)
 	}
