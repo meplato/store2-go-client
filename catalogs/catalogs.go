@@ -28,7 +28,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/meplato/store2-go-client/internal/meplatoapi"
+	"github.com/meplato/store2-go-client/v2/internal/meplatoapi"
 )
 
 // Always reference these packages, just in case.
@@ -51,7 +51,7 @@ var (
 
 const (
 	title   = "Meplato Store API"
-	version = "2.1.6"
+	version = "2.1.7"
 	baseURL = "https://store.meplato.com/api/v2"
 )
 

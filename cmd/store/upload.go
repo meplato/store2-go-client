@@ -12,7 +12,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/meplato/store2-go-client/products"
+	"github.com/meplato/store2-go-client/v2/products"
 )
 
 // uploadCommand uploads to a specific catalog.

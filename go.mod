@@ -1,4 +1,4 @@
-module github.com/meplato/store2-go-client
+module github.com/meplato/store2-go-client/v2
 
 go 1.13
 

@@ -64,7 +64,7 @@ import (
 	"net/http"
 	"log"
 
-	"github.com/meplato/store2-go-client/catalogs"
+	"github.com/meplato/store2-go-client/v2/catalogs"
 )
 
 ...
