@@ -1,7 +1,7 @@
 # Meplato Store 2 API Go Client
 
-[![Test](https://github.com/meplato/store2-go-client.svg/workflows/Test/badge.svg)](https://github.com/meplato/store2-go-client.svg/actions)
-[![Release](https://github.com/meplato/store2-go-client.svg/workflows/Release/badge.svg)](https://github.com/meplato/store2-go-client.svg/actions)
+[![Test](https://github.com/meplato/store2-go-client/workflows/Test/badge.svg)](https://github.com/meplato/store2-go-client/actions)
+[![Release](https://github.com/meplato/store2-go-client/workflows/Release/badge.svg)](https://github.com/meplato/store2-go-client/actions)
 
 This is the Go client for the Meplato Store 2 API. It consists of a library
 to integrate your infrastructure with Meplato suite for suppliers. It also
