@@ -1,6 +1,7 @@
 # Meplato Store 2 API Go Client
 
-[![Build Status](https://travis-ci.org/meplato/store2-go-client.svg?branch=master)](https://travis-ci.org/meplato/store2-go-client)
+[![Test](https://github.com/meplato/store2-go-client.svg/workflows/Test/badge.svg)](https://github.com/meplato/store2-go-client.svg/actions)
+[![Release](https://github.com/meplato/store2-go-client.svg/workflows/Release/badge.svg)](https://github.com/meplato/store2-go-client.svg/actions)
 
 This is the Go client for the Meplato Store 2 API. It consists of a library
 to integrate your infrastructure with Meplato suite for suppliers. It also
@@ -25,14 +26,13 @@ with Meplato Store. First, we need to clone the repository and build the
 command line client:
 
 1. Get the library via: `go get github.com/meplato/store2-go-client`
-2. Install the dependencies: `make deps`
-3. Set the API token, e.g. via an environment variable:
+2. Set the API token, e.g. via an environment variable:
    `export STORE2_USER=<your-api-token>`.
    If you're an old Unix guy, you can also add a line to your `~/.netrc`
    file, e.g. `machine store2.meplato.com login <your-api-token>`; the
    command line client will happily pick it up without any environment
    variables.
-4. Build the command line client: `make`
+3. Build the command line client: `make`
 
 You should now have an executable binary at `./store`. If you run it, you
 can see a help page regarding the various commands.
@@ -64,7 +64,7 @@ import (
 	"net/http"
 	"log"
 
-	catalogs "github.com/meplato/store2-go-client/catalogs"
+	"github.com/meplato/store2-go-client/catalogs"
 )
 
 ...
@@ -110,7 +110,7 @@ Complete documentation for the Meplato Store 2 API can be found at
 
 This software is licensed under the Apache 2 license.
 
-    Copyright (c) 2015 Meplato GmbH, Switzerland <http://www.meplato.com>
+    Copyright (c) 2015 Meplato GmbH <http://www.meplato.com>
 
 		Licensed under the Apache License, Version 2.0 (the "License");
 		you may not use this file except in compliance with the License.
