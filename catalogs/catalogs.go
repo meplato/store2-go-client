@@ -28,7 +28,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/meplato/store2-go-client/internal/meplatoapi"
+	"github.com/meplato/store2-go-client/v2/internal/meplatoapi"
 )
 
 // Always reference these packages, just in case.

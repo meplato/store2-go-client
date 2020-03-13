@@ -12,7 +12,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/meplato/store2-go-client/products"
+	"github.com/meplato/store2-go-client/v2/products"
 )
 
 func getService(responseFile string) (*products.Service, *httptest.Server, error) {

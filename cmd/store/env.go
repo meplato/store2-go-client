@@ -9,8 +9,8 @@ import (
 
 	"github.com/bgentry/go-netrc/netrc"
 
-	"github.com/meplato/store2-go-client/catalogs"
-	"github.com/meplato/store2-go-client/products"
+	"github.com/meplato/store2-go-client/v2/catalogs"
+	"github.com/meplato/store2-go-client/v2/products"
 )
 
 func GetBaseURL() string {
