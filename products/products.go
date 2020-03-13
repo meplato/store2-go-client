@@ -1,4 +1,4 @@
-// Copyright (c) 2015-2016 Meplato GmbH, Switzerland.
+// Copyright (c) 2013-present Meplato GmbH.
 //
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
 // in compliance with the License. You may obtain a copy of the License at
@@ -17,6 +17,7 @@ package products
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -50,7 +51,7 @@ var (
 
 const (
 	title   = "Meplato Store API"
-	version = "2.1.5"
+	version = "2.1.6"
 	baseURL = "https://store.meplato.com/api/v2"
 )
 
@@ -192,6 +193,10 @@ type CreateProduct struct {
 	// CuPerOu describes the number of content units per order unit, e.g. the
 	// 12 in '1 case contains 12 bottles'.
 	CuPerOu *float64 `json:"cuPerOu,omitempty"`
+	// Currency is the ISO currency code for the prices, e.g. EUR or GBP. If
+	// you pass an empty currency code, it will be initialized with the
+	// catalog's currency.
+	Currency string `json:"currency,omitempty"`
 	// CustField1 is the CUST_FIELD1 of the SAP OCI specification. It has a
 	// maximum length of 10 characters.
 	CustField1 string `json:"custField1,omitempty"`
@@ -595,7 +600,9 @@ type Product struct {
 	// CuPerOu describes the number of content units per order unit, e.g. the
 	// 12 in '1 case contains 12 bottles'.
 	CuPerOu float64 `json:"cuPerOu,omitempty"`
-	// Currency is the ISO currency code for the prices, e.g. EUR or GBP.
+	// Currency is the ISO currency code for the prices, e.g. EUR or GBP. If
+	// you pass an empty currency code, it will be initialized with the
+	// catalog's currency.
 	Currency string `json:"currency,omitempty"`
 	// CustField1 is the CUST_FIELD1 of the SAP OCI specification. It has a
 	// maximum length of 10 characters.
@@ -905,6 +912,10 @@ type ReplaceProduct struct {
 	// CuPerOu describes the number of content units per order unit, e.g. the
 	// 12 in '1 case contains 12 bottles'.
 	CuPerOu *float64 `json:"cuPerOu,omitempty"`
+	// Currency is the ISO currency code for the prices, e.g. EUR or GBP. If
+	// you pass an empty currency code, it will be initialized with the
+	// catalog's currency.
+	Currency string `json:"currency,omitempty"`
 	// CustField1 is the CUST_FIELD1 of the SAP OCI specification. It has a
 	// maximum length of 10 characters.
 	CustField1 string `json:"custField1,omitempty"`
@@ -1283,13 +1294,17 @@ type UpdateProduct struct {
 	// Country represents the ISO code of the country of origin, i.e. the
 	// country where the product has been created/produced, e.g. DE. If
 	// unspecified, the field is initialized with the catalog's country field.
-	Country string `json:"country,omitempty"`
+	Country *string `json:"country,omitempty"`
 	// ContentUnit is the content unit of the product, a 3-character ISO code
 	// (usually project-specific).
 	ContentUnit *string `json:"cu,omitempty"`
 	// CuPerOu describes the number of content units per order unit, e.g. the
 	// 12 in '1 case contains 12 bottles'.
 	CuPerOu *float64 `json:"cuPerOu,omitempty"`
+	// Currency is the ISO currency code for the prices, e.g. EUR or GBP. If
+	// you pass an empty currency code, it will be initialized with the
+	// catalog's currency.
+	Currency *string `json:"currency,omitempty"`
 	// CustField1 is the CUST_FIELD1 of the SAP OCI specification. It has a
 	// maximum length of 10 characters.
 	CustField1 *string `json:"custField1,omitempty"`
@@ -1615,6 +1630,10 @@ type UpsertProduct struct {
 	// CuPerOu describes the number of content units per order unit, e.g. the
 	// 12 in '1 case contains 12 bottles'.
 	CuPerOu *float64 `json:"cuPerOu,omitempty"`
+	// Currency is the ISO currency code for the prices, e.g. EUR or GBP. If
+	// you pass an empty currency code, it will be initialized with the
+	// catalog's currency.
+	Currency string `json:"currency,omitempty"`
 	// CustField1 is the CUST_FIELD1 of the SAP OCI specification. It has a
 	// maximum length of 10 characters.
 	CustField1 string `json:"custField1,omitempty"`
@@ -1924,7 +1943,7 @@ func (s *CreateService) Product(product *CreateProduct) *CreateService {
 }
 
 // Do executes the operation.
-func (s *CreateService) Do() (*CreateProductResponse, error) {
+func (s *CreateService) Do(ctx context.Context) (*CreateProductResponse, error) {
 	var body io.Reader
 	body, err := meplatoapi.ReadJSON(s.product)
 	if err != nil {
@@ -1941,6 +1960,7 @@ func (s *CreateService) Do() (*CreateProductResponse, error) {
 	if err != nil {
 		return nil, err
 	}
+	req = req.WithContext(ctx)
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("Accept-Charset", "utf-8")
 	req.Header.Set("Content-Type", "application/json")
@@ -1998,7 +2018,7 @@ func (s *DeleteService) Spn(spn string) *DeleteService {
 }
 
 // Do executes the operation.
-func (s *DeleteService) Do() error {
+func (s *DeleteService) Do(ctx context.Context) error {
 	var body io.Reader
 	params := make(map[string]interface{})
 	params["area"] = s.area
@@ -2012,6 +2032,7 @@ func (s *DeleteService) Do() error {
 	if err != nil {
 		return err
 	}
+	req = req.WithContext(ctx)
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("Accept-Charset", "utf-8")
 	req.Header.Set("Content-Type", "application/json")
@@ -2065,7 +2086,7 @@ func (s *GetService) Spn(spn string) *GetService {
 }
 
 // Do executes the operation.
-func (s *GetService) Do() (*Product, error) {
+func (s *GetService) Do(ctx context.Context) (*Product, error) {
 	var body io.Reader
 	params := make(map[string]interface{})
 	params["area"] = s.area
@@ -2079,6 +2100,7 @@ func (s *GetService) Do() (*Product, error) {
 	if err != nil {
 		return nil, err
 	}
+	req = req.WithContext(ctx)
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("Accept-Charset", "utf-8")
 	req.Header.Set("Content-Type", "application/json")
@@ -2144,7 +2166,7 @@ func (s *ReplaceService) Spn(spn string) *ReplaceService {
 }
 
 // Do executes the operation.
-func (s *ReplaceService) Do() (*ReplaceProductResponse, error) {
+func (s *ReplaceService) Do(ctx context.Context) (*ReplaceProductResponse, error) {
 	var body io.Reader
 	body, err := meplatoapi.ReadJSON(s.product)
 	if err != nil {
@@ -2162,6 +2184,7 @@ func (s *ReplaceService) Do() (*ReplaceProductResponse, error) {
 	if err != nil {
 		return nil, err
 	}
+	req = req.WithContext(ctx)
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("Accept-Charset", "utf-8")
 	req.Header.Set("Content-Type", "application/json")
@@ -2227,7 +2250,7 @@ func (s *ScrollService) PIN(pin string) *ScrollService {
 }
 
 // Do executes the operation.
-func (s *ScrollService) Do() (*ScrollResponse, error) {
+func (s *ScrollService) Do(ctx context.Context) (*ScrollResponse, error) {
 	var body io.Reader
 	params := make(map[string]interface{})
 	params["area"] = s.area
@@ -2243,6 +2266,7 @@ func (s *ScrollService) Do() (*ScrollResponse, error) {
 	if err != nil {
 		return nil, err
 	}
+	req = req.WithContext(ctx)
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("Accept-Charset", "utf-8")
 	req.Header.Set("Content-Type", "application/json")
@@ -2319,7 +2343,7 @@ func (s *SearchService) Take(take int64) *SearchService {
 }
 
 // Do executes the operation.
-func (s *SearchService) Do() (*SearchResponse, error) {
+func (s *SearchService) Do(ctx context.Context) (*SearchResponse, error) {
 	var body io.Reader
 	params := make(map[string]interface{})
 	params["area"] = s.area
@@ -2344,6 +2368,7 @@ func (s *SearchService) Do() (*SearchResponse, error) {
 	if err != nil {
 		return nil, err
 	}
+	req = req.WithContext(ctx)
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("Accept-Charset", "utf-8")
 	req.Header.Set("Content-Type", "application/json")
@@ -2409,7 +2434,7 @@ func (s *UpdateService) Spn(spn string) *UpdateService {
 }
 
 // Do executes the operation.
-func (s *UpdateService) Do() (*UpdateProductResponse, error) {
+func (s *UpdateService) Do(ctx context.Context) (*UpdateProductResponse, error) {
 	var body io.Reader
 	body, err := meplatoapi.ReadJSON(s.product)
 	if err != nil {
@@ -2427,6 +2452,7 @@ func (s *UpdateService) Do() (*UpdateProductResponse, error) {
 	if err != nil {
 		return nil, err
 	}
+	req = req.WithContext(ctx)
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("Accept-Charset", "utf-8")
 	req.Header.Set("Content-Type", "application/json")
@@ -2485,7 +2511,7 @@ func (s *UpsertService) Product(product *UpsertProduct) *UpsertService {
 }
 
 // Do executes the operation.
-func (s *UpsertService) Do() (*UpsertProductResponse, error) {
+func (s *UpsertService) Do(ctx context.Context) (*UpsertProductResponse, error) {
 	var body io.Reader
 	body, err := meplatoapi.ReadJSON(s.product)
 	if err != nil {
@@ -2502,6 +2528,7 @@ func (s *UpsertService) Do() (*UpsertProductResponse, error) {
 	if err != nil {
 		return nil, err
 	}
+	req = req.WithContext(ctx)
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("Accept-Charset", "utf-8")
 	req.Header.Set("Content-Type", "application/json")

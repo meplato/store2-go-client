@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	"context"
 	"flag"
 	"fmt"
 	"os"
@@ -56,7 +57,7 @@ func (c *catalogsCommand) Run(args []string) error {
 	}
 	svc = svc.Sort(c.sort)
 
-	res, err := svc.Do()
+	res, err := svc.Do(context.Background())
 	if err != nil {
 		return err
 	}

@@ -1,4 +1,4 @@
-// Copyright (c) 2015-2016 Meplato GmbH, Switzerland.
+// Copyright (c) 2013-present Meplato GmbH.
 //
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
 // in compliance with the License. You may obtain a copy of the License at
@@ -17,6 +17,7 @@ package store2
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -50,7 +51,7 @@ var (
 
 const (
 	title   = "Meplato Store API"
-	version = "2.1.5"
+	version = "2.1.6"
 	baseURL = "https://store.meplato.com/api/v2"
 )
 
@@ -176,13 +177,14 @@ func NewMeService(s *Service) *MeService {
 }
 
 // Do executes the operation.
-func (s *MeService) Do() (*MeResponse, error) {
+func (s *MeService) Do(ctx context.Context) (*MeResponse, error) {
 	var body io.Reader
 	path := "/"
 	req, err := http.NewRequest("GET", s.s.BaseURL+path, body)
 	if err != nil {
 		return nil, err
 	}
+	req = req.WithContext(ctx)
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("Accept-Charset", "utf-8")
 	req.Header.Set("Content-Type", "application/json")
@@ -220,13 +222,14 @@ func NewPingService(s *Service) *PingService {
 }
 
 // Do executes the operation.
-func (s *PingService) Do() error {
+func (s *PingService) Do(ctx context.Context) error {
 	var body io.Reader
 	path := "/"
 	req, err := http.NewRequest("HEAD", s.s.BaseURL+path, body)
 	if err != nil {
 		return err
 	}
+	req = req.WithContext(ctx)
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("Accept-Charset", "utf-8")
 	req.Header.Set("Content-Type", "application/json")

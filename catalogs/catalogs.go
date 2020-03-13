@@ -1,4 +1,4 @@
-// Copyright (c) 2015-2016 Meplato GmbH, Switzerland.
+// Copyright (c) 2013-present Meplato GmbH.
 //
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
 // in compliance with the License. You may obtain a copy of the License at
@@ -17,6 +17,7 @@ package catalogs
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -50,7 +51,7 @@ var (
 
 const (
 	title   = "Meplato Store API"
-	version = "2.1.5"
+	version = "2.1.6"
 	baseURL = "https://store.meplato.com/api/v2"
 )
 
@@ -66,6 +67,10 @@ func New(client *http.Client) (*Service, error) {
 		return nil, errors.New("client is nil")
 	}
 	return &Service{client: client, BaseURL: baseURL}, nil
+}
+
+func (s *Service) Create() *CreateService {
+	return NewCreateService(s)
 }
 
 func (s *Service) Get() *GetService {
@@ -207,10 +212,52 @@ type Catalog struct {
 	// SupportsOciValidate indicates whether a catalog supports the OCI
 	// VALIDATE transaction.
 	SupportsOciValidate bool `json:"supportsOciValidate,omitempty"`
+	// Target represents the target system which can be either an empty
+	// string, "catscout" or "mall".
+	Target string `json:"target,omitempty"`
 	// Type of catalog, e.g. corporate or basic.
 	Type string `json:"type,omitempty"`
 	// Updated is the last modification date and time of the catalog.
 	Updated *time.Time `json:"updated,omitempty"`
+	// ValidFrom is the date the catalog becomes effective (YYYY-MM-DD).
+	ValidFrom *string `json:"validFrom,omitempty"`
+	// ValidUntil is the date the catalog expires (YYYY-MM-DD).
+	ValidUntil *string `json:"validUntil,omitempty"`
+}
+
+// CreateCatalog holds the properties of a new catalog.
+type CreateCatalog struct {
+	// AcceptTos: AcceptTOS represents a flag that must be set to true to
+	// accept the terms of service.
+	AcceptTos bool `json:"acceptTos,omitempty"`
+	// Country is the ISO-3166 alpha-2 code for the country that the catalog
+	// is destined for (e.g. DE or US).
+	Country string `json:"country,omitempty"`
+	// Currency is the ISO-4217 currency code that is used for all products in
+	// the catalog (e.g. EUR or USD).
+	Currency string `json:"currency,omitempty"`
+	// Description of the catalog.
+	Description string `json:"description,omitempty"`
+	// Language is the IETF language tag of the language of all products in
+	// the catalog (e.g. de or pt-BR).
+	Language string `json:"language,omitempty"`
+	// MerchantID: ID of the merchant.
+	MerchantID int64 `json:"merchantId,omitempty"`
+	// Name of the catalog.
+	Name string `json:"name,omitempty"`
+	// ProjectID: ID of the project.
+	ProjectID int64 `json:"projectId,omitempty"`
+	// ProjectMpcc: MPCC of the project.
+	ProjectMpcc string `json:"projectMpcc,omitempty"`
+	// SageContract represents the internal identifier at Meplato for the
+	// contract of this catalog.
+	SageContract string `json:"sageContract,omitempty"`
+	// SageNumber represents the internal identifier at Meplato for the
+	// merchant of this catalog.
+	SageNumber string `json:"sageNumber,omitempty"`
+	// Target represents the target system which can be either an empty
+	// string, "catscout" or "mall".
+	Target string `json:"target,omitempty"`
 	// ValidFrom is the date the catalog becomes effective (YYYY-MM-DD).
 	ValidFrom *string `json:"validFrom,omitempty"`
 	// ValidUntil is the date the catalog expires (YYYY-MM-DD).
@@ -347,6 +394,69 @@ type SearchResponse struct {
 	TotalItems int64 `json:"totalItems,omitempty"`
 }
 
+// Create a new catalog (admin only).
+type CreateService struct {
+	s       *Service
+	opt_    map[string]interface{}
+	hdr_    map[string]interface{}
+	catalog *CreateCatalog
+}
+
+// NewCreateService creates a new instance of CreateService.
+func NewCreateService(s *Service) *CreateService {
+	rs := &CreateService{s: s, opt_: make(map[string]interface{}), hdr_: make(map[string]interface{})}
+	return rs
+}
+
+// Catalog properties of the new catalog.
+func (s *CreateService) Catalog(catalog *CreateCatalog) *CreateService {
+	s.catalog = catalog
+	return s
+}
+
+// Do executes the operation.
+func (s *CreateService) Do(ctx context.Context) (*Catalog, error) {
+	var body io.Reader
+	body, err := meplatoapi.ReadJSON(s.catalog)
+	if err != nil {
+		return nil, err
+	}
+	params := make(map[string]interface{})
+	path := "/catalogs"
+	if len(params) > 0 {
+		query := url.Values{}
+		for k, v := range params {
+			query.Add(k, fmt.Sprintf("%v", v))
+		}
+		path += "?" + query.Encode()
+	}
+	req, err := http.NewRequest("POST", s.s.BaseURL+path, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	req.Header.Set("Accept", "application/json")
+	req.Header.Set("Accept-Charset", "utf-8")
+	req.Header.Set("Content-Type", "application/json")
+	req.Header.Set("User-Agent", meplatoapi.UserAgent)
+	if s.s.User != "" || s.s.Password != "" {
+		req.Header.Set("Authorization", meplatoapi.HTTPBasicAuthorizationHeader(s.s.User, s.s.Password))
+	}
+	res, err := s.s.client.Do(req)
+	if err != nil {
+		return nil, err
+	}
+	defer meplatoapi.CloseBody(res)
+	if err := meplatoapi.CheckResponse(res); err != nil {
+		return nil, err
+	}
+	ret := new(Catalog)
+	if err := json.NewDecoder(res.Body).Decode(ret); err != nil {
+		return nil, err
+	}
+	return ret, nil
+}
+
 // Get a single catalog.
 type GetService struct {
 	s    *Service
@@ -368,7 +478,7 @@ func (s *GetService) PIN(pin string) *GetService {
 }
 
 // Do executes the operation.
-func (s *GetService) Do() (*Catalog, error) {
+func (s *GetService) Do(ctx context.Context) (*Catalog, error) {
 	var body io.Reader
 	params := make(map[string]interface{})
 	params["pin"] = s.pin
@@ -380,6 +490,7 @@ func (s *GetService) Do() (*Catalog, error) {
 	if err != nil {
 		return nil, err
 	}
+	req = req.WithContext(ctx)
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("Accept-Charset", "utf-8")
 	req.Header.Set("Content-Type", "application/json")
@@ -423,7 +534,7 @@ func (s *PublishService) PIN(pin string) *PublishService {
 }
 
 // Do executes the operation.
-func (s *PublishService) Do() (*PublishResponse, error) {
+func (s *PublishService) Do(ctx context.Context) (*PublishResponse, error) {
 	var body io.Reader
 	params := make(map[string]interface{})
 	params["pin"] = s.pin
@@ -435,6 +546,7 @@ func (s *PublishService) Do() (*PublishResponse, error) {
 	if err != nil {
 		return nil, err
 	}
+	req = req.WithContext(ctx)
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("Accept-Charset", "utf-8")
 	req.Header.Set("Content-Type", "application/json")
@@ -478,7 +590,7 @@ func (s *PublishStatusService) PIN(pin string) *PublishStatusService {
 }
 
 // Do executes the operation.
-func (s *PublishStatusService) Do() (*PublishStatusResponse, error) {
+func (s *PublishStatusService) Do(ctx context.Context) (*PublishStatusResponse, error) {
 	var body io.Reader
 	params := make(map[string]interface{})
 	params["pin"] = s.pin
@@ -490,6 +602,7 @@ func (s *PublishStatusService) Do() (*PublishStatusResponse, error) {
 	if err != nil {
 		return nil, err
 	}
+	req = req.WithContext(ctx)
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("Accept-Charset", "utf-8")
 	req.Header.Set("Content-Type", "application/json")
@@ -541,7 +654,7 @@ func (s *PurgeService) PIN(pin string) *PurgeService {
 }
 
 // Do executes the operation.
-func (s *PurgeService) Do() (*PurgeResponse, error) {
+func (s *PurgeService) Do(ctx context.Context) (*PurgeResponse, error) {
 	var body io.Reader
 	params := make(map[string]interface{})
 	params["area"] = s.area
@@ -554,6 +667,7 @@ func (s *PurgeService) Do() (*PurgeResponse, error) {
 	if err != nil {
 		return nil, err
 	}
+	req = req.WithContext(ctx)
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("Accept-Charset", "utf-8")
 	req.Header.Set("Content-Type", "application/json")
@@ -614,7 +728,7 @@ func (s *SearchService) Take(take int64) *SearchService {
 }
 
 // Do executes the operation.
-func (s *SearchService) Do() (*SearchResponse, error) {
+func (s *SearchService) Do(ctx context.Context) (*SearchResponse, error) {
 	var body io.Reader
 	params := make(map[string]interface{})
 	if v, ok := s.opt_["q"]; ok {
@@ -637,6 +751,7 @@ func (s *SearchService) Do() (*SearchResponse, error) {
 	if err != nil {
 		return nil, err
 	}
+	req = req.WithContext(ctx)
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("Accept-Charset", "utf-8")
 	req.Header.Set("Content-Type", "application/json")

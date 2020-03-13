@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"encoding/csv"
 	"errors"
 	"flag"
@@ -66,12 +67,12 @@ func (c *downloadCommand) Run(args []string) error {
 	csvw := csv.NewWriter(out)
 	csvw.Comma = ';'
 	csvw.UseCRLF = true
-	err = csvw.Write([]string{"Supplier SKU", "Name", "Price", "Price Qty", "Currency", "Order unit", "Manufacturer", "Manufacturer SKU", "GTIN/EAN"})
+	_ = csvw.Write([]string{"Supplier SKU", "Name", "Price", "Price Qty", "Currency", "Order unit", "Manufacturer", "Manufacturer SKU", "GTIN/EAN"})
 
 	var n int
 	var pageToken string
 	for {
-		res, err := service.Scroll().PIN(args[0]).Area(c.area).PageToken(pageToken).Do()
+		res, err := service.Scroll().PIN(args[0]).Area(c.area).PageToken(pageToken).Do(context.Background())
 		if err != nil {
 			return err
 		}

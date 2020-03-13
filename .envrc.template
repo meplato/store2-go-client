@@ -1,0 +1,4 @@
+export GO111MODULE=on
+
+export STORE2_USER=
+export STORE2_PASSWORD=

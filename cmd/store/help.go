@@ -8,7 +8,6 @@ import (
 
 // helpCommand prints help for a command.
 type helpCommand struct {
-	debug bool
 }
 
 func init() {

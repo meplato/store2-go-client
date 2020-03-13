@@ -2,6 +2,7 @@ package jobs_test
 
 import (
 	"bufio"
+	"context"
 	"fmt"
 	"io/ioutil"
 	"net/http"
@@ -56,7 +57,7 @@ func TestJobsSearch(t *testing.T) {
 	}
 	defer ts.Close()
 
-	res, err := service.Search().Do()
+	res, err := service.Search().Do(context.Background())
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -75,7 +76,7 @@ func TestJobGet(t *testing.T) {
 	}
 	defer ts.Close()
 
-	job, err := service.Get().ID("58097dc3-b279-49b5-a5da-23eb1c77d840").Do()
+	job, err := service.Get().ID("58097dc3-b279-49b5-a5da-23eb1c77d840").Do(context.Background())
 	if err != nil {
 		t.Fatal(err)
 	}
