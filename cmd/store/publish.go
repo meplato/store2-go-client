@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"errors"
 	"flag"
 	"fmt"
@@ -11,7 +12,6 @@ import (
 
 // publishCommand publishes a catalog.
 type publishCommand struct {
-	pin string
 }
 
 func init() {
@@ -48,7 +48,7 @@ func (c *publishCommand) Run(args []string) error {
 	}
 
 	// Start publish
-	_, err = service.Publish().PIN(pin).Do()
+	_, err = service.Publish().PIN(pin).Do(context.Background())
 	if err != nil {
 		return err
 	}
@@ -57,7 +57,7 @@ func (c *publishCommand) Run(args []string) error {
 	for {
 		time.Sleep(5 * time.Second)
 
-		status, err := service.PublishStatus().PIN(pin).Do()
+		status, err := service.PublishStatus().PIN(pin).Do(context.Background())
 		if err != nil {
 			return err
 		}

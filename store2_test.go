@@ -2,6 +2,7 @@ package store2_test
 
 import (
 	"bufio"
+	"context"
 	"fmt"
 	"io/ioutil"
 	"net/http"
@@ -56,7 +57,7 @@ func TestPing(t *testing.T) {
 	}
 	defer ts.Close()
 
-	err = service.Ping().Do()
+	err = service.Ping().Do(context.Background())
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -72,7 +73,7 @@ func TestPingUnauthorized(t *testing.T) {
 	}
 	defer ts.Close()
 
-	err = service.Ping().Do()
+	err = service.Ping().Do(context.Background())
 	if err == nil {
 		t.Fatalf("expected error; got: %v", err)
 	}
@@ -88,7 +89,7 @@ func TestMe(t *testing.T) {
 	}
 	defer ts.Close()
 
-	info, err := service.Me().Do()
+	info, err := service.Me().Do(context.Background())
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -115,7 +116,7 @@ func TestMeUnauthorized(t *testing.T) {
 	}
 	defer ts.Close()
 
-	info, err := service.Me().Do()
+	info, err := service.Me().Do(context.Background())
 	if err == nil {
 		t.Fatal("expected error; got: nil")
 	}

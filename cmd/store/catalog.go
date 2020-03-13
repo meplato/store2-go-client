@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"errors"
 	"flag"
 	"fmt"
@@ -9,7 +10,6 @@ import (
 
 // catalogCommand gets details about one catalog.
 type catalogCommand struct {
-	pin string
 }
 
 func init() {
@@ -45,7 +45,7 @@ func (c *catalogCommand) Run(args []string) error {
 	}
 
 	for i, pin := range args {
-		c, err := service.Get().PIN(pin).Do()
+		c, err := service.Get().PIN(pin).Do(context.Background())
 		if err != nil {
 			return err
 		}

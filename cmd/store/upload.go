@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"encoding/csv"
 	"errors"
 	"flag"
@@ -18,7 +19,6 @@ import (
 type uploadCommand struct {
 	verbose bool
 	infile  string
-	outfile string
 }
 
 func init() {
@@ -189,7 +189,7 @@ func (c *uploadCommand) Run(args []string) error {
 			if r.TaxCode != nil {
 				p.TaxCode = *r.TaxCode
 			}
-			_, err := service.Create().PIN(pin).Area("work").Product(p).Do()
+			_, err := service.Create().PIN(pin).Area("work").Product(p).Do(context.Background())
 			if err != nil {
 				return fmt.Errorf("line %d: create failed: %v", line, err)
 			}
@@ -209,13 +209,13 @@ func (c *uploadCommand) Run(args []string) error {
 					Code:    *r.EclassCode,
 				})
 			}
-			_, err := service.Update().PIN(pin).Area("work").Spn(r.SPN).Product(p).Do()
+			_, err := service.Update().PIN(pin).Area("work").Spn(r.SPN).Product(p).Do(context.Background())
 			if err != nil {
 				return fmt.Errorf("line %d: update failed: %v", line, err)
 			}
 		case "D":
 			// Delete a product
-			err := service.Delete().PIN(pin).Area("work").Spn(r.SPN).Do()
+			err := service.Delete().PIN(pin).Area("work").Spn(r.SPN).Do(context.Background())
 			if err != nil {
 				return fmt.Errorf("line %d: delete failed: %v", line, err)
 			}

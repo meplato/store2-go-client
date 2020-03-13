@@ -76,13 +76,13 @@ Commands:
 `)
 
 	var names []string
-	for name, _ := range commands {
+	for name := range commands {
 		names = append(names, name)
 	}
 	sort.Strings(names)
 
 	for _, name := range names {
-		cmd, _ := commands[name]
+		cmd := commands[name]
 		if des, ok := cmd.(describer); ok {
 			Errorf("  %-15s %s\n", name, des.Describe())
 		}
@@ -90,7 +90,7 @@ Commands:
 
 	Errorf("\nExamples:\n")
 	for _, name := range names {
-		cmd, _ := commands[name]
+		cmd := commands[name]
 		if ex, ok := cmd.(exampler); ok {
 			exs := ex.Examples()
 			if len(exs) > 0 {

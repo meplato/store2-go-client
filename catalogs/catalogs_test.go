@@ -2,6 +2,7 @@ package catalogs_test
 
 import (
 	"bufio"
+	"context"
 	"fmt"
 	"io/ioutil"
 	"net/http"
@@ -56,12 +57,57 @@ func TestCatalogSearch(t *testing.T) {
 	}
 	defer ts.Close()
 
-	res, err := service.Search().Do()
+	res, err := service.Search().Do(context.Background())
 	if err != nil {
 		t.Fatal(err)
 	}
 	if res == nil {
 		t.Fatal("expected response; got: nil")
+	}
+}
+
+func TestCatalogCreate(t *testing.T) {
+	service, ts, err := getService("catalogs.create.success")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if service == nil {
+		t.Fatal("expected service; got: nil")
+	}
+	defer ts.Close()
+
+	create := &catalogs.CreateCatalog{
+		AcceptTos:  true,
+		MerchantID: 1,
+		Name:       "test2",
+		// Description: "",
+		// ProjectID:    0,
+		ProjectMpcc:  "meplato",
+		ValidFrom:    nil,
+		ValidUntil:   nil,
+		Country:      "DE",
+		Currency:     "EUR",
+		Language:     "de",
+		Target:       "mall",
+		SageNumber:   "",
+		SageContract: "",
+	}
+
+	cres, err := service.Create().Catalog(create).Do(context.Background())
+	if err != nil {
+		t.Fatal(err)
+	}
+	if cres == nil {
+		t.Fatal("expected response; got: nil")
+	}
+	if cres.Kind != "store#catalog" {
+		t.Fatalf("expected kind %q; got: %v", "store#catalog", cres.Kind)
+	}
+	if cres.ID != 81 {
+		t.Fatalf("expected catalog id of %d; got: %d", 81, cres.ID)
+	}
+	if cres.PIN != "48F31F33AD" {
+		t.Fatalf("expected catalog pin of %q; got: %q", "48F31F33AD", cres.PIN)
 	}
 }
 
@@ -75,7 +121,7 @@ func TestCatalogGet(t *testing.T) {
 	}
 	defer ts.Close()
 
-	c, err := service.Get().PIN("5094310527").Do()
+	c, err := service.Get().PIN("5094310527").Do(context.Background())
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -101,7 +147,7 @@ func TestCatalogPublish(t *testing.T) {
 	defer ts.Close()
 
 	// Publish
-	pub, err := service.Publish().PIN("5094310527").Do()
+	pub, err := service.Publish().PIN("5094310527").Do(context.Background())
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -156,7 +202,7 @@ func TestCatalogPurge(t *testing.T) {
 	}
 	defer ts.Close()
 
-	c, err := service.Purge().PIN("5094310527").Area("work").Do()
+	c, err := service.Purge().PIN("5094310527").Area("work").Do(context.Background())
 	if err != nil {
 		t.Fatal(err)
 	}

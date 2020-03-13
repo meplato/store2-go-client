@@ -2,9 +2,9 @@ package products_test
 
 import (
 	"bufio"
+	"context"
 	"fmt"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"net/http/httptest"
 	"os"
@@ -34,7 +34,6 @@ func getService(responseFile string) (*products.Service, *httptest.Server, error
 			return
 		}
 		w.WriteHeader(res.StatusCode)
-		log.Print(string(bs))
 		fmt.Fprint(w, string(bs))
 	}))
 
@@ -58,7 +57,7 @@ func TestProductSearch(t *testing.T) {
 	}
 	defer ts.Close()
 
-	res, err := service.Search().PIN("PIN").Area("work").Skip(0).Take(30).Do()
+	res, err := service.Search().PIN("PIN").Area("work").Skip(0).Take(30).Do(context.Background())
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -77,7 +76,7 @@ func TestProductGet(t *testing.T) {
 	}
 	defer ts.Close()
 
-	res, err := service.Get().PIN("AD8CCDD5F9").Area("work").Spn("50763599").Do()
+	res, err := service.Get().PIN("AD8CCDD5F9").Area("work").Spn("50763599").Do(context.Background())
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -103,7 +102,7 @@ func TestProductCreate(t *testing.T) {
 		OrderUnit: "PCE",
 	}
 
-	cres, err := service.Create().PIN("AD8CCDD5F9").Area("work").Product(create).Do()
+	cres, err := service.Create().PIN("AD8CCDD5F9").Area("work").Product(create).Do(context.Background())
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -128,7 +127,7 @@ func TestProductDelete(t *testing.T) {
 	}
 	defer ts.Close()
 
-	err = service.Delete().PIN("AD8CCDD5F9").Area("work").Spn("1000").Do()
+	err = service.Delete().PIN("AD8CCDD5F9").Area("work").Spn("1000").Do(context.Background())
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -151,7 +150,7 @@ func TestProductUpdate(t *testing.T) {
 		Price: &newPrice,
 	}
 
-	ures, err := service.Update().PIN("AD8CCDD5F9").Area("work").Spn("MBA11").Product(update).Do()
+	ures, err := service.Update().PIN("AD8CCDD5F9").Area("work").Spn("MBA11").Product(update).Do(context.Background())
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -182,7 +181,7 @@ func TestProductReplace(t *testing.T) {
 		OrderUnit: "PK",
 	}
 
-	rres, err := service.Replace().PIN("AD8CCDD5F9").Area("work").Spn("MBA11").Product(replace).Do()
+	rres, err := service.Replace().PIN("AD8CCDD5F9").Area("work").Spn("MBA11").Product(replace).Do(context.Background())
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -214,7 +213,7 @@ func TestProductCreateParameterMissing(t *testing.T) {
 		OrderUnit: "PCE",
 	}
 
-	cres, err := service.Create().PIN("AD8CCDD5F9").Area("work").Product(create).Do()
+	cres, err := service.Create().PIN("AD8CCDD5F9").Area("work").Product(create).Do(context.Background())
 	if err == nil {
 		t.Fatal(err)
 	}
@@ -235,7 +234,7 @@ func TestProductScroll(t *testing.T) {
 	defer ts.Close()
 
 	// Get first result set
-	res, err := service.Scroll().PIN("AD8CCDD5F9").Area("work").Do()
+	res, err := service.Scroll().PIN("AD8CCDD5F9").Area("work").Do(context.Background())
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -287,7 +286,7 @@ func TestProductUpsert(t *testing.T) {
 		OrderUnit: "PCE",
 	}
 
-	res, err := service.Upsert().PIN("AD8CCDD5F9").Area("work").Product(up).Do()
+	res, err := service.Upsert().PIN("AD8CCDD5F9").Area("work").Product(up).Do(context.Background())
 	if err != nil {
 		t.Fatal(err)
 	}
