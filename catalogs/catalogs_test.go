@@ -77,7 +77,6 @@ func TestCatalogCreate(t *testing.T) {
 	defer ts.Close()
 
 	create := &catalogs.CreateCatalog{
-		AcceptTos:  true,
 		MerchantID: 1,
 		Name:       "test2",
 		// Description: "",
