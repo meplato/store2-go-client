@@ -227,9 +227,6 @@ type Catalog struct {
 
 // CreateCatalog holds the properties of a new catalog.
 type CreateCatalog struct {
-	// AcceptTos: AcceptTOS represents a flag that must be set to true to
-	// accept the terms of service.
-	AcceptTos bool `json:"acceptTos,omitempty"`
 	// Country is the ISO-3166 alpha-2 code for the country that the catalog
 	// is destined for (e.g. DE or US).
 	Country string `json:"country,omitempty"`
