@@ -269,6 +269,44 @@ func TestProductScroll(t *testing.T) {
 	*/
 }
 
+func TestProductDifferentialScroll(t *testing.T) {
+	service, ts, err := getService("products.scroll.differential.success")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if service == nil {
+		t.Fatal("expected service; got: nil")
+	}
+	defer ts.Close()
+
+	// Get first result set (difference between version 2 and 3)
+	res, err := service.Scroll().PIN("AD8CCDD5F9").Area("live").Version(3).Mode("diff").Do(context.Background())
+	if err != nil {
+		t.Fatal(err)
+	}
+	if res == nil {
+		t.Fatal("expected response; got: nil")
+	}
+	if res.PageToken == "" {
+		t.Fatalf("expected page token; got: %v", res.PageToken)
+	}
+	if len(res.Items) == 0 {
+		t.Fatalf("expected some results; got: %v", res.Items)
+	}
+	if int64(len(res.Items)) != res.TotalItems {
+		t.Fatalf("TotalItems do not match number of items; want: %d, got: %d", res.TotalItems, len(res.Items))
+	}
+	if res.Kind != "store#products" {
+		t.Fatalf("expected store#products; got: %s", res.Kind)
+	}
+
+	for _, item := range res.Items {
+		if item.Mode == "" {
+			t.Fatalf("expected Mode to be set; got: %q", item.Mode)
+		}
+	}
+}
+
 func TestProductUpsert(t *testing.T) {
 	service, ts, err := getService("products.upsert.success")
 	if err != nil {

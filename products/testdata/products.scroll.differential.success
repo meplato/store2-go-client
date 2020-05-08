@@ -1,0 +1,311 @@
+HTTP/1.1 200 OK
+Cache-Control: private, no-cache
+Content-Type: application/json; charset=utf-8
+Last-Modified: Tue, 31 Mar 2015 14:54:37 GMT
+P3p: CP="This is not a P3P policy!"
+Vary: Cookie
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+X-Ua-Compatible: IE=edge
+X-Xss-Protection: 1; mode=block
+Date: Tue, 31 Mar 2015 14:54:37 GMT
+
+{
+  "kind": "store#products",
+  "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/scroll?pretty=1\u0026pageToken=c2NhbjsyOzc1OTpFUDU3a3FNelNPdWlzR1dnZFNsTFJBOzc2MDpFUDU3a3FNelNPdWlzR1dnZFNsTFJBOzE7dG90YWxfaGl0czo5ODYyMTs=",
+  "nextLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/scroll?pageToken=c2NhbjsyOzc1OTpFUDU3a3FNelNPdWlzR1dnZFNsTFJBOzc2MDpFUDU3a3FNelNPdWlzR1dnZFNsTFJBOzE7dG90YWxfaGl0czo5ODYyMTs%3D\u0026pretty=1",
+  "pageToken": "c2NhbjsyOzc1OTpFUDU3a3FNelNPdWlzR1dnZFNsTFJBOzc2MDpFUDU3a3FNelNPdWlzR1dnZFNsTFJBOzE7dG90YWxfaGl0czo5ODYyMTs=",
+  "totalItems": 3,
+  "items": [
+    {
+      "kind": "store#product",
+      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50763599?pretty=1",
+      "id": "50763599@12",
+      "merchantId": 8,
+      "projectId": 1,
+      "catalogId": 12,
+      "spn": "50763599",
+      "name": "Heller BOHRER SORT. IN KASETTE 9TLG. 273824",
+      "description": "Bohrerkassette\n\n 9-teilig, bestehend aus:\nBeton-/Steinbohrer Power 3000\n4/5/6/8 mm\nHSS-G-Super-Stahlbohrer 900\n3/4/5/6/8 mm",
+      "keywords": null,
+      "categories": [],
+      "eclasses": [
+        {
+          "version": "5.1",
+          "code": "21010100"
+        }
+      ],
+      "unspscs": [],
+      "scalePrices": [],
+      "currency": "EUR",
+      "priceQty": 1,
+      "ou": "PK",
+      "cuPerOu": 1,
+      "cu": "PCE",
+      "leadtime": 5,
+      "quantityMin": 1,
+      "quantityMax": null,
+      "quantityInterval": 1,
+      "taxCode": "0.190000",
+      "conditions": null,
+      "gtin": "4010159273824 ",
+      "bpn": "",
+      "mpn": "4010159273824",
+      "manufacturer": "ITW Heller GmbH",
+      "manufactcode": "",
+      "image": "50763599.jpg",
+      "thumbnail": "",
+      "datasheet": "",
+      "safetysheet": "",
+      "hazmats": [
+        {
+          "kind": "Gefahrgut",
+          "text": "NONE"
+        }
+      ],
+      "matgroup": "",
+      "erpGroupSupplier": "",
+      "extSchemaType": "",
+      "extCategoryId": "",
+      "extCategory": "",
+      "custField1": "",
+      "custField2": "",
+      "custField3": "",
+      "custField4": "",
+      "custField5": "",
+      "references": [
+        {
+          "kind": "others",
+          "spn": "505533",
+          "qty": 1
+        },
+        {
+          "kind": "others",
+          "spn": "518929",
+          "qty": 1
+        },
+        {
+          "kind": "others",
+          "spn": "518930",
+          "qty": 1
+        },
+        {
+          "kind": "others",
+          "spn": "518931",
+          "qty": 1
+        },
+        {
+          "kind": "others",
+          "spn": "50539736",
+          "qty": 1
+        },
+        {
+          "kind": "others",
+          "spn": "50539771",
+          "qty": 1
+        },
+        {
+          "kind": "others",
+          "spn": "50581235",
+          "qty": 1
+        },
+        {
+          "kind": "others",
+          "spn": "50765466",
+          "qty": 1
+        }
+      ],
+      "features": [],
+      "availability": {
+        "qty": 0
+      },
+      "messages": [],
+      "tags": null,
+      "imageURL": "https://store2.meplato.com/abc-elektronik/media?file=50763599.jpg\u0026h=230\u0026w=330",
+      "thumbnailURL": "https://store2.meplato.com/abc-elektronik/media?file=50763599.jpg\u0026h=90\u0026w=90",
+      "price": 10.92,
+      "extProductId": "50763599@12",
+      "mode": "Created",
+      "created": "2015-03-20T13:11:02Z",
+      "updated": "2015-03-20T13:11:02Z"
+    },
+    {
+      "kind": "store#product",
+      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50763601?pretty=1",
+      "id": "50763601@12",
+      "merchantId": 8,
+      "projectId": 1,
+      "catalogId": 12,
+      "spn": "50763601",
+      "name": "Heller QUICK-BIT KASS. 5TLG. HOLZ 265690",
+      "description": "QuickBit®-Satz Holz\n\n 5-teilig\n\n Inhalt: 3, 4, 5, 6, 8 mm",
+      "keywords": null,
+      "categories": [],
+      "eclasses": [
+        {
+          "version": "5.1",
+          "code": "21040190"
+        }
+      ],
+      "unspscs": [],
+      "scalePrices": [],
+      "currency": "EUR",
+      "priceQty": 1,
+      "ou": "PK",
+      "cuPerOu": 1,
+      "cu": "PCE",
+      "leadtime": 5,
+      "quantityMin": 1,
+      "quantityMax": null,
+      "quantityInterval": 1,
+      "taxCode": "0.190000",
+      "conditions": null,
+      "gtin": "4010159265690 ",
+      "bpn": "",
+      "mpn": "4010159265690",
+      "manufacturer": "ITW Heller GmbH",
+      "manufactcode": "",
+      "image": "50763601.jpg",
+      "thumbnail": "",
+      "datasheet": "",
+      "safetysheet": "",
+      "hazmats": [
+        {
+          "kind": "Gefahrgut",
+          "text": "NONE"
+        }
+      ],
+      "matgroup": "",
+      "erpGroupSupplier": "",
+      "extSchemaType": "",
+      "extCategoryId": "",
+      "extCategory": "",
+      "custField1": "",
+      "custField2": "",
+      "custField3": "",
+      "custField4": "",
+      "custField5": "",
+      "references": [
+        {
+          "kind": "others",
+          "spn": "505533",
+          "qty": 1
+        },
+        {
+          "kind": "others",
+          "spn": "518929",
+          "qty": 1
+        },
+        {
+          "kind": "others",
+          "spn": "518930",
+          "qty": 1
+        },
+        {
+          "kind": "others",
+          "spn": "518931",
+          "qty": 1
+        },
+        {
+          "kind": "others",
+          "spn": "50539736",
+          "qty": 1
+        },
+        {
+          "kind": "others",
+          "spn": "50539771",
+          "qty": 1
+        },
+        {
+          "kind": "others",
+          "spn": "50581235",
+          "qty": 1
+        },
+        {
+          "kind": "others",
+          "spn": "50765466",
+          "qty": 1
+        }
+      ],
+      "features": [],
+      "availability": {
+        "qty": 0
+      },
+      "messages": [],
+      "tags": null,
+      "imageURL": "https://store2.meplato.com/abc-elektronik/media?file=50763601.jpg\u0026h=230\u0026w=330",
+      "thumbnailURL": "https://store2.meplato.com/abc-elektronik/media?file=50763601.jpg\u0026h=90\u0026w=90",
+      "price": 11.68,
+      "extProductId": "50763601@12",
+      "mode": "Updated",
+      "created": "2015-03-20T13:11:02Z",
+      "updated": "2015-03-20T15:51:32Z"
+    },
+    {
+      "kind": "store#product",
+      "selfLink": "https://store2.meplato.com/api/v2/catalogs/AD8CCDD5F9/work/products/50763603?pretty=1",
+      "id": "50763603@12",
+      "merchantId": 0,
+      "projectId": 0,
+      "catalogId": 0,
+      "spn": "50763603",
+      "name": "",
+      "description": "",
+      "keywords": null,
+      "categories": null,
+      "eclasses": null,
+      "unspscs": null,
+      "currency": "",
+      "country": "",
+      "priceQty": 0,
+      "ou": "",
+      "cuPerOu": 0,
+      "cu": "",
+      "leadtime": null,
+      "quantityMin": null,
+      "quantityMax": null,
+      "quantityInterval": null,
+      "taxCode": "",
+      "taxRate": 0,
+      "conditions": null,
+      "gtin": "",
+      "asin": "",
+      "bpn": "",
+      "mpn": "",
+      "manufacturer": "",
+      "manufactcode": "",
+      "image": "",
+      "thumbnail": "",
+      "datasheet": "",
+      "safetysheet": "",
+      "blobs": null,
+      "hazmats": null,
+      "intrastat": null,
+      "matgroup": "",
+      "erpGroupSupplier": "",
+      "extSchemaType": "",
+      "extCategoryId": "",
+      "extCategory": "",
+      "extProductId": "",
+      "multiSupplierId": "",
+      "multiSupplierName": "",
+      "custField1": "",
+      "custField2": "",
+      "custField3": "",
+      "custField4": "",
+      "custField5": "",
+      "custFields": null,
+      "references": null,
+      "features": null,
+      "availability": null,
+      "messages": null,
+      "tags": null,
+      "excluded": false,
+      "catalogManaged": false,
+      "price": 0,
+      "mode": "Deleted",
+      "created": "0001-01-01T00:00:00Z",
+      "updated": "0001-01-01T00:00:00Z"
+    }
+  ]
+}
