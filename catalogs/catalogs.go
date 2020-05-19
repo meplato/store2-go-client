@@ -51,7 +51,7 @@ var (
 
 const (
 	title   = "Meplato Store API"
-	version = "2.1.8"
+	version = "2.1.9"
 	baseURL = "https://store.meplato.com/api/v2"
 )
 
@@ -187,8 +187,6 @@ type Catalog struct {
 	SageNumber string `json:"sageNumber,omitempty"`
 	// SelfLink: URL to this page.
 	SelfLink string `json:"selfLink,omitempty"`
-	// Slug of the catalog.
-	Slug string `json:"slug,omitempty"`
 	// State describes the current state of the catalog, e.g. idle.
 	State string `json:"state,omitempty"`
 	// SupportsOciBackgroundsearch indicates whether a catalog supports the
