@@ -51,7 +51,7 @@ var (
 
 const (
 	title   = "Meplato Store API"
-	version = "2.1.7"
+	version = "2.1.8"
 	baseURL = "https://store.meplato.com/api/v2"
 )
 
@@ -752,6 +752,9 @@ type Product struct {
 	MeplatoPrice float64 `json:"meplatoPrice,omitempty"`
 	// MerchantID: ID of the merchant.
 	MerchantID int64 `json:"merchantId,omitempty"`
+	// Mode is only used for differential downloads and is the type of change
+	// of a product (CREATED, UPDATED, DELETED).
+	Mode string `json:"mode,omitempty"`
 	// Mpn: MPN is the manufacturer part number.
 	Mpn string `json:"mpn,omitempty"`
 	// MultiSupplierID represents an optional field for the unique identifier
@@ -2230,6 +2233,17 @@ func (s *ScrollService) Area(area string) *ScrollService {
 	return s
 }
 
+// Mode can be used in combination with version to specify if the result
+// should include all products for the specific version of the catalog
+// (full), or just the products that changed from the previous version
+// (diff). If the mode is "diff", the type of change to the product can be
+// found in the attribute "mode" and has the following values: "Created",
+// "Updated", "Deleted".
+func (s *ScrollService) Mode(mode string) *ScrollService {
+	s.opt_["mode"] = mode
+	return s
+}
+
 // PageToken must be passed in the 2nd and all consective requests to get
 // the next page of results. You do not need to pass the page token
 // manually. You should just follow the nextUrl link in the metadata to
@@ -2249,16 +2263,28 @@ func (s *ScrollService) PIN(pin string) *ScrollService {
 	return s
 }
 
+// Version of the catalog to be retrieved
+func (s *ScrollService) Version(version int64) *ScrollService {
+	s.opt_["version"] = version
+	return s
+}
+
 // Do executes the operation.
 func (s *ScrollService) Do(ctx context.Context) (*ScrollResponse, error) {
 	var body io.Reader
 	params := make(map[string]interface{})
 	params["area"] = s.area
+	if v, ok := s.opt_["mode"]; ok {
+		params["mode"] = v
+	}
 	if v, ok := s.opt_["pageToken"]; ok {
 		params["pageToken"] = v
 	}
 	params["pin"] = s.pin
-	path, err := meplatoapi.Expand("/catalogs/{pin}/{area}/products/scroll{?pageToken}", params)
+	if v, ok := s.opt_["version"]; ok {
+		params["version"] = v
+	}
+	path, err := meplatoapi.Expand("/catalogs/{pin}/{area}/products/scroll{?pageToken,mode,version}", params)
 	if err != nil {
 		return nil, err
 	}
