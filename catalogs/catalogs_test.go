@@ -88,6 +88,7 @@ func TestCatalogCreate(t *testing.T) {
 		Currency:     "EUR",
 		Language:     "de",
 		Target:       "mall",
+		Type:         "CC",
 		SageNumber:   "",
 		SageContract: "",
 	}
@@ -107,6 +108,9 @@ func TestCatalogCreate(t *testing.T) {
 	}
 	if cres.PIN != "48F31F33AD" {
 		t.Fatalf("expected catalog pin of %q; got: %q", "48F31F33AD", cres.PIN)
+	}
+	if cres.Type != "CC" {
+		t.Fatalf("expected catalog type of %q; got: %q", "CC", cres.Type)
 	}
 }
 

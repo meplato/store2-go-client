@@ -213,7 +213,8 @@ type Catalog struct {
 	// Target represents the target system which can be either an empty
 	// string, "catscout" or "mall".
 	Target string `json:"target,omitempty"`
-	// Type of catalog, e.g. corporate or basic.
+	// Type represents a catalog type which can be either "CC" 1:1 Corporate
+	// or "MB" Meplato Business 1 Creditor.
 	Type string `json:"type,omitempty"`
 	// Updated is the last modification date and time of the catalog.
 	Updated *time.Time `json:"updated,omitempty"`
@@ -253,6 +254,9 @@ type CreateCatalog struct {
 	// Target represents the target system which can be either an empty
 	// string, "catscout" or "mall".
 	Target string `json:"target,omitempty"`
+	// Type represents a catalog type which can be either "CC" 1:1 Corporate
+	// or "MB" Meplato Business 1 Creditor.
+	Type string `json:"type,omitempty"`
 	// ValidFrom is the date the catalog becomes effective (YYYY-MM-DD).
 	ValidFrom *string `json:"validFrom,omitempty"`
 	// ValidUntil is the date the catalog expires (YYYY-MM-DD).
