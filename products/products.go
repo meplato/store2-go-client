@@ -51,7 +51,7 @@ var (
 
 const (
 	title   = "Meplato Store API"
-	version = "2.1.8"
+	version = "2.1.9"
 	baseURL = "https://store.meplato.com/api/v2"
 )
 
