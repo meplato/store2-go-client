@@ -18,12 +18,15 @@ package store2
 import (
 	"bytes"
 	"context"
+	"crypto/tls"
 	"encoding/json"
 	"errors"
 	"fmt"
 	"io"
+	"net"
 	"net/http"
 	"net/url"
+	"runtime"
 	"strconv"
 	"strings"
 	"time"
@@ -64,7 +67,24 @@ type Service struct {
 
 func New(client *http.Client) (*Service, error) {
 	if client == nil {
-		return nil, errors.New("client is nil")
+		client = &http.Client{
+			Transport: &http.Transport{
+				Proxy: http.ProxyFromEnvironment,
+				DialContext: (&net.Dialer{
+					Timeout:   30 * time.Second,
+					KeepAlive: 30 * time.Second,
+					DualStack: true,
+				}).DialContext,
+				MaxIdleConns:          100,
+				IdleConnTimeout:       90 * time.Second,
+				TLSHandshakeTimeout:   10 * time.Second,
+				ExpectContinueTimeout: 1 * time.Second,
+				MaxIdleConnsPerHost:   runtime.GOMAXPROCS(0) + 1,
+				TLSClientConfig: &tls.Config{
+					MinVersion: tls.VersionTLS12,
+				},
+			},
+		}
 	}
 	return &Service{client: client, BaseURL: baseURL}, nil
 }

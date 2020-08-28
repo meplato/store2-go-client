@@ -1,11 +1,15 @@
 package main
 
 import (
+	"crypto/tls"
+	"net"
 	"net/http"
 	"net/url"
 	"os"
 	"os/user"
 	"path"
+	"runtime"
+	"time"
 
 	"github.com/bgentry/go-netrc/netrc"
 
@@ -14,13 +18,19 @@ import (
 )
 
 func GetBaseURL() string {
+	if url := os.Getenv("STORE_URL"); url != "" {
+		return url
+	}
 	if url := os.Getenv("STORE2_URL"); url != "" {
 		return url
 	}
-	return "https://store2.meplato.com/api/v2"
+	return "https://store.meplato.com/api/v2"
 }
 
 func getUsername() string {
+	if s := os.Getenv("STORE_USER"); s != "" {
+		return s
+	}
 	if s := os.Getenv("STORE2_USER"); s != "" {
 		return s
 	}
@@ -31,6 +41,9 @@ func getUsername() string {
 }
 
 func getPassword() string {
+	if s := os.Getenv("STORE_PASSWORD"); s != "" {
+		return s
+	}
 	if s := os.Getenv("STORE2_PASSWORD"); s != "" {
 		return s
 	}
@@ -71,7 +84,26 @@ func getLoginAndPasswordFromNetrc(serviceEndpoint string) (username, password st
 }
 
 func GetHttpClient() (*http.Client, error) {
-	return http.DefaultClient, nil
+	client := &http.Client{
+		Transport: &http.Transport{
+			Proxy: http.ProxyFromEnvironment,
+			DialContext: (&net.Dialer{
+				Timeout:   30 * time.Second,
+				KeepAlive: 30 * time.Second,
+				DualStack: true,
+			}).DialContext,
+			MaxIdleConns:          100,
+			IdleConnTimeout:       90 * time.Second,
+			TLSHandshakeTimeout:   10 * time.Second,
+			ExpectContinueTimeout: 1 * time.Second,
+			MaxIdleConnsPerHost:   runtime.GOMAXPROCS(0) + 1,
+			TLSClientConfig: &tls.Config{
+				MinVersion:         tls.VersionTLS12,
+				InsecureSkipVerify: true,
+			},
+		},
+	}
+	return client, nil
 }
 
 func GetCatalogsService() (*catalogs.Service, error) {
