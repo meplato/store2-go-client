@@ -183,9 +183,10 @@ type CreateProduct struct {
 	// Please consult your Store Manager before setting a value for this
 	// field.
 	ConversionNumerator *float64 `json:"conversionNumerator,omitempty"`
-	// Country represents the ISO code of the country of origin, i.e. the
-	// country where the product has been created/produced, e.g. DE. If
-	// unspecified, the field is initialized with the catalog's country field.
+	// Country/Region represents the ISO code of the country/region of origin,
+	// i.e. the country/region where the product has been created/produced,
+	// e.g. DE. If unspecified, the field is initialized with the catalog's
+	// country/region field.
 	Country string `json:"country,omitempty"`
 	// ContentUnit is the content unit of the product, a 3-character ISO code
 	// (usually project-specific).
@@ -278,6 +279,66 @@ type CreateProduct struct {
 	// CustomField30 represents the 30th customer-specific field. Please
 	// consult your Store Manager before setting a value for this field.
 	CustomField30 string `json:"customField30,omitempty"`
+	// CustomField31 represents the 31st customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField31 string `json:"customField31,omitempty"`
+	// CustomField32 represents the 32nd customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField32 string `json:"customField32,omitempty"`
+	// CustomField33 represents the 33rd customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField33 string `json:"customField33,omitempty"`
+	// CustomField34 represents the 34th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField34 string `json:"customField34,omitempty"`
+	// CustomField35 represents the 35th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField35 string `json:"customField35,omitempty"`
+	// CustomField36 represents the 36th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField36 string `json:"customField36,omitempty"`
+	// CustomField37 represents the 37th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField37 string `json:"customField37,omitempty"`
+	// CustomField38 represents the 38th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField38 string `json:"customField38,omitempty"`
+	// CustomField39 represents the 39th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField39 string `json:"customField39,omitempty"`
+	// CustomField40 represents the 40th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField40 string `json:"customField40,omitempty"`
+	// CustomField41 represents the 41st customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField41 string `json:"customField41,omitempty"`
+	// CustomField42 represents the 42nd customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField42 string `json:"customField42,omitempty"`
+	// CustomField43 represents the 43rd customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField43 string `json:"customField43,omitempty"`
+	// CustomField44 represents the 44th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField44 string `json:"customField44,omitempty"`
+	// CustomField45 represents the 45th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField45 string `json:"customField45,omitempty"`
+	// CustomField46 represents the 46th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField46 string `json:"customField46,omitempty"`
+	// CustomField47 represents the 47th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField47 string `json:"customField47,omitempty"`
+	// CustomField48 represents the 48th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField48 string `json:"customField48,omitempty"`
+	// CustomField49 represents the 49th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField49 string `json:"customField49,omitempty"`
+	// CustomField50 represents the 50th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField50 string `json:"customField50,omitempty"`
 	// CustomField6 represents the 6th customer-specific field. Please consult
 	// your Store Manager before setting a value for this field.
 	CustomField6 string `json:"customField6,omitempty"`
@@ -535,8 +596,8 @@ type Intrastat struct {
 	MeansOfTransport string `json:"meansOfTransport,omitempty"`
 	// NetWeight represents the net weight of the product.
 	NetWeight float64 `json:"netWeight,omitempty"`
-	// OriginCountry represents the ISO code of the country where the product
-	// has been created/produced, e.g. DE. This is a required field.
+	// OriginCountry represents the ISO code of the country/region where the
+	// product has been created/produced, e.g. DE. This is a required field.
 	OriginCountry string `json:"originCountry,omitempty"`
 	// TransactionType indicates the type of transaction, e.g. if it
 	// represents a purchase or a leasing contract. In the INTRASTAT
@@ -588,9 +649,10 @@ type Product struct {
 	ConversionDenumerator *float64 `json:"conversionDenumerator,omitempty"`
 	// ConversionNumerator is the numerator for calculating price quantities.
 	ConversionNumerator *float64 `json:"conversionNumerator,omitempty"`
-	// Country represents the ISO code of the country of origin, i.e. the
-	// country where the product has been created/produced, e.g. DE. If
-	// unspecified, the field is initialized with the catalog's country field.
+	// Country/Region represents the ISO code of the country/region of origin,
+	// i.e. the country/region where the product has been created/produced,
+	// e.g. DE. If unspecified, the field is initialized with the catalog's
+	// country/region field.
 	Country string `json:"country,omitempty"`
 	// Created is the creation date and time of the product.
 	Created *time.Time `json:"created,omitempty"`
@@ -664,6 +726,46 @@ type Product struct {
 	CustomField29 string `json:"customField29,omitempty"`
 	// CustomField30 represents the 30th customer-specific field.
 	CustomField30 string `json:"customField30,omitempty"`
+	// CustomField31 represents the 31st customer-specific field.
+	CustomField31 string `json:"customField31,omitempty"`
+	// CustomField32 represents the 32nd customer-specific field.
+	CustomField32 string `json:"customField32,omitempty"`
+	// CustomField33 represents the 33rd customer-specific field.
+	CustomField33 string `json:"customField33,omitempty"`
+	// CustomField34 represents the 34th customer-specific field.
+	CustomField34 string `json:"customField34,omitempty"`
+	// CustomField35 represents the 35th customer-specific field.
+	CustomField35 string `json:"customField35,omitempty"`
+	// CustomField36 represents the 36th customer-specific field.
+	CustomField36 string `json:"customField36,omitempty"`
+	// CustomField37 represents the 37th customer-specific field.
+	CustomField37 string `json:"customField37,omitempty"`
+	// CustomField38 represents the 38th customer-specific field.
+	CustomField38 string `json:"customField38,omitempty"`
+	// CustomField39 represents the 39th customer-specific field.
+	CustomField39 string `json:"customField39,omitempty"`
+	// CustomField40 represents the 40th customer-specific field.
+	CustomField40 string `json:"customField40,omitempty"`
+	// CustomField41 represents the 41st customer-specific field.
+	CustomField41 string `json:"customField41,omitempty"`
+	// CustomField42 represents the 42nd customer-specific field.
+	CustomField42 string `json:"customField42,omitempty"`
+	// CustomField43 represents the 43rd customer-specific field.
+	CustomField43 string `json:"customField43,omitempty"`
+	// CustomField44 represents the 44th customer-specific field.
+	CustomField44 string `json:"customField44,omitempty"`
+	// CustomField45 represents the 45th customer-specific field.
+	CustomField45 string `json:"customField45,omitempty"`
+	// CustomField46 represents the 46th customer-specific field.
+	CustomField46 string `json:"customField46,omitempty"`
+	// CustomField47 represents the 47th customer-specific field.
+	CustomField47 string `json:"customField47,omitempty"`
+	// CustomField48 represents the 48th customer-specific field.
+	CustomField48 string `json:"customField48,omitempty"`
+	// CustomField49 represents the 49th customer-specific field.
+	CustomField49 string `json:"customField49,omitempty"`
+	// CustomField50 represents the 50th customer-specific field.
+	CustomField50 string `json:"customField50,omitempty"`
 	// CustomField6 represents the 6th customer-specific field.
 	CustomField6 string `json:"customField6,omitempty"`
 	// CustomField7 represents the 7th customer-specific field.
@@ -905,9 +1007,10 @@ type ReplaceProduct struct {
 	// Please consult your Store Manager before setting a value for this
 	// field.
 	ConversionNumerator *float64 `json:"conversionNumerator,omitempty"`
-	// Country represents the ISO code of the country of origin, i.e. the
-	// country where the product has been created/produced, e.g. DE. If
-	// unspecified, the field is initialized with the catalog's country field.
+	// Country/Region represents the ISO code of the country/region of origin,
+	// i.e. the country/region where the product has been created/produced,
+	// e.g. DE. If unspecified, the field is initialized with the catalog's
+	// country/region field.
 	Country string `json:"country,omitempty"`
 	// ContentUnit is the content unit of the product, a 3-character ISO code
 	// (usually project-specific).
@@ -1000,6 +1103,66 @@ type ReplaceProduct struct {
 	// CustomField30 represents the 30th customer-specific field. Please
 	// consult your Store Manager before setting a value for this field.
 	CustomField30 string `json:"customField30,omitempty"`
+	// CustomField31 represents the 31st customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField31 string `json:"customField31,omitempty"`
+	// CustomField32 represents the 32nd customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField32 string `json:"customField32,omitempty"`
+	// CustomField33 represents the 33rd customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField33 string `json:"customField33,omitempty"`
+	// CustomField34 represents the 34th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField34 string `json:"customField34,omitempty"`
+	// CustomField35 represents the 35th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField35 string `json:"customField35,omitempty"`
+	// CustomField36 represents the 36th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField36 string `json:"customField36,omitempty"`
+	// CustomField37 represents the 37th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField37 string `json:"customField37,omitempty"`
+	// CustomField38 represents the 38th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField38 string `json:"customField38,omitempty"`
+	// CustomField39 represents the 39th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField39 string `json:"customField39,omitempty"`
+	// CustomField40 represents the 40th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField40 string `json:"customField40,omitempty"`
+	// CustomField41 represents the 41st customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField41 string `json:"customField41,omitempty"`
+	// CustomField42 represents the 42nd customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField42 string `json:"customField42,omitempty"`
+	// CustomField43 represents the 43rd customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField43 string `json:"customField43,omitempty"`
+	// CustomField44 represents the 44th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField44 string `json:"customField44,omitempty"`
+	// CustomField45 represents the 45th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField45 string `json:"customField45,omitempty"`
+	// CustomField46 represents the 46th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField46 string `json:"customField46,omitempty"`
+	// CustomField47 represents the 47th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField47 string `json:"customField47,omitempty"`
+	// CustomField48 represents the 48th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField48 string `json:"customField48,omitempty"`
+	// CustomField49 represents the 49th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField49 string `json:"customField49,omitempty"`
+	// CustomField50 represents the 50th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField50 string `json:"customField50,omitempty"`
 	// CustomField6 represents the 6th customer-specific field. Please consult
 	// your Store Manager before setting a value for this field.
 	CustomField6 string `json:"customField6,omitempty"`
@@ -1294,9 +1457,10 @@ type UpdateProduct struct {
 	// Please consult your Store Manager before setting a value for this
 	// field.
 	ConversionNumerator *float64 `json:"conversionNumerator,omitempty"`
-	// Country represents the ISO code of the country of origin, i.e. the
-	// country where the product has been created/produced, e.g. DE. If
-	// unspecified, the field is initialized with the catalog's country field.
+	// Country/Region represents the ISO code of the country/region of origin,
+	// i.e. the country/region where the product has been created/produced,
+	// e.g. DE. If unspecified, the field is initialized with the catalog's
+	// country/region field.
 	Country *string `json:"country,omitempty"`
 	// ContentUnit is the content unit of the product, a 3-character ISO code
 	// (usually project-specific).
@@ -1389,6 +1553,66 @@ type UpdateProduct struct {
 	// CustomField30 represents the 30th customer-specific field. Please
 	// consult your Store Manager before setting a value for this field.
 	CustomField30 *string `json:"customField30,omitempty"`
+	// CustomField31 represents the 31st customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField31 *string `json:"customField31,omitempty"`
+	// CustomField32 represents the 32nd customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField32 *string `json:"customField32,omitempty"`
+	// CustomField33 represents the 33rd customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField33 *string `json:"customField33,omitempty"`
+	// CustomField34 represents the 34th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField34 *string `json:"customField34,omitempty"`
+	// CustomField35 represents the 35th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField35 *string `json:"customField35,omitempty"`
+	// CustomField36 represents the 36th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField36 *string `json:"customField36,omitempty"`
+	// CustomField37 represents the 37th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField37 *string `json:"customField37,omitempty"`
+	// CustomField38 represents the 38th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField38 *string `json:"customField38,omitempty"`
+	// CustomField39 represents the 39th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField39 *string `json:"customField39,omitempty"`
+	// CustomField40 represents the 40th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField40 *string `json:"customField40,omitempty"`
+	// CustomField41 represents the 41st customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField41 *string `json:"customField41,omitempty"`
+	// CustomField42 represents the 42nd customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField42 *string `json:"customField42,omitempty"`
+	// CustomField43 represents the 43rd customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField43 *string `json:"customField43,omitempty"`
+	// CustomField44 represents the 44th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField44 *string `json:"customField44,omitempty"`
+	// CustomField45 represents the 45th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField45 *string `json:"customField45,omitempty"`
+	// CustomField46 represents the 46th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField46 *string `json:"customField46,omitempty"`
+	// CustomField47 represents the 47th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField47 *string `json:"customField47,omitempty"`
+	// CustomField48 represents the 48th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField48 *string `json:"customField48,omitempty"`
+	// CustomField49 represents the 49th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField49 *string `json:"customField49,omitempty"`
+	// CustomField50 represents the 50th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField50 *string `json:"customField50,omitempty"`
 	// CustomField6 represents the 6th customer-specific field. Please consult
 	// your Store Manager before setting a value for this field.
 	CustomField6 *string `json:"customField6,omitempty"`
@@ -1623,9 +1847,10 @@ type UpsertProduct struct {
 	// Please consult your Store Manager before setting a value for this
 	// field.
 	ConversionNumerator *float64 `json:"conversionNumerator,omitempty"`
-	// Country represents the ISO code of the country of origin, i.e. the
-	// country where the product has been created/produced, e.g. DE. If
-	// unspecified, the field is initialized with the catalog's country field.
+	// Country/Region represents the ISO code of the country/region of origin,
+	// i.e. the country/region where the product has been created/produced,
+	// e.g. DE. If unspecified, the field is initialized with the catalog's
+	// country/region field.
 	Country string `json:"country,omitempty"`
 	// ContentUnit is the content unit of the product, a 3-character ISO code
 	// (usually project-specific).
@@ -1718,6 +1943,66 @@ type UpsertProduct struct {
 	// CustomField30 represents the 30th customer-specific field. Please
 	// consult your Store Manager before setting a value for this field.
 	CustomField30 string `json:"customField30,omitempty"`
+	// CustomField31 represents the 31st customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField31 string `json:"customField31,omitempty"`
+	// CustomField32 represents the 32nd customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField32 string `json:"customField32,omitempty"`
+	// CustomField33 represents the 33rd customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField33 string `json:"customField33,omitempty"`
+	// CustomField34 represents the 34th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField34 string `json:"customField34,omitempty"`
+	// CustomField35 represents the 35th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField35 string `json:"customField35,omitempty"`
+	// CustomField36 represents the 36th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField36 string `json:"customField36,omitempty"`
+	// CustomField37 represents the 37th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField37 string `json:"customField37,omitempty"`
+	// CustomField38 represents the 38th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField38 string `json:"customField38,omitempty"`
+	// CustomField39 represents the 39th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField39 string `json:"customField39,omitempty"`
+	// CustomField40 represents the 40th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField40 string `json:"customField40,omitempty"`
+	// CustomField41 represents the 41st customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField41 string `json:"customField41,omitempty"`
+	// CustomField42 represents the 42nd customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField42 string `json:"customField42,omitempty"`
+	// CustomField43 represents the 43rd customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField43 string `json:"customField43,omitempty"`
+	// CustomField44 represents the 44th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField44 string `json:"customField44,omitempty"`
+	// CustomField45 represents the 45th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField45 string `json:"customField45,omitempty"`
+	// CustomField46 represents the 46th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField46 string `json:"customField46,omitempty"`
+	// CustomField47 represents the 47th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField47 string `json:"customField47,omitempty"`
+	// CustomField48 represents the 48th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField48 string `json:"customField48,omitempty"`
+	// CustomField49 represents the 49th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField49 string `json:"customField49,omitempty"`
+	// CustomField50 represents the 50th customer-specific field. Please
+	// consult your Store Manager before setting a value for this field.
+	CustomField50 string `json:"customField50,omitempty"`
 	// CustomField6 represents the 6th customer-specific field. Please consult
 	// your Store Manager before setting a value for this field.
 	CustomField6 string `json:"customField6,omitempty"`
