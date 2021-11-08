@@ -95,8 +95,8 @@ func (s *Service) Search() *SearchService {
 
 // Catalog is a container for products, to be used in a certain project.
 type Catalog struct {
-	// Country is the ISO-3166 alpha-2 code for the country that the catalog
-	// is destined for (e.g. DE or US).
+	// Country/Region is the ISO-3166 alpha-2 code for the country/region that
+	// the catalog is destined for (e.g. DE or US).
 	Country string `json:"country,omitempty"`
 	// Created is the creation date and time of the catalog.
 	Created *time.Time `json:"created,omitempty"`
@@ -226,8 +226,8 @@ type Catalog struct {
 
 // CreateCatalog holds the properties of a new catalog.
 type CreateCatalog struct {
-	// Country is the ISO-3166 alpha-2 code for the country that the catalog
-	// is destined for (e.g. DE or US).
+	// Country/Region is the ISO-3166 alpha-2 code for the country/region that
+	// the catalog is destined for (e.g. DE or US).
 	Country string `json:"country,omitempty"`
 	// Currency is the ISO-4217 currency code that is used for all products in
 	// the catalog (e.g. EUR or USD).
@@ -302,8 +302,8 @@ type KPISummary struct {
 // Project describes customer-specific settings, typically encompassing a
 // set of catalogs.
 type Project struct {
-	// Country specifies the country code where catalogs for this project are
-	// located.
+	// Country/Region specifies the country/region code where catalogs for
+	// this project are located.
 	Country string `json:"country,omitempty"`
 	// Created is the creation date and time of the project.
 	Created *time.Time `json:"created,omitempty"`

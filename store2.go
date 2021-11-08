@@ -113,7 +113,8 @@ type MeResponse struct {
 
 // Merchant holds account data for the merchant/supplier in Meplato Store.
 type Merchant struct {
-	// Country is the ISO code for the country of the merchant, e.g. DE or CH.
+	// Country/Region is the ISO code for the country/region of the merchant,
+	// e.g. DE or CH.
 	Country string `json:"country,omitempty"`
 	// Created is the date/time when the merchant was created, e.g.
 	// 2015-03-19T12:09:45Z
@@ -152,7 +153,7 @@ type Merchant struct {
 
 // User holds account data for the user in Meplato Store.
 type User struct {
-	// Country is the ISO code for the country, e.g. DE or CH.
+	// Country/Region is the ISO code for the country/region, e.g. DE or CH.
 	Country string `json:"country,omitempty"`
 	// Created is the date/time when the user was created, e.g.
 	// 2015-03-19T12:09:45Z
