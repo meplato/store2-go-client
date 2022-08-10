@@ -159,6 +159,9 @@ type CreateProduct struct {
 	BoostFactor *float64 `json:"boostFactor,omitempty"`
 	// Bpn: BPN is the buyer part number of the product.
 	Bpn string `json:"bpn,omitempty"`
+	// Brand is the commercial brand name of the product (i.e. end-consumer
+	// recognizable brand name)
+	Brand string `json:"brand,omitempty"`
 	// CatalogManaged is a flag that indicates whether this product is
 	// configurable (or catalog managed in OCI parlance).
 	CatalogManaged bool `json:"catalogManaged,omitempty"`
@@ -628,6 +631,9 @@ type Product struct {
 	BoostFactor *float64 `json:"boostFactor,omitempty"`
 	// Bpn: BPN is the buyer part number of the product.
 	Bpn string `json:"bpn,omitempty"`
+	// Brand is the commercial brand name of the product (i.e. end-consumer
+	// recognizable brand name)
+	Brand string `json:"brand,omitempty"`
 	// CatalogID: ID of the catalog this products belongs to.
 	CatalogID int64 `json:"catalogId,omitempty"`
 	// CatalogManaged is a flag that indicates whether this product is
@@ -983,6 +989,9 @@ type ReplaceProduct struct {
 	BoostFactor *float64 `json:"boostFactor,omitempty"`
 	// Bpn: BPN is the buyer part number of the product.
 	Bpn string `json:"bpn,omitempty"`
+	// Brand is the commercial brand name of the product (i.e. end-consumer
+	// recognizable brand name)
+	Brand string `json:"brand,omitempty"`
 	// CatalogManaged is a flag that indicates whether this product is
 	// configurable (or catalog managed in OCI parlance).
 	CatalogManaged bool `json:"catalogManaged,omitempty"`
@@ -1433,6 +1442,9 @@ type UpdateProduct struct {
 	BoostFactor *float64 `json:"boostFactor,omitempty"`
 	// Bpn: BPN is the buyer part number of the product.
 	Bpn *string `json:"bpn,omitempty"`
+	// Brand is the commercial brand name of the product (i.e. end-consumer
+	// recognizable brand name)
+	Brand string `json:"brand,omitempty"`
 	// CatalogManaged is a flag that indicates whether this product is
 	// configurable (or catalog managed in OCI parlance).
 	CatalogManaged *bool `json:"catalogManaged,omitempty"`
@@ -1823,6 +1835,9 @@ type UpsertProduct struct {
 	BoostFactor *float64 `json:"boostFactor,omitempty"`
 	// Bpn: BPN is the buyer part number of the product.
 	Bpn string `json:"bpn,omitempty"`
+	// Brand is the commercial brand name of the product (i.e. end-consumer
+	// recognizable brand name)
+	Brand string `json:"brand,omitempty"`
 	// CatalogManaged is a flag that indicates whether this product is
 	// configurable (or catalog managed in OCI parlance).
 	CatalogManaged bool `json:"catalogManaged,omitempty"`
