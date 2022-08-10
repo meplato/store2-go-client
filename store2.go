@@ -170,9 +170,6 @@ type User struct {
 	Language string `json:"language,omitempty"`
 	// Locale is the regional code in the format de_AT.
 	Locale string `json:"locale,omitempty"`
-	// MerchantID: merchantId is a unique (internal) identifier of the
-	// merchant of the user.
-	MerchantID int64 `json:"merchantId,omitempty"`
 	// Name is the user, including first and last name.
 	Name string `json:"name,omitempty"`
 	// Provider is used internally.
