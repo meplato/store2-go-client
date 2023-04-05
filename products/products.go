@@ -394,6 +394,9 @@ type CreateProduct struct {
 	// product. Please consult your Store Manager before setting a value for
 	// this field.
 	GlAccount string `json:"glAccount,omitempty"`
+	// GreenLogos is an array of green logo names, which are hosted in the
+	// store, and used to mark products as green.
+	GreenLogos []string `json:"greenLogos,omitempty"`
 	// Gtin: GTIN is the global trade item number of the product (used to be
 	// EAN).
 	Gtin string `json:"gtin,omitempty"`
@@ -819,6 +822,9 @@ type Product struct {
 	// GlAccount: GLAccount represents the GL account number to use for this
 	// product.
 	GlAccount string `json:"glAccount,omitempty"`
+	// GreenLogos is an array of green logo names, which are hosted in the
+	// store, and used to mark products as green.
+	GreenLogos []string `json:"greenLogos,omitempty"`
 	// Gtin: GTIN is the global trade item number of the product (used to be
 	// EAN).
 	Gtin string `json:"gtin,omitempty"`
@@ -1224,6 +1230,9 @@ type ReplaceProduct struct {
 	// product. Please consult your Store Manager before setting a value for
 	// this field.
 	GlAccount string `json:"glAccount,omitempty"`
+	// GreenLogos is an array of green logo names, which are hosted in the
+	// store, and used to mark products as green.
+	GreenLogos []string `json:"greenLogos,omitempty"`
 	// Gtin: GTIN is the global trade item number of the product (used to be
 	// EAN).
 	Gtin string `json:"gtin,omitempty"`
@@ -1677,6 +1686,9 @@ type UpdateProduct struct {
 	// product. Please consult your Store Manager before setting a value for
 	// this field.
 	GlAccount *string `json:"glAccount,omitempty"`
+	// GreenLogos is an array of green logo names, which are hosted in the
+	// store, and used to mark products as green.
+	GreenLogos []string `json:"greenLogos,omitempty"`
 	// Gtin: GTIN is the global trade item number of the product (used to be
 	// EAN).
 	Gtin *string `json:"gtin,omitempty"`
@@ -2070,6 +2082,9 @@ type UpsertProduct struct {
 	// product. Please consult your Store Manager before setting a value for
 	// this field.
 	GlAccount string `json:"glAccount,omitempty"`
+	// GreenLogos is an array of green logo names, which are hosted in the
+	// store, and used to mark products as green.
+	GreenLogos []string `json:"greenLogos,omitempty"`
 	// Gtin: GTIN is the global trade item number of the product (used to be
 	// EAN).
 	Gtin string `json:"gtin,omitempty"`
