@@ -191,7 +191,7 @@ func (s *DeleteService) Do(ctx context.Context) (*DeleteResponse, error) {
 	if v, ok := s.opt_["zipCode"]; ok {
 		params["zipCode"] = v
 	}
-	path, err := meplatoapi.Expand("/api/v2/products/{spn}/availabilities{?region,zipCode}", params)
+	path, err := meplatoapi.Expand("/products/{spn}/availabilities{?region,zipCode}", params)
 	if err != nil {
 		return nil, err
 	}
@@ -265,7 +265,7 @@ func (s *GetService) Do(ctx context.Context) (*GetResponse, error) {
 	if v, ok := s.opt_["zipCode"]; ok {
 		params["zipCode"] = v
 	}
-	path, err := meplatoapi.Expand("/api/v2/products/{spn}/availabilities{?region,zipCode}", params)
+	path, err := meplatoapi.Expand("/products/{spn}/availabilities{?region,zipCode}", params)
 	if err != nil {
 		return nil, err
 	}
@@ -333,7 +333,7 @@ func (s *UpsertService) Do(ctx context.Context) (*UpsertResponse, error) {
 	}
 	params := make(map[string]interface{})
 	params["spn"] = s.spn
-	path, err := meplatoapi.Expand("/api/v2/products/{spn}/availabilities", params)
+	path, err := meplatoapi.Expand("/products/{spn}/availabilities", params)
 	if err != nil {
 		return nil, err
 	}
