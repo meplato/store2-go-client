@@ -337,7 +337,7 @@ func (s *UpsertService) Do(ctx context.Context) (*UpsertResponse, error) {
 	if err != nil {
 		return nil, err
 	}
-	req, err := http.NewRequest("POST", s.s.BaseURL+path, body)
+	req, err := http.NewRequest("PUT", s.s.BaseURL+path, body)
 	if err != nil {
 		return nil, err
 	}
