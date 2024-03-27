@@ -8,8 +8,7 @@ before:
     # you may remove this if you don't use vgo
     - go mod tidy
 builds:
--
-  main: ./cmd/store
+- main: ./cmd/store
   binary: store
   goos:
     - linux
