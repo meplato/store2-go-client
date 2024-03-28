@@ -8,8 +8,7 @@ before:
     # you may remove this if you don't use vgo
     - go mod tidy
 builds:
--
-  main: ./cmd/store
+- main: ./cmd/store
   binary: store
   goos:
     - linux
@@ -27,12 +26,6 @@ checksum:
   name_template: '{{ .ProjectName }}_checksums.txt'
 archives:
 - name_template: '{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}'
-  replacements:
-    darwin: Darwin
-    linux: Linux
-    windows: Windows
-    386: i386
-    amd64: x86_64
   format_overrides:
   - goos: windows
     format: zip
