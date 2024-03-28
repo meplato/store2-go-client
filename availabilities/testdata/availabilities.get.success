@@ -1,0 +1,45 @@
+HTTP/1.1 200 OK
+Cache-Control: private, no-cache
+Content-Type: application/json; charset=utf-8
+Last-Modified: Tue, 31 Mar 2015 14:18:15 GMT
+P3p: CP="This is not a P3P policy!"
+Vary: Cookie
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+X-Ua-Compatible: IE=edge
+X-Xss-Protection: 1; mode=block
+Date: Tue, 25 Mar 2024 14:18:15 GMT
+
+{
+    "kind": "store#availabilities/getResponse",
+    "Error": null,
+    "items": [
+        {
+            "message": "in stock",
+            "mpcc": "meplato",
+            "quantity": 15.3,
+            "region": "UK",
+            "spn": "1234",
+            "updated": "Q4/2022",
+            "zipCode": "04109"
+        },
+       {
+            "message": "in stock",
+            "mpcc": "meplato",
+            "quantity": 35.0,
+            "region": "DK",
+            "spn": "1234",
+            "updated": "Q4/2022",
+            "zipCode": "05109"
+        },
+        {
+            "message": "in stock",
+            "mpcc": "meplato",
+            "quantity": 20.4,
+            "region": "DE",
+            "spn": "1234",
+            "updated": "Q4/2022",
+            "zipCode": "06109"
+        }
+    ]
+}
